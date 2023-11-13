@@ -5,7 +5,7 @@ import { Container, Row } from "react-bootstrap";
 const ProfilePage = () => {
     return (
         <Container className="my-4">
-            <Row className="g-5 justify-content-evenly">
+            <Row className="g-1 justify-content-evenly">
                 <FakeProfile />
                 <FriendsList />
             </Row>
