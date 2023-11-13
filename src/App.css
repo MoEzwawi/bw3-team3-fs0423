@@ -14,7 +14,7 @@
 
 #fr-add-btn:hover {
     border: 2px solid black !important;
-    background-color: rgba(128, 122, 122, 0.5);
+    background-color: rgba(128, 122, 122, 0.4);
     transition: 0.3s;
 }
 

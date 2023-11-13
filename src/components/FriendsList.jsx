@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Row, Col } from "react-bootstrap"
 import { PencilFill } from "react-bootstrap-icons"
-import { PersonAdd } from "react-bootstrap-icons"
+import SingleFriend from "./SingleFriend"
 
 const FriendsList = () => {
     const [newFriends, setNewFriends] = useState([])
@@ -63,16 +63,7 @@ const FriendsList = () => {
                         (newFriends.length > 0) && newFriends.slice(2, newFriends.length).map((fr) => {
                             return (
                                 <Row key={fr._id} className="justify-content-start my-2">
-                                    <Col className="d-flex">
-                                        <div>
-                                            <img src={fr.image} alt="ciao" width="30px" className="rounded-circle me-2" />
-                                        </div>
-                                        <div>
-                                            <p className="fw-bold m-0">{fr.name}&nbsp;{fr.surname}</p>
-                                            <p className="m-0">{fr.title}</p>
-                                            <div id="fr-add-btn" className="btn border border-2 border-secondary rounded-pill"><PersonAdd className="mb-1" /> Collegati</div>
-                                        </div>
-                                    </Col>
+                                    <SingleFriend image={fr.image} name={fr.name} surname={fr.surname} title={fr.title} />
                                 </Row>
                             )
                         })
