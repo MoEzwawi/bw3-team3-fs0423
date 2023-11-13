@@ -1,38 +1,51 @@
-.App {
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+body {
+  background-color: rgb(244, 242, 238);
+}
+.bi{
+  color: rgb(87, 87, 87);
+}
+.input-container{
+  padding-right: 5em;
+}
+
+@media (max-width: 768px) {
+  .input-container .form-control {
+    display: none; /* Nasconde il Form.Control su schermi piccoli */
+  }
+}
+
+.smalltext{
+  font-size: 12px;
+}
+
+.topbar-img-profile {
+  width: 35px;
+  object-fit: cover;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#basic-nav-dropdown {
+  padding: 0 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+#Footer p {
+  font-size: small;
+  padding-inline: 5px;
+}
+#Footer h5 {
+  font-size: medium;
+}
+
+.footerDrop{
+  width: 130px;
+}
+@media (max-width: 768px) {
+  #Footer {
+    padding-inline: 0;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  #footer-select {
+    width: 100%;
   }
 }
