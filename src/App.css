@@ -1,9 +1,11 @@
-.App-logo {
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -31,4 +33,30 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.bord {
+  border: 1px solid gray;
+  width: 500px;
+  padding: 0px;
+}
+
+.cont {
+  position: relative;
+  display: flex;
+  margin-bottom: 50px;
+  flex-direction: column;
+}
+
+.pro {
+  position: absolute;
+  display: flex;
+  width: 153px;
+  bottom: -40px;
+  margin-left: 1em;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.ma {
+  margin-left: 1em;
 }

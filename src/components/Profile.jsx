@@ -35,35 +35,16 @@ const Profile = () => {
   return (
     <Container>
       <Row style={{ display: "flex", justifyContent: "center" }}>
-        <Col style={{ border: " 1px solid gray", width: "500px" }}>
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              marginBottom: "50px",
-              flexDirection: "column",
-            }}
-          >
+        <Col md={6} className="bord">
+          <div className="cont">
             <img
               src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
               alt="spazio sfondo"
             />
-            <img
-              src={profilo.image}
-              alt="profile-pic"
-              style={{
-                position: "absolute",
-                display: "flex",
-                width: "153px",
-                bottom: "-40px",
-                marginLeft: "1em",
-                border: "2px solid white",
-                borderRadius: "190px",
-              }}
-            />
+            <img className="pro" src={profilo.image} alt="profile-pic" />
           </div>
 
-          <div style={{ marginLeft: "1em" }}>
+          <div className="ma">
             <h4>
               {profilo.name} {profilo.surname}
             </h4>
@@ -72,7 +53,7 @@ const Profile = () => {
               <p>{profilo.title}</p>
             </div>
             <div>
-              <h5>Email</h5>
+              <h5>Email:</h5>
               {profilo.email}
               <h5>Bio:</h5>
               {profilo.bio}
