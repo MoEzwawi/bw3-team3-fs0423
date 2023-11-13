@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 const Profile = () => {
   const [profilo, setProfilo] = useState({});
@@ -33,41 +33,51 @@ const Profile = () => {
   };
 
   return (
-    <Container style={{ display: "flex" }}>
-      <Row
-        style={{
-          display: "flex",
-          height: "318px",
-
-          width: "1300px",
-        }}
-      >
-        <Col>
-          <Card>
-            <Card.Img
-              style={{ width: "20rem" }}
-              variant="top"
-              src="https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
+    <Container>
+      <Row style={{ display: "flex", justifyContent: "center" }}>
+        <Col style={{ border: " 1px solid gray", width: "500px" }}>
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              marginBottom: "50px",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
+              alt="spazio sfondo"
             />
-            <Card.Body>
-              <Card.Img
-                style={{ width: "10rem", borderRadius: "190px" }}
-                variant="top"
-                src={profilo.image}
-              />
-              <Card.Body>
-                <Card.Title>
-                  {profilo.name} {profilo.surname}{" "}
-                </Card.Title>
-                <Card.Title>Professione:</Card.Title>
-                <Card.Header>{profilo.title}</Card.Header>
-                <Card.Title>Email:</Card.Title>
-                <Card.Header>{profilo.email}</Card.Header>
-                <Card.Title>Bio:</Card.Title>
-                <Card.Header>{profilo.bio}</Card.Header>
-              </Card.Body>
-            </Card.Body>
-          </Card>
+            <img
+              src={profilo.image}
+              alt="profile-pic"
+              style={{
+                position: "absolute",
+                display: "flex",
+                width: "153px",
+                bottom: "-40px",
+                marginLeft: "1em",
+                border: "2px solid white",
+                borderRadius: "190px",
+              }}
+            />
+          </div>
+
+          <div style={{ marginLeft: "1em" }}>
+            <h4>
+              {profilo.name} {profilo.surname}
+            </h4>
+            <div>
+              <h5>Mestiere:</h5>
+              <p>{profilo.title}</p>
+            </div>
+            <div>
+              <h5>Email</h5>
+              {profilo.email}
+              <h5>Bio:</h5>
+              {profilo.bio}
+            </div>
+          </div>
         </Col>
       </Row>
     </Container>
@@ -75,3 +85,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg
