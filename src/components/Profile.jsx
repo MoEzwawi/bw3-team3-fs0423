@@ -34,7 +34,7 @@ const Profile = () => {
 
   return (
     <Container>
-      <Row style={{ display: "flex", justifyContent: "center" }}>
+      <Row className="ro">
         <Col md={6} className="bord">
           <div className="cont">
             <img
@@ -66,5 +66,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-// https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg

@@ -34,6 +34,11 @@
     transform: rotate(360deg);
   }
 } */
+.ro {
+  display: flex;
+  justify-content: center;
+}
+
 .bord {
   border: 1px solid gray;
   width: 500px;
