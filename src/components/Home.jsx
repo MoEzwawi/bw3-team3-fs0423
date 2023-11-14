@@ -42,7 +42,7 @@ const Home = () => {
 
         <Container className='mt-4'>
             <Row>
-                <Col xs={3}>
+                <Col className='d-none d-md-block' xs={3}> 
                     <div
                         id="small-profile-home"
                         className="border border-1 border-secondary-subtle rounded rounded-2 bg-white bord pb-3"
