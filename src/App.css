@@ -9,31 +9,37 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* #root {
+    background-color: #f2f4ee;
 } */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.grigio {
+  color: grey;
+  font-size: 0.9em;
+  overflow: hidden;
+}
+
+#fr-add-btn:hover {
+  border: 2px solid black !important;
+  background-color: rgba(128, 122, 122, 0.4);
+  transition: 0.3s;
+}
+
+#pcpc {
+  font-weight: 700;
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
+body {
+  background-color: rgb(244, 242, 238);
+}
+
 .ro {
   display: flex;
   justify-content: center;
@@ -64,4 +70,56 @@
 
 .ma {
   margin-left: 1em;
+}
+
+.bi {
+  color: rgb(87, 87, 87);
+}
+
+.input-container {
+  padding-right: 5em;
+}
+
+@media (max-width: 768px) {
+  .input-container .form-control {
+    display: none;
+    /* Nasconde il Form.Control su schermi piccoli */
+  }
+}
+
+.smalltext {
+  font-size: 12px;
+}
+
+.topbar-img-profile {
+  width: 35px;
+  object-fit: cover;
+  text-align: center;
+}
+
+#basic-nav-dropdown {
+  padding: 0 !important;
+}
+
+#Footer p {
+  font-size: small;
+  padding-inline: 5px;
+}
+
+#Footer h5 {
+  font-size: medium;
+}
+
+.footerDrop {
+  width: 130px;
+}
+
+@media (max-width: 768px) {
+  #Footer {
+    padding-inline: 0;
+  }
+
+  #footer-select {
+    width: 100%;
+  }
 }
