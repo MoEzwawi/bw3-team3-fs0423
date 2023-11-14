@@ -15,14 +15,13 @@ const TopBar = () => {
   const [showInput, setShowInput] = useState(false);
 
   const handleIconClick = () => {
-    setShowInput(true);
+    setShowInput(!showInput);
   };
   return (
     <Container fluid className="px-0">
       <Row className="justify-content-center align-items-center mx-auto">
         <Col className="px-0">
           <Navbar
-            fluid
             expand="lg"
             className="bg-body-tertiary sticky-top px-2  w-100 shadow-sm py-0"
           >
@@ -38,13 +37,16 @@ const TopBar = () => {
               </div>
               <div className="input-container">
                 <InputGroup className="ms-2 ">
-                  <InputGroup.Text>
-                    <i className="bi bi-search" onClick={handleIconClick}></i>
+                  <InputGroup.Text onClick={handleIconClick}>
+                    <i className="bi bi-search"></i>
                   </InputGroup.Text>
+
                   <Form.Control
                     type="text"
                     placeholder="Search"
-                    className=" mr-sm-2 me-3"
+                    className={`mobile-search-input ${
+                      showInput ? "expanded" : ""
+                    }`}
                   />
                 </InputGroup>
               </div>
@@ -90,6 +92,7 @@ const TopBar = () => {
                     className="rounded-circle topbar-img-profile"
                   />
                   <NavDropdown
+                    align="end"
                     title="Me"
                     style={{ fontSize: "12px", lineHeight: "1" }}
                     id="basic-nav-dropdown"
@@ -99,7 +102,7 @@ const TopBar = () => {
                     <NavDropdown.Item href="#action/3.4">
                       work{" "}
                     </NavDropdown.Item>
-                    <Button variant="primary" className="mx-1">
+                    <Button variant="primary" className="mx-1 custom-button">
                       View profile
                     </Button>{" "}
                     <hr></hr>
@@ -116,17 +119,16 @@ const TopBar = () => {
                     <p className="px-3">Quit</p>
                   </NavDropdown>
                 </div>
-                <div className="align-self-center border-start ps-2 d-flex flex-column align-items-center d-none d-md-inline text-center">
+                <div className="align-self-center border-start ps-2 d-flex flex-column align-items-center d-md-inline text-center">
                   <i className="bi bi-grid-3x3-gap-fill fs-4"></i>
                   <NavDropdown
+                    align="end"
                     title="Per le aziende"
                     id="basic-nav-dropdown"
-                    className="d-none d-md-inline"
+                    className="d-md-inline text-center d-none"
                     style={{ fontSize: "12px" }}
                   >
-                    <NavDropdown.Item href="#action/3.4">
-                      Per le aziende
-                    </NavDropdown.Item>
+                    <NavDropdown.Item>Per le aziende</NavDropdown.Item>
                   </NavDropdown>
                 </div>
               </div>

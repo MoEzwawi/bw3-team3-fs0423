@@ -76,14 +76,48 @@ body {
   color: rgb(87, 87, 87);
 }
 
+.custom-button {
+  border: 1px solid #0A66C2;
+  border-radius: 20px; 
+  padding:0 20px; 
+  margin-top: 0.7em;
+  font-size: 16px; 
+  font-weight: 600;
+
+  background-color: white; 
+  color: #0A66C2; 
+}
+
+.custom-button:hover, .custom-button:focus {
+  background-color: rgb(178, 228, 245) ; 
+  color: #0A66C2; 
+}
+
+.custom-button:active {
+  background-color: white;
+  
+}
+
 .input-container {
   padding-right: 5em;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .input-container .form-control {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 400px;
+    max-width: 400px;
+    transition: all 1s ease-out; 
     display: none;
-    /* Nasconde il Form.Control su schermi piccoli */
+  }
+
+  .input-container .form-control.expanded {
+
+    display: block; 
   }
 }
 
@@ -122,4 +156,15 @@ body {
   #footer-select {
     width: 100%;
   }
+}
+
+.jobs-container{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+.jobs-img{
+  width: 50%;
 }
