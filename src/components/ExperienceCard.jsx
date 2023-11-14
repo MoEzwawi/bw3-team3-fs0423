@@ -13,10 +13,10 @@ const ExperienceCard = ({ experience, getExperiences }) => {
   return (
     <div className="col-12 mb-4">
       <div className="row">
-        <div className="col col-2 col-md-2 col-lg-1">
-          <img src={experience.image} alt="" width={"75px"} className="pt-1" />
+        <div className="col col-2 col-md-2 col-lg-2">
+          <img src={experience.image} alt="" width={"110px"} className="pt-1" />
         </div>
-        <div className="col col-8 col-md-8 col-lg-10">
+        <div className="col col-8 col-md-8 col-lg-9">
           <p className="mb-1">{experience.role}</p>
           <p className="mb-1">{experience.company}</p>
           <p className="mb-1">

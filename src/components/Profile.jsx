@@ -1,48 +1,14 @@
-import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 
-const Profile = () => {
-  const [profilo, setProfilo] = useState({});
-
-  useEffect(() => {
-    Page();
-  }, []);
-
-  const Page = () => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
-      },
-    })
-      .then((p) => {
-        if (p.ok) {
-          console.log("qui la get", p);
-          return p.json();
-        } else {
-          console.log("errore nel profilo");
-        }
-      })
-      .then((pa) => {
-        console.log("ecco il risultato", pa);
-        setProfilo(pa);
-      })
-      .catch((err) => {
-        throw new Error(err);
-      });
-  };
-
+const Profile = ({ profilo }) => {
   return (
-    <Col
-      xs={12}
-      md={7}
-      lg={8}
-      className="border border-1 border-secondary-subtle rounded rounded-2 bg-white bord "
-    >
+    <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white p-0 mb-3">
       <div className="cont">
         <img
           src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
           alt="spazio sfondo"
+          height={220}
+          className="rounded rounded-2"
         />
         <img className="pro" src={profilo.image} alt="profile-pic" />
       </div>

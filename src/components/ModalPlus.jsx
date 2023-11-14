@@ -37,7 +37,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
         body: JSON.stringify(experience),
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMDU1NGM1NWU3ZTAwMThmODNjMWYiLCJpYXQiOjE2OTk4NzQxMzIsImV4cCI6MTcwMTA4MzczMn0.8B_VumLLJt3uvILX9xMQhhU_nqIvlerlv0QbTDTwRtM",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
           "Content-Type": "application/json",
         },
       }
@@ -91,7 +91,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
         body: formData,
         headers: {
           Authorization:
-            "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMDU1NGM1NWU3ZTAwMThmODNjMWYiLCJpYXQiOjE2OTk4NzQxMzIsImV4cCI6MTcwMTA4MzczMn0.8B_VumLLJt3uvILX9xMQhhU_nqIvlerlv0QbTDTwRtM",
+            "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
         },
       });
 
