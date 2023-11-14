@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 const Profile = () => {
   const [profilo, setProfilo] = useState({});
