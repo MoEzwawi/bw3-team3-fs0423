@@ -58,12 +58,26 @@ body {
   flex-direction: column;
 }
 
+#small-profile-home {
+  width: 280px;
+}
+
 .pro {
   position: absolute;
   display: flex;
   width: 153px;
   bottom: -40px;
   margin-left: 1em;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.pro-home {
+  position: absolute;
+  display: flex;
+  width: 53px;
+  bottom: -40px;
+  left: 37%;
   border: 2px solid white;
   border-radius: 190px;
 }
@@ -122,4 +136,12 @@ body {
   #footer-select {
     width: 100%;
   }
+}
+
+#news-list {
+  list-style-type: disc;
+}
+
+#footer-sidebar {
+  font-size: 0.8rem;
 }
