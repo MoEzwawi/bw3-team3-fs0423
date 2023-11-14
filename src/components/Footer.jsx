@@ -3,7 +3,7 @@ import LanguagesDrop from "./LanguagesDrop";
 
 const Footer = () => {
   return (
-    <Container className="fixed-bottom">
+    <Container>
       <Row className="w-100 mt-5 justify-content-center" id="Footer">
         <Col xs={4} sm={2}>
           <div className="d-flex flex-column justify-content-around">

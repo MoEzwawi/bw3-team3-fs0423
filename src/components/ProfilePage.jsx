@@ -1,6 +1,8 @@
 import FakeProfile from "./FakeProfile";
 import FriendsList from "./FriendsList";
 import { Container, Row } from "react-bootstrap";
+import Footer from "./Footer";
+
 
 const ProfilePage = () => {
     return (
@@ -9,6 +11,7 @@ const ProfilePage = () => {
                 <FakeProfile />
                 <FriendsList />
             </Row>
+            <Footer />
         </Container>
     )
 }
