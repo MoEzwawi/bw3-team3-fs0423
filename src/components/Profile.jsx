@@ -33,35 +33,36 @@ const Profile = () => {
   };
 
   return (
-    <Container>
-      <Row className="ro">
-        <Col md={6} className="bord">
-          <div className="cont">
-            <img
-              src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
-              alt="spazio sfondo"
-            />
-            <img className="pro" src={profilo.image} alt="profile-pic" />
-          </div>
+    <Col
+      xs={12}
+      md={7}
+      lg={8}
+      className="border border-1 border-secondary-subtle rounded rounded-2 bg-white bord "
+    >
+      <div className="cont">
+        <img
+          src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
+          alt="spazio sfondo"
+        />
+        <img className="pro" src={profilo.image} alt="profile-pic" />
+      </div>
 
-          <div className="ma">
-            <h4>
-              {profilo.name} {profilo.surname}
-            </h4>
-            <div>
-              <h5>Mestiere:</h5>
-              <p>{profilo.title}</p>
-            </div>
-            <div>
-              <h5>Email:</h5>
-              {profilo.email}
-              <h5>Bio:</h5>
-              {profilo.bio}
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+      <div className="ma">
+        <h4>
+          {profilo.name} {profilo.surname}
+        </h4>
+        <div>
+          <h5>Mestiere:</h5>
+          <p>{profilo.title}</p>
+        </div>
+        <div>
+          <h5>Email:</h5>
+          {profilo.email}
+          <h5>Bio:</h5>
+          {profilo.bio}
+        </div>
+      </div>
+    </Col>
   );
 };
 
