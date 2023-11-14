@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import FakeNav from './components/FakeNav';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
