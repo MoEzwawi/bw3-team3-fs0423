@@ -1,38 +1,125 @@
-.App {
-  text-align: center;
-}
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+
+/* #root {
+    background-color: #f2f4ee;
+} */
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.grigio {
+  color: grey;
+  font-size: 0.9em;
+  overflow: hidden;
+}
+
+#fr-add-btn:hover {
+  border: 2px solid black !important;
+  background-color: rgba(128, 122, 122, 0.4);
+  transition: 0.3s;
+}
+
+#pcpc {
+  font-weight: 700;
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
+body {
+  background-color: rgb(244, 242, 238);
+}
+
+.ro {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.bord {
+  border: 1px solid gray;
+  width: 500px;
+  padding: 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.cont {
+  position: relative;
+  display: flex;
+  margin-bottom: 50px;
+  flex-direction: column;
+}
+
+.pro {
+  position: absolute;
+  display: flex;
+  width: 153px;
+  bottom: -40px;
+  margin-left: 1em;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.ma {
+  margin-left: 1em;
+}
+
+.bi {
+  color: rgb(87, 87, 87);
+}
+
+.input-container {
+  padding-right: 5em;
+}
+
+@media (max-width: 768px) {
+  .input-container .form-control {
+    display: none;
+    /* Nasconde il Form.Control su schermi piccoli */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.smalltext {
+  font-size: 12px;
+}
+
+.topbar-img-profile {
+  width: 35px;
+  object-fit: cover;
+  text-align: center;
+}
+
+#basic-nav-dropdown {
+  padding: 0 !important;
+}
+
+#Footer p {
+  font-size: small;
+  padding-inline: 5px;
+}
+
+#Footer h5 {
+  font-size: medium;
+}
+
+.footerDrop {
+  width: 130px;
+}
+
+@media (max-width: 768px) {
+  #Footer {
+    padding-inline: 0;
+  }
+
+  #footer-select {
+    width: 100%;
   }
 }
