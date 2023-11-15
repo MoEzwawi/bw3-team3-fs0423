@@ -24,6 +24,12 @@
   overflow: hidden;
 }
 
+.grigio-md-home {
+  color: grey;
+  font-size: 0.8em;
+  overflow: hidden;
+}
+
 #fr-add-btn:hover {
   border: 1px solid black !important;
   background-color: rgba(235, 235, 235);
@@ -58,12 +64,36 @@ body {
   flex-direction: column;
 }
 
+#small-profile-home {
+  width: 280px;
+}
+
 .pro {
   position: absolute;
   display: flex;
   width: 153px;
   bottom: -40px;
   margin-left: 1em;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.pro-home {
+  position: absolute;
+  display: flex;
+  width: 70px;
+  bottom: -40px;
+  left: 44%;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.pro-home-md {
+  position: absolute;
+  display: flex;
+  width: 70px;
+  bottom: -40px;
+  left: 33%;
   border: 2px solid white;
   border-radius: 190px;
 }
@@ -76,14 +106,45 @@ body {
   color: rgb(87, 87, 87);
 }
 
+.custom-button {
+  border: 1px solid #0A66C2;
+  border-radius: 20px;
+  padding: 0 20px;
+  margin-top: 0.7em;
+  font-size: 16px;
+  font-weight: 600;
+
+  background-color: transparent;
+  color: #0A66C2;
+}
+
+.custom-button:hover,
+.custom-button:focus {
+  background-color: rgb(178, 228, 245);
+  color: #0A66C2;
+}
+
+
 .input-container {
   padding-right: 5em;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .input-container .form-control {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 400px;
+    max-width: 400px;
+    transition: all 1s ease-out;
     display: none;
-    /* Nasconde il Form.Control su schermi piccoli */
+  }
+
+  .input-container .form-control.expanded {
+
+    display: block;
   }
 }
 
@@ -123,21 +184,68 @@ body {
     width: 100%;
   }
 }
-/* ------CSS EXPERIENCE-------- */
-.pExpCard{
- opacity: 0.6;
- font-size: 15px;
+
+#news-list {
+  list-style-type: disc;
 }
-.compExpCard{
-  font-size:15px ;
+
+#footer-sidebar {
+  font-size: 0.8rem;
+}
+
+.acc ::after {
+  /* background-color: grey !important; */
+  margin-left: 0px !important;
+
+  display: none;
+}
+
+.size {
+  font-size: 10px !important;
+}
+
+.contenuti {
+  padding: 0;
+
+  width: 80px;
+}
+
+.contenuti:hover {
+  background-color: rgb(184, 186, 184);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white !important;
+  box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}
+
+.jobs-container {
+
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+
+.jobs-img {
+  width: 80%;
+}
+
+/* ------CSS EXPERIENCE-------- */
+.pExpCard {
+  opacity: 0.6;
+  font-size: 15px;
+}
+
+.compExpCard {
+  font-size: 15px;
   font-weight: 400;
 }
 
-.h5ExpCard{
+.h5ExpCard {
   font-weight: 700;
   font-size: 16px;
 }
-.h3Exp{
+
+.h3Exp {
   font-weight: 600;
 }
 
