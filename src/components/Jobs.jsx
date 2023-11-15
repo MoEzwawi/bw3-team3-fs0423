@@ -68,7 +68,7 @@ const Jobs = ({ jobsData }) => {
                       md={2}
                       className="ms-auto d-flex align-items-center fs-5"
                     >
-                      <i className="bi bi-eye-slash-fill"></i>
+                      <i className="bi bi-eye-slash-fill me-2"></i>
                       <i className="bi bi-bookmark"></i>
                     </Col>
                   </Row>
