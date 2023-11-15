@@ -30,6 +30,7 @@
   overflow: hidden;
 }
 
+
 #fr-add-btn:hover {
   border: 1px solid black !important;
   background-color: rgba(235, 235, 235);
@@ -82,7 +83,7 @@ body {
   position: absolute;
   display: flex;
   width: 70px;
-  bottom: -40px;
+  bottom: 40%;
   left: 44%;
   border: 2px solid white;
   border-radius: 190px;
@@ -252,18 +253,21 @@ body {
 /* ------FINE CSS EXPERIENCE-------- */
 
 /* ----------CSS FRIENDLIST------------- */
-.pNameFriend{
+.pNameFriend {
   font-size: 0.9em;
 }
-.pTitleFriend{
+
+.pTitleFriend {
   font-size: 0.8em;
 }
-.perAddButt{
+
+.perAddButt {
   color: rgb(102, 102, 102);
-  
+
 }
-#fr-add-btn{
-  color:rgb(102, 102, 102);
+
+#fr-add-btn {
+  color: rgb(102, 102, 102);
   font-weight: 700;
   font-size: 0.9em;
   margin-bottom: 1.1em;
@@ -272,18 +276,21 @@ body {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
-.show-all-btn{
-  color:rgb(102, 102, 102);
+
+.show-all-btn {
+  color: rgb(102, 102, 102);
   font-weight: 700;
   font-size: 0.9em;
 }
+
 .show-all-btn:hover {
 
   background-color: rgba(235, 235, 235);
   transition: 0.3s;
 }
-#fr-add-btn1{
-  color:black;
+
+#fr-add-btn1 {
+  color: black;
   font-weight: 700;
   font-size: 0.9em;
   margin-bottom: 1.1em;
@@ -292,7 +299,9 @@ body {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
-.perCheckButt{
+
+.perCheckButt {
   color: black;
 }
+
 /* ----------FINE CSS FRIENDLIST-------- */

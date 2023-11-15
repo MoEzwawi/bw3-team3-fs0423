@@ -1,11 +1,49 @@
-// import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Form, Modal, Row } from "react-bootstrap";
 import { CardImage, Calendar3, ThreeDots, Clock } from "react-bootstrap-icons";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Link, useNavigate } from "react-router-dom";
 
 
-const AddNewPostModal = ({ show, handleClose }) => {
+
+const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
+    const [payload, setPayload] = useState({})
+    const publishPost = async (content) => {
+        try {
+            let formData = new FormData()
+            formData = content
+            const res = await fetch('https://striveschool-api.herokuapp.com/api/posts', {
+                method: 'POST',
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMzg2YWM1NWU3ZTAwMThmODNjOTciLCJpYXQiOjE2OTk4ODcyMTEsImV4cCI6MTcwMTA5NjgxMX0.F7YOFaKr5r_ooi9MtCQW3eMR0hwlquEveG5fT4LsotU",
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            if (res.ok) {
+                console.log(res)
+            } else {
+                throw new Error('Errore nella pubblicazione del post')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const handleImageChange = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = (e) => {
+                const base64String = e.target.result
+                setPayload({ ...payload, image: base64String })
+            }
+            reader.readAsDataURL(file)
+        }
+    }
+    useEffect(() => {
+        console.log('io sono payload', payload)
+        if (payload.image) {
+            console.log('io sono payload con immagine', payload.image)
+        }
+    }, [payload])
     return (
         <Row className="justify-content-center mx-1">
             <Modal show={show} onHide={handleClose}>
@@ -32,12 +70,10 @@ const AddNewPostModal = ({ show, handleClose }) => {
                     <Form>
                         <Form.Group
                             className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
                         >
                             <Form.Control
                                 onChange={(e) => {
-                                    e.preventDefault();
-                                    // setTextArea(e.target.value);
+                                    setPayload({ ...payload, text: e.target.value });
                                 }}
                                 as="textarea"
                                 className="border-0 fs-5"
@@ -51,7 +87,16 @@ const AddNewPostModal = ({ show, handleClose }) => {
                             className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
                             style={{ width: "50px", height: "50px" }}
                         >
-                            <CardImage />
+                            <Form.Group className="mb-3" style={{ position: 'relative' }}>
+                                <CardImage style={{ position: 'absolute', top: '31%', left: '20%', fontSize: '1.2em' }} />
+                                <Form.Control
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                    style={{ opacity: '0' }}
+                                />
+                            </Form.Group>
+
                         </div>
                         <div
                             className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
@@ -73,8 +118,8 @@ const AddNewPostModal = ({ show, handleClose }) => {
                         variant="primary"
                         className="rounded-pill py-1"
                         onClick={() => {
-                            // sendPost();
-                            handleClose();
+                            publishPost(payload);
+                            handlePublish()
                         }}
                     >
                         Pubblica
