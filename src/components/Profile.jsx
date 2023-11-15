@@ -1,56 +1,39 @@
-import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
+import img from "../IMG_1127 3.jpg";
+import { useState } from "react";
+import ModalImgProfilo from "./ModalImgProfilo";
 
-const Profile = () => {
-  const [profilo, setProfilo] = useState({});
-
-  useEffect(() => {
-    Page();
-  }, []);
-
-  const Page = () => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
-      },
-    })
-      .then((p) => {
-        if (p.ok) {
-          console.log("qui la get", p);
-          return p.json();
-        } else {
-          console.log("errore nel profilo");
-        }
-      })
-      .then((pa) => {
-        console.log("ecco il risultato", pa);
-        setProfilo(pa);
-      })
-      .catch((err) => {
-        throw new Error(err);
-      });
-  };
-
+const Profile = ({ profilo, Page }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
-    <Col
-      xs={12}
-      md={7}
-      lg={8}
-      className="border border-1 border-secondary-subtle rounded rounded-2 bg-white bord "
-    >
+    <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white p-0 mb-3">
       <div className="cont">
         <img
-          src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
+          src={img}
           alt="spazio sfondo"
+          height={220}
+          className="rounded rounded-2"
         />
-        <img className="pro" src={profilo.image} alt="profile-pic" />
+        <img
+          className="pro"
+          src={profilo.image}
+          alt="profile-pic"
+          onClick={handleShow}
+        />
+        <ModalImgProfilo
+          show={show}
+          onHide={handleClose}
+          userID={profilo._id}
+          Page={Page}
+        />
       </div>
 
       <div className="ma">
-        <h4>
+        <h3 className="h3Exp">
           {profilo.name} {profilo.surname}
-        </h4>
+        </h3>
         <div>
           <h5>Mestiere:</h5>
           <p>{profilo.title}</p>

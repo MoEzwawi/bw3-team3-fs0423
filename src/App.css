@@ -162,3 +162,22 @@ body {
 .jobs-img{
   width: 80%;
 }
+/* ------CSS EXPERIENCE-------- */
+.pExpCard{
+ opacity: 0.6;
+ font-size: 15px;
+}
+.compExpCard{
+  font-size:15px ;
+  font-weight: 400;
+}
+
+.h5ExpCard{
+  font-weight: 700;
+  font-size: 16px;
+}
+.h3Exp{
+  font-weight: 600;
+}
+
+/* ------FINE CSS EXPERIENCE-------- */

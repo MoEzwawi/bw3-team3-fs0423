@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
 
-const ButtonDelete = ({ userId, expId, getExperiences }) => {
+const ButtonDelete = ({ userId, expId, getExperiences, onHide }) => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const handleDelete = () => {
     fetch(
       "https://striveschool-api.herokuapp.com/api/profile/" +
@@ -11,8 +13,7 @@ const ButtonDelete = ({ userId, expId, getExperiences }) => {
         method: "DELETE",
 
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMDU1NGM1NWU3ZTAwMThmODNjMWYiLCJpYXQiOjE2OTk4NzQxMzIsImV4cCI6MTcwMTA4MzczMn0.8B_VumLLJt3uvILX9xMQhhU_nqIvlerlv0QbTDTwRtM",
+          Authorization: "Bearer " + accessToken,
           "Content-Type": "application/json",
         },
       }
@@ -21,6 +22,7 @@ const ButtonDelete = ({ userId, expId, getExperiences }) => {
         if (res.ok) {
           console.log("eliminazione completata");
           getExperiences();
+          onHide();
         } else {
           throw new Error("Errore nella richiesta");
         }
