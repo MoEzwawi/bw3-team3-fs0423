@@ -10,7 +10,7 @@ import {
   Navbar,
   Row,
 } from "react-bootstrap";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const TopBar = ({ onSearch }) => {
   const [showInput, setShowInput] = useState(false);
