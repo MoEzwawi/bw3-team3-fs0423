@@ -24,6 +24,12 @@
   overflow: hidden;
 }
 
+.grigio-md-home {
+  color: grey;
+  font-size: 0.8em;
+  overflow: hidden;
+}
+
 #fr-add-btn:hover {
   border: 2px solid black !important;
   background-color: rgba(128, 122, 122, 0.4);
@@ -75,9 +81,19 @@ body {
 .pro-home {
   position: absolute;
   display: flex;
-  width: 53px;
+  width: 70px;
   bottom: -40px;
-  left: 37%;
+  left: 44%;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.pro-home-md {
+  position: absolute;
+  display: flex;
+  width: 70px;
+  bottom: -40px;
+  left: 33%;
   border: 2px solid white;
   border-radius: 190px;
 }

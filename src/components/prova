@@ -114,3 +114,200 @@ export default SideBarRight;
 
 
 
+<Col className="p-4 border border-bottom rounded background-columns">
+  <div>
+    <div className="text-center">
+      <img
+        src={
+          myProfile
+            ? myProfile.image
+            : "https://previews.123rf.com/images/siamimages/siamimages1504/siamimages150400651/38413902-segno-icona-utente.jpg"
+        }
+        alt="Immagine del profilo"
+        className="img-fluid rounded-circle"
+        style={{ width: "20%" }}
+      />
+      <h3 className="mt-3">
+        {myProfile ? myProfile.username : "Nome utente"}
+      </h3>
+      <p className="text-secondary">
+        {" "}
+        {myProfile ? myProfile.title : "Titolo professionale"}
+      </p>
+      <hr></hr>
+    </div>
+    <div className="mt-4">
+      <div className="d-flex justify-content-between">
+        <div className="d-flex flex-column">
+          <p className="text-secondary ">Collegamenti</p>
+          <p className="">Espandi la tua rete</p>
+        </div>
+        <PersonFillAdd />
+      </div>
+
+      <hr></hr>
+      <p className="text-secondary ">
+        Accedi a strumenti e informazioni in esclusiva
+      </p>
+      <p className="text-decoration-underline">Prova Premium Gratis</p>
+      <hr></hr>
+      <p>
+        {" "}
+        <BookmarkFill /> I miei elementi
+      </p>
+    </div>
+  </div>
+</Col>
+
+
+import { differenceInDays, differenceInHours, differenceInMinutes } from 'date-fns';
+
+function calcolaDifferenza(data) {
+  const oggi = new Date();
+  const differenzaGiorni = differenceInDays(oggi, data);
+
+  if (differenzaGiorni === 0) {
+    const differenzaOre = differenceInHours(oggi, data);
+
+    if (differenzaOre === 0) {
+      return differenceInMinutes(oggi, data) + ' minuti';
+    }
+
+    return differenzaOre + ' ore';
+  }
+
+  return differenzaGiorni + ' giorni';
+}
+
+// Esempio di utilizzo:
+const dataEsempio = new Date(2023, 3, 15, 10); // Anno, mese (0-based), giorno, ora
+console.log(calcolaDifferenza(dataEsempio));
+
+
+<Col className="border rounded-3 py-3 px-4 background-columns" xs={12}>
+  <div className="d-flex gap-3 align-items-center">
+    <div className="mb-3 cursor">
+      <img
+        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+        width="50px"
+        height="50px"
+        alt="profile-img"
+        className="rounded-circle"
+      />
+    </div>
+    <Form className="flex-grow-1" onClick={handleShow}>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Control
+          id="control-input"
+          type="email"
+          placeholder="Avvia un post"
+          className="rounded-pill py-3 px-3 cursor"
+        />
+      </Form.Group>
+    </Form>
+  </div>
+  <div className="d-flex justify-content-between">
+    <div className="d-flex align-items-center gap-2 cursor">
+      <CardImage className="text-primary" />
+      <p className="mb-0">Contenuti multimediali</p>
+    </div>
+    <div className="d-flex align-items-center gap-2 cursor me-4">
+      <Calendar3 className="text-warning" />
+
+      <p className="mb-0">Evento</p>
+    </div>
+
+    <div className="d-flex align-items-center gap-2 cursor">
+      <Postcard className="text-danger" />
+      <p className="mb-0">Scrivi un articolo</p>
+    </div>
+  </div>
+</Col>
+<Col xs={12}>
+  <div className="d-flex align-items-center" id="select-feed">
+    <hr />
+    <p className="cursor">
+      Seleziona la visualizzazione dei feed:
+      <strong className="ms-1">Più rilevanti per primi</strong>
+      <CaretDownFill />
+    </p>
+  </div>
+</Col>
+
+
+
+<Row className="justify-content-center mx-1">
+  {/* MODALE che si apre cliccando sull'input */}
+  <Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+      <div className="d-flex align-items-center gap-3 ms-2">
+        <div>
+          <img
+            src={myProfile ? myProfile.image : "http://placekitten.com/50"}
+            width="50px"
+            height="50px"
+            className="rounded-circle"
+            alt="profile-img"
+          />
+        </div>
+        <div>
+          <Modal.Title className="fs-5">
+            {myProfile ? myProfile.username : "Nome utente"}
+          </Modal.Title>
+          <p className="mb-0">Pubblica: Chiunque</p>
+        </div>
+      </div>
+    </Modal.Header>
+    <Modal.Body>
+      <Form>
+        <Form.Group
+          className="mb-3"
+          controlId="exampleForm.ControlTextarea1"
+        >
+          <Form.Control
+            onChange={(e) => {
+              e.preventDefault();
+              setTextArea(e.target.value);
+            }}
+            as="textarea"
+            className="border-0 fs-5"
+            rows={10}
+            placeholder="Di cosa vorresti parlare?"
+          />
+        </Form.Group>
+      </Form>
+      <div className="d-flex gap-2 fs-4">
+        <div
+          className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+          style={{ width: "50px", height: "50px" }}
+        >
+          <CardImage />
+        </div>
+        <div
+          className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+          style={{ width: "50px", height: "50px" }}
+        >
+          <Calendar3 />
+        </div>
+        <div
+          className="ms-2 rounded-circle bg-secondary-subtle d-flex justify-content-center align-items-center"
+          style={{ width: "50px", height: "50px" }}
+        >
+          <ThreeDots />
+        </div>
+      </div>
+    </Modal.Body>
+    <Modal.Footer>
+      <Clock className="fw-bold fs-5 me-3" />
+      <Button
+        variant="primary"
+        className="rounded-pill py-1"
+        onClick={() => {
+          sendPost();
+          handleClose();
+        }}
+      >
+        Pubblica
+      </Button>
+    </Modal.Footer>
+  </Modal>

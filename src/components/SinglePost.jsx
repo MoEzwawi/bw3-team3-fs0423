@@ -1,7 +1,7 @@
 import { Col } from "react-bootstrap"
 import { HandThumbsUp, HandThumbsUpFill, ChatText, Share, SendFill } from 'react-bootstrap-icons';
 import { useState } from "react";
-
+import { differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 
 const SinglePost = ({ image, username, date1, text, date2, id }) => {
     const [selected, setSelected] = useState(false);
@@ -17,12 +17,40 @@ const SinglePost = ({ image, username, date1, text, date2, id }) => {
         };
         return data.toLocaleDateString('it-IT', options);
     }
+    function calcolaDifferenza(data) {
+        const adesso = new Date();
+        const dataDiPubblicatione = new Date(data)
+        const differenzaGiorni = differenceInDays(adesso, dataDiPubblicatione);
+        if (differenzaGiorni === 0) {
+            const differenzaOre = differenceInHours(adesso, dataDiPubblicatione);
+
+            if (differenzaOre === 0) {
+                const differenzaMinuti = differenceInMinutes(adesso, dataDiPubblicatione)
+                if (differenzaMinuti === 0) {
+                    return differenceInSeconds(adesso, dataDiPubblicatione) + ' secondi';
+                }
+                return differenzaMinuti + ' minuti';
+            }
+
+            return differenzaOre + ' ore';
+        }
+
+        return differenzaGiorni + ' giorni';
+    }
 
     return (<Col className='d-sm border border-1 border-secondary-subtle mb-1 mt-1 bg-white rounded col-md-6  pt-2 ms-3' style={{ width: '90%' }}>
-        <p style={{ fontSize: 1 + 'em', fontWeight: 'bold', margin: 0.2 + 'em' }}>Username: <img src={image} className='rounded-circle' alt="avatar" width={20 + 'px'} /> {username}</p>
-        <p style={{ fontSize: 0.7 + 'em' }}>Creazione: {formatData(date1)}</p>
-        <p style={{ fontSize: 1 + 'em' }}>Contenuto del SinglePost: {text}</p>
-        <p style={{ fontSize: 0.7 + 'em', margin: 0.2 + 'em' }}>Aggiornamento: {formatData(date2)}</p>
+        <p style={{ fontSize: 1 + 'em', fontWeight: 'bold', margin: 0.2 + 'em' }}>
+            {
+                image ? (
+                    <img src={image} className='rounded-circle me-2' alt="avatar" width={40 + 'px'} />
+                ) : (
+                    <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" className='rounded-circle me-2' alt="avatar" width={40 + 'px'} />
+                )
+            }
+            {username}</p>
+        <p style={{ fontSize: 0.7 + 'em' }}>{calcolaDifferenza(date1)}</p>
+        <p style={{ fontSize: 1 + 'em' }}>{text}</p>
+        <p style={{ fontSize: 0.7 + 'em', margin: 0.2 + 'em' }}>Ultimo aggiornamento: {formatData(date2)}</p>
         <p style={{ fontSize: 0.7 + 'em' }}>ID: {id}</p>
         <hr />
         <div className='d-flex flex-wrap'  >
