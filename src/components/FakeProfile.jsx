@@ -5,12 +5,13 @@ import FriendsList from "./FriendsList";
 import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Informazioni from "./Informazioni";
 
 const FakeProfile = () => {
   const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const [profilo, setProfilo] = useState();
-  const params = useParams();
+  let params = useParams();
   const fetchNewPeople = async () => {
     try {
       const res = await fetch(
@@ -43,6 +44,7 @@ const FakeProfile = () => {
             {profilo && (
               <>
                 <Profile profilo={profilo} />
+                <Informazioni profilo={profilo} />
                 <Experience userID={profilo._id} />
               </>
             )}

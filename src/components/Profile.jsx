@@ -41,8 +41,6 @@ const Profile = ({ profilo, Page }) => {
         <div>
           <h5>Email:</h5>
           {profilo.email}
-          <h5>Bio:</h5>
-          {profilo.bio}
         </div>
       </div>
     </Col>

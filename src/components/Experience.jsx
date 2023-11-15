@@ -44,10 +44,11 @@ const Experience = ({ userID }) => {
       });
   };
   useEffect(() => {
-    if (!experiences && userID) {
+    console.log("ciao", experiences);
+    if (userID) {
       getExperiences();
     }
-  }, [experiences, userID]);
+  }, [userID]);
 
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white">

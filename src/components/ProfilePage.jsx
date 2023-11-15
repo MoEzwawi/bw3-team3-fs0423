@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Profile from "./Profile";
 import Experience from "./Experience";
 import { useLocation } from "react-router-dom";
+import Informazioni from "./Informazioni";
 
 const ProfilePage = ({ profilo, Page }) => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const ProfilePage = ({ profilo, Page }) => {
                 {profilo && (
                   <>
                     <Profile profilo={profilo} Page={Page} />
+                    <Informazioni profilo={profilo} Page={Page} />
                     <Experience userID={profilo._id} />{" "}
                   </>
                 )}
