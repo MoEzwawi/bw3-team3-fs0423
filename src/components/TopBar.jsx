@@ -10,13 +10,30 @@ import {
   Navbar,
   Row,
 } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-const TopBar = () => {
+const TopBar = ({ onSearch }) => {
   const [showInput, setShowInput] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    onSearch(query);
+  };
 
   const handleIconClick = () => {
     setShowInput(!showInput);
   };
+
+  const handleClick = (e) => {
+    handleIconClick();
+    handleSearchSubmit(e);
+  };
+
   return (
     <Container fluid className="px-0">
       <Row className="justify-content-center align-items-center mx-auto">
@@ -35,9 +52,9 @@ const TopBar = () => {
                   height={40}
                 />
               </div>
-              <div className="input-container">
+              <Form onSubmit={handleClick} className="input-container">
                 <InputGroup className="ms-2 ">
-                  <InputGroup.Text onClick={handleIconClick}>
+                  <InputGroup.Text onClick={handleClick}>
                     <i className="bi bi-search"></i>
                   </InputGroup.Text>
 
@@ -47,9 +64,11 @@ const TopBar = () => {
                     className={`mobile-search-input ${
                       showInput ? "expanded" : ""
                     }`}
+                    value={query}
+                    onChange={handleSearchChange}
                   />
                 </InputGroup>
-              </div>
+              </Form>
               <div
                 className="d-flex align-items-center "
                 style={{ lineHeight: "1.4" }}
@@ -66,12 +85,14 @@ const TopBar = () => {
                     Network
                   </span>
                 </div>
-                <div className="d-flex flex-column text-center mx-4">
-                  <i className="bi bi-briefcase-fill fs-4"></i>
-                  <span className="smalltext text-center d-none d-md-inline">
-                    Jobs
-                  </span>
-                </div>
+                <NavLink to={"/jobs"} className="nav-link">
+                  <div className="d-flex flex-column text-center mx-4">
+                    <i className="bi bi-briefcase-fill fs-4"></i>
+                    <span className="smalltext text-center d-none d-md-inline">
+                      Jobs
+                    </span>
+                  </div>
+                </NavLink>
                 <div className="d-flex flex-column text-center mx-4">
                   <i className="bi bi-chat-left-dots-fill fs-4"></i>
                   <span className="smalltext text-center d-none d-md-inline">
