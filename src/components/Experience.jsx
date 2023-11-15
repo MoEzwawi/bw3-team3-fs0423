@@ -57,7 +57,7 @@ const Experience = ({ userID }) => {
           <div className="col me-auto ">
             {location.pathname === "/expEdit" ? (
               <div className="d-flex align-items-center">
-                <Link to="/" className="text-decoration-none text-dark">
+                <Link to="/me" className="text-decoration-none text-dark">
                   <ArrowLeft className="me-4" size={25}></ArrowLeft>
                 </Link>
                 <h4 className="h3Exp">Esperienza</h4>
@@ -66,8 +66,8 @@ const Experience = ({ userID }) => {
               <h4 className="h3Exp">Esperienza</h4>
             )}
           </div>
-          <div className={location.pathname === "/" ? "me-4" : ""}>
-            {location.pathname === "/" || location.pathname === "/expEdit" ? (
+          <div className={location.pathname === "/me" ? "me-4" : ""}>
+            {location.pathname === "/me" || location.pathname === "/expEdit" ? (
               <Plus size={35} onClick={handleShow} />
             ) : null}
 
@@ -80,7 +80,7 @@ const Experience = ({ userID }) => {
           </div>
           <div className="">
             {
-              location.pathname === "/" ? (
+              location.pathname === "/me" ? (
                 <Link to="/expEdit" className="text-decoration-none text-dark">
                   <Pencil size={20} />
                 </Link>

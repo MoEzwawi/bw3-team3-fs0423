@@ -18,7 +18,7 @@ const SingleFriend = ({ image, name, surname, title, id, onHide }) => {
       </div>
       <div>
         <Link
-          to={`/${id}`}
+          to={`/me/${id}`}
           onClick={onHide}
           className="text-decoration-none text-dark"
         >

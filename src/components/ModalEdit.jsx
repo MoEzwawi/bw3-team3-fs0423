@@ -139,7 +139,7 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>Aggiungi esperienza</Modal.Title>
+        <Modal.Title>Modifica esperienza</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleFormSubmit}>

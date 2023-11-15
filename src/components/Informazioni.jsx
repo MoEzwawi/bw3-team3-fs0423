@@ -18,7 +18,7 @@ const Informazioni = ({ profilo, Page }) => {
           </div>
 
           <div className="">
-            {location.pathname === "/" ? (
+            {location.pathname === "/me" ? (
               <Pencil size={20} onClick={handleShow} />
             ) : null}
             <ModalInfo

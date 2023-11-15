@@ -13,7 +13,7 @@ const ProfilePage = ({ profilo, Page }) => {
       <Row className="g-1 justify-content-evenly">
         <Col xs={12} md={7} lg={8}>
           <Row className="flex-column">
-            {location.pathname === "/" ? (
+            {location.pathname === "/me" ? (
               <>
                 {" "}
                 {profilo && (
