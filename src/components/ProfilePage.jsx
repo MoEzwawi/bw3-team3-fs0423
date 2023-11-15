@@ -1,14 +1,32 @@
 import FriendsList from "./FriendsList";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Footer from "./Footer";
 import Profile from "./Profile";
+import Experience from "./Experience";
+import { useLocation } from "react-router-dom";
 
-const ProfilePage = () => {
+const ProfilePage = ({ profilo, Page }) => {
+  const location = useLocation();
   return (
     <Container className="my-4">
       <Row className="g-1 justify-content-evenly">
-        <Profile />
-
+        <Col xs={12} md={7} lg={8}>
+          <Row className="flex-column">
+            {location.pathname === "/" ? (
+              <>
+                {" "}
+                {profilo && (
+                  <>
+                    <Profile profilo={profilo} Page={Page} />
+                    <Experience userID={profilo._id} />{" "}
+                  </>
+                )}
+              </>
+            ) : (
+              <>{profilo && <Experience userID={profilo._id} />}</>
+            )}
+          </Row>
+        </Col>
         <FriendsList />
       </Row>
       <Footer />

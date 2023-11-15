@@ -10,13 +10,30 @@ import {
   Navbar,
   Row,
 } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-const TopBar = () => {
+const TopBar = ({ onSearch }) => {
   const [showInput, setShowInput] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    onSearch(query);
+  };
 
   const handleIconClick = () => {
-    setShowInput(true);
+    setShowInput(!showInput);
   };
+
+  const handleClick = (e) => {
+    handleIconClick();
+    handleSearchSubmit(e);
+  };
+
   return (
     <Container fluid className="px-0">
       <Row className="justify-content-center align-items-center mx-auto">
@@ -35,18 +52,23 @@ const TopBar = () => {
                   height={40}
                 />
               </div>
-              <div className="input-container">
+              <Form onSubmit={handleClick} className="input-container">
                 <InputGroup className="ms-2 ">
-                  <InputGroup.Text>
-                    <i className="bi bi-search" onClick={handleIconClick}></i>
+                  <InputGroup.Text onClick={handleClick}>
+                    <i className="bi bi-search"></i>
                   </InputGroup.Text>
+
                   <Form.Control
                     type="text"
                     placeholder="Search"
-                    className=" mr-sm-2 me-3"
+                    className={`mobile-search-input ${
+                      showInput ? "expanded" : ""
+                    }`}
+                    value={query}
+                    onChange={handleSearchChange}
                   />
                 </InputGroup>
-              </div>
+              </Form>
               <div
                 className="d-flex align-items-center "
                 style={{ lineHeight: "1.4" }}
@@ -63,12 +85,14 @@ const TopBar = () => {
                     Network
                   </span>
                 </div>
-                <div className="d-flex flex-column text-center mx-4">
-                  <i className="bi bi-briefcase-fill fs-4"></i>
-                  <span className="smalltext text-center d-none d-md-inline">
-                    Jobs
-                  </span>
-                </div>
+                <NavLink to={"/jobs"} className="nav-link">
+                  <div className="d-flex flex-column text-center mx-4">
+                    <i className="bi bi-briefcase-fill fs-4"></i>
+                    <span className="smalltext text-center d-none d-md-inline">
+                      Jobs
+                    </span>
+                  </div>
+                </NavLink>
                 <div className="d-flex flex-column text-center mx-4">
                   <i className="bi bi-chat-left-dots-fill fs-4"></i>
                   <span className="smalltext text-center d-none d-md-inline">
@@ -89,6 +113,7 @@ const TopBar = () => {
                     className="rounded-circle topbar-img-profile"
                   />
                   <NavDropdown
+                    align="end"
                     title="Me"
                     style={{ fontSize: "12px", lineHeight: "1" }}
                     id="basic-nav-dropdown"
@@ -98,7 +123,7 @@ const TopBar = () => {
                     <NavDropdown.Item href="#action/3.4">
                       work{" "}
                     </NavDropdown.Item>
-                    <Button variant="primary" className="mx-1">
+                    <Button variant="primary" className="mx-1 custom-button">
                       View profile
                     </Button>{" "}
                     <hr></hr>
@@ -115,17 +140,16 @@ const TopBar = () => {
                     <p className="px-3">Quit</p>
                   </NavDropdown>
                 </div>
-                <div className="align-self-center border-start ps-2 d-flex flex-column align-items-center d-none d-md-inline text-center">
+                <div className="align-self-center border-start ps-2 d-flex flex-column align-items-center d-md-inline text-center">
                   <i className="bi bi-grid-3x3-gap-fill fs-4"></i>
                   <NavDropdown
+                    align="end"
                     title="Per le aziende"
                     id="basic-nav-dropdown"
-                    className="d-none d-md-inline"
+                    className="d-md-inline text-center d-none"
                     style={{ fontSize: "12px" }}
                   >
-                    <NavDropdown.Item href="#action/3.4">
-                      Per le aziende
-                    </NavDropdown.Item>
+                    <NavDropdown.Item>Per le aziende</NavDropdown.Item>
                   </NavDropdown>
                 </div>
               </div>

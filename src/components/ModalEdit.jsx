@@ -4,11 +4,14 @@ import { format, parseISO } from "date-fns";
 import ButtonDelete from "./ButtonDelete";
 
 const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  const [isJobOngoing, setIsJobOngoing] = useState(false);
   const [experience, setExperience] = useState({
     role: exp.role,
     company: exp.company,
     startDate: format(parseISO(exp.startDate), "yyyy-MM-dd"),
-    endDate: format(parseISO(exp.endDate), "yyyy-MM-dd"),
+    endDate: exp.endDate ? format(new Date(exp.endDate), "yyyy-MM-dd") : null,
     description: exp.description,
     area: exp.area,
   });
@@ -20,6 +23,16 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
       ...experience,
       [property]: value,
     });
+  };
+
+  const handleCheckboxChange = () => {
+    setIsJobOngoing(!isJobOngoing);
+    if (!isJobOngoing) {
+      setExperience({
+        ...experience,
+        endDate: null,
+      });
+    }
   };
 
   const handleImageChange = (e) => {
@@ -39,8 +52,7 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
         method: "PUT",
         body: JSON.stringify(experience),
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMDU1NGM1NWU3ZTAwMThmODNjMWYiLCJpYXQiOjE2OTk4NzQxMzIsImV4cCI6MTcwMTA4MzczMn0.8B_VumLLJt3uvILX9xMQhhU_nqIvlerlv0QbTDTwRtM",
+          Authorization: "Bearer " + accessToken,
           "Content-Type": "application/json",
         },
       }
@@ -59,14 +71,14 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
       })
 
       .then(() => {
-        setExperience({
-          role: "",
-          company: "",
-          startDate: "",
-          endDate: "",
-          description: "",
-          area: "",
-        });
+        // setExperience({
+        //   role: "",
+        //   company: "",
+        //   startDate: "",
+        //   endDate: null,
+        //   description: "",
+        //   area: "",
+        // });
         if (!image) {
           getExperiences();
         }
@@ -93,8 +105,7 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
         method: "POST",
         body: formData,
         headers: {
-          Authorization:
-            "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMDU1NGM1NWU3ZTAwMThmODNjMWYiLCJpYXQiOjE2OTk4NzQxMzIsImV4cCI6MTcwMTA4MzczMn0.8B_VumLLJt3uvILX9xMQhhU_nqIvlerlv0QbTDTwRtM",
+          Authorization: "Bearer " + accessToken,
         },
       });
 
@@ -117,7 +128,13 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
     if (expId && image) {
       onImageUpload();
     }
-  }, [expId]);
+    const isEndDateValid = exp.endDate
+      ? !isNaN(new Date(exp.endDate).getTime())
+      : false;
+    if (!isEndDateValid) {
+      setIsJobOngoing(true);
+    }
+  }, [expId, exp]);
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -150,6 +167,15 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
           </Form.Group>
 
           <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              label="Lavoro ancora in corso"
+              checked={isJobOngoing}
+              onChange={handleCheckboxChange}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
             <Form.Label>Data di Inizio*</Form.Label>
             <Form.Control
               type="date"
@@ -164,8 +190,12 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
             <Form.Control
               type="date"
               value={experience.endDate}
-              onChange={(e) => handleInputChange("endDate", e.target.value)}
-              required
+              onChange={(e) =>
+                isJobOngoing
+                  ? handleInputChange("endDate", null)
+                  : handleInputChange("endDate", e.target.value)
+              }
+              disabled={isJobOngoing}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -201,6 +231,7 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
                 userId={exp.user}
                 expId={exp._id}
                 getExperiences={getExperiences}
+                onHide={onHide}
               ></ButtonDelete>
             </div>
             <div>
