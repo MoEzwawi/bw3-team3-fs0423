@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row, Accordion } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import SinglePost from './SinglePost';
 import { InfoSquareFill, CaretDownFill, PlusLg } from 'react-bootstrap-icons';
+import CustomAccordion from './CustomAccordion';
 
 
 
@@ -42,7 +43,7 @@ const Home = () => {
 
         <Container className='mt-4'>
             <Row>
-                <Col className='d-none d-md-block' xs={3}> 
+                <Col className='d-none d-md-block' xs={3}>
                     <div
                         id="small-profile-home"
                         className="border border-1 border-secondary-subtle rounded rounded-2 bg-white bord pb-3"
@@ -106,29 +107,7 @@ const Home = () => {
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
-                                <ul id='news-list'>
-                                    <li>Batterie al litio: Svolta nell'autonomia veicoli</li>
-                                    <li>IA diagnostica: La precisione nel cancro</li>
-                                    <li>Blockchain: Sicurezza e innovazione finanziaria</li>
-                                    <li>Veicoli autonomi: Rivoluzione per la mobilità</li>
-                                    <li>IoT: Trasformazione dell'industria manifatturiera</li>
-                                </ul>
-                                <Accordion>
-                                    <Accordion.Item eventKey="0">
-                                        <Accordion.Header>Mostra dettagli <CaretDownFill /></Accordion.Header>
-                                        <Accordion.Body>
-                                            <ul id='news-list'>
-                                                <li>Supercomputer record: Acceleratore per la ricerca</li>
-                                                <li>5G avanzato: Cambio nel mondo tecnologico</li>
-                                                <li>Cybersecurity: Protezione avanzata per organizzazioni</li>
-                                                <li>Realità aumentata: Rivoluzione nell'istruzione interattiva</li>
-                                                <li>AI in sanità: Diagnosi precise e personalizzate</li>
-                                            </ul>
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                </Accordion>
-                            </Col>
+                            <CustomAccordion />
                         </Row>
                     </div>
                     <Row>
