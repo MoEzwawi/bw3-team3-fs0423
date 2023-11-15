@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const FakeProfile = () => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const [profilo, setProfilo] = useState();
   const params = useParams();
   const fetchNewPeople = async () => {
@@ -15,8 +17,7 @@ const FakeProfile = () => {
         "https://striveschool-api.herokuapp.com/api/profile/" + params.id,
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMzg2YWM1NWU3ZTAwMThmODNjOTciLCJpYXQiOjE2OTk4ODcyMTEsImV4cCI6MTcwMTA5NjgxMX0.F7YOFaKr5r_ooi9MtCQW3eMR0hwlquEveG5fT4LsotU",
+            Authorization: "Bearer " + accessToken,
           },
         }
       );

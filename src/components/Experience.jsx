@@ -6,6 +6,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Col } from "react-bootstrap";
 
 const Experience = ({ userID }) => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const location = useLocation();
   const [show, setShow] = useState(false);
 
@@ -21,8 +23,7 @@ const Experience = ({ userID }) => {
         "/experiences",
       {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
+          Authorization: "Bearer " + accessToken,
           "Content-Type": "application/json",
         },
       }
@@ -51,21 +52,21 @@ const Experience = ({ userID }) => {
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white">
       <div className="container-fluid pt-4">
-        <div className="container-fluid d-flex align-items-center mb-4">
+        <div className="container-fluid d-flex align-items-center mb-3">
           <div className="col me-auto ">
             {location.pathname === "/expEdit" ? (
               <div className="d-flex align-items-center">
                 <Link to="/" className="text-decoration-none text-dark">
-                  <ArrowLeft className="me-5" size={25}></ArrowLeft>
+                  <ArrowLeft className="me-4" size={25}></ArrowLeft>
                 </Link>
-                <h3>Esperienza</h3>
+                <h4 className="h3Exp">Esperienza</h4>
               </div>
             ) : (
-              <h3>Esperienza</h3>
+              <h4 className="h3Exp">Esperienza</h4>
             )}
           </div>
-          <div className="me-4">
-            {location.pathname === "/" ? (
+          <div className={location.pathname === "/" ? "me-4" : ""}>
+            {location.pathname === "/" || location.pathname === "/expEdit" ? (
               <Plus size={35} onClick={handleShow} />
             ) : null}
 

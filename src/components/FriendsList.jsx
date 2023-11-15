@@ -5,16 +5,22 @@ import SingleFriend from "./SingleFriend";
 import { useLocation } from "react-router-dom";
 
 const FriendsList = () => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const location = useLocation();
   const [newFriends, setNewFriends] = useState([]);
+
+  const shuffleArray = (array) => {
+    return array.slice().sort(() => Math.random() - 0.5);
+  };
+
   const fetchNewPeople = async () => {
     try {
       const res = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile",
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMzg2YWM1NWU3ZTAwMThmODNjOTciLCJpYXQiOjE2OTk4ODcyMTEsImV4cCI6MTcwMTA5NjgxMX0.F7YOFaKr5r_ooi9MtCQW3eMR0hwlquEveG5fT4LsotU",
+            Authorization: "Bearer " + accessToken,
           },
         }
       );
@@ -77,19 +83,21 @@ const FriendsList = () => {
               <Col className="grigio">Della tua scuola o università</Col>
             </Row>
             {newFriends.length > 0 &&
-              newFriends.map((fr) => {
-                return (
-                  <Row key={fr._id} className="justify-content-start my-2">
-                    <SingleFriend
-                      image={fr.image}
-                      name={fr.name}
-                      surname={fr.surname}
-                      title={fr.title}
-                      id={fr._id}
-                    />
-                  </Row>
-                );
-              })}
+              shuffleArray(newFriends)
+                .slice(0, 5)
+                .map((fr) => {
+                  return (
+                    <Row key={fr._id} className="justify-content-start my-2">
+                      <SingleFriend
+                        image={fr.image}
+                        name={fr.name}
+                        surname={fr.surname}
+                        title={fr.title}
+                        id={fr._id}
+                      />
+                    </Row>
+                  );
+                })}
           </div>
         ) : null}
       </Col>

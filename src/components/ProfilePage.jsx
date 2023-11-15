@@ -5,7 +5,7 @@ import Profile from "./Profile";
 import Experience from "./Experience";
 import { useLocation } from "react-router-dom";
 
-const ProfilePage = ({ profilo }) => {
+const ProfilePage = ({ profilo, Page }) => {
   const location = useLocation();
   return (
     <Container className="my-4">
@@ -17,7 +17,7 @@ const ProfilePage = ({ profilo }) => {
                 {" "}
                 {profilo && (
                   <>
-                    <Profile profilo={profilo} />
+                    <Profile profilo={profilo} Page={Page} />
                     <Experience userID={profilo._id} />{" "}
                   </>
                 )}

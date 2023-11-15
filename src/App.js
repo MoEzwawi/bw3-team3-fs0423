@@ -9,6 +9,8 @@ import FakeProfile from "./components/FakeProfile";
 
 function App() {
   const [profilo, setProfilo] = useState({});
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
 
   useEffect(() => {
     Page();
@@ -17,8 +19,7 @@ function App() {
   const Page = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
+        Authorization: "Bearer " + accessToken,
       },
     })
       .then((p) => {
@@ -41,7 +42,10 @@ function App() {
     <BrowserRouter>
       <TopBar />
       <Routes>
-        <Route path="/" element={<ProfilePage profilo={profilo} />} />
+        <Route
+          path="/"
+          element={<ProfilePage profilo={profilo} Page={Page} />}
+        />
         <Route path="/:id" element={<FakeProfile />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
       </Routes>

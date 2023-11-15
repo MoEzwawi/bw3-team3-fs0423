@@ -2,22 +2,35 @@ import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const [experience, setExperience] = useState({
     role: "",
     company: "",
     startDate: "",
-    endDate: "",
-    description: "",
+    endDate: null,
+    description: " ",
     area: "",
   });
   const [image, setImage] = useState(null);
   const [expId, setExpId] = useState(null);
+  const [isJobOngoing, setIsJobOngoing] = useState(false);
 
   const handleInputChange = (property, value) => {
     setExperience({
       ...experience,
       [property]: value,
     });
+  };
+
+  const handleCheckboxChange = () => {
+    setIsJobOngoing(!isJobOngoing);
+    if (!isJobOngoing) {
+      setExperience({
+        ...experience,
+        endDate: null,
+      });
+    }
   };
 
   const handleImageChange = (e) => {
@@ -27,7 +40,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Ora inviamo la prenotazione!");
+    console.log("Invio dell'esperienza");
     fetch(
       "https://striveschool-api.herokuapp.com/api/profile/" +
         userID +
@@ -36,8 +49,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
         method: "POST",
         body: JSON.stringify(experience),
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
+          Authorization: "Bearer " + accessToken,
           "Content-Type": "application/json",
         },
       }
@@ -60,7 +72,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
           role: "",
           company: "",
           startDate: "",
-          endDate: "",
+          endDate: null,
           description: "",
           area: "",
         });
@@ -90,8 +102,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
         method: "POST",
         body: formData,
         headers: {
-          Authorization:
-            "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZmM5NWM1NWU3ZTAwMThmODNjMTUiLCJpYXQiOjE2OTk4NzE4OTMsImV4cCI6MTcwMTA4MTQ5M30.iH5N7eSSeP5nn4dz7CbBEeXtOoWJ0Nn4EAqW74IHIqo",
+          Authorization: "Bearer " + accessToken,
         },
       });
 
@@ -147,6 +158,15 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
           </Form.Group>
 
           <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              label="Lavoro ancora in corso"
+              checked={isJobOngoing}
+              onChange={handleCheckboxChange}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
             <Form.Label>Data di Inizio*</Form.Label>
             <Form.Control
               type="date"
@@ -161,8 +181,12 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
             <Form.Control
               type="date"
               value={experience.endDate}
-              onChange={(e) => handleInputChange("endDate", e.target.value)}
-              required
+              onChange={(e) =>
+                isJobOngoing
+                  ? handleInputChange("endDate", null)
+                  : handleInputChange("endDate", e.target.value)
+              }
+              disabled={isJobOngoing}
             />
           </Form.Group>
           <Form.Group className="mb-3">
