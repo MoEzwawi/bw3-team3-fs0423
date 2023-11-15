@@ -1,15 +1,14 @@
 import { Card, Col, Row } from "react-bootstrap";
 
 const SearchJob = ({ jobsData }) => {
-  //   if (!jobsData || jobsData.length === 0) {
-  //     return <p>No jobs found.</p>;
-  //   }
-
   return (
-    <div className="jobs-container mt-3 rounded">
+    <div className="jobs-container my-3 rounded">
       {jobsData && jobsData.length > 0 && (
-        <div className="px-3 py-3">
-          <h3>Job results</h3>
+        <div className="px-3 py-2">
+          <h3>Consigliato per te</h3>
+          <span>
+            Sulla base del tuo profilo e della tua cronologia delle ricerche
+          </span>
         </div>
       )}
       {jobsData &&
