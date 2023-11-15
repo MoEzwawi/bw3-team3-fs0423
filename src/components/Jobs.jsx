@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import SearchJob from "./SearchJob";
 import AsideJobPage from "./AsideJobPage";
+import immagine from '../AvidCareerist.com-10.png'
 
 const Jobs = ({ jobsData }) => {
   const [jobs, setJobs] = useState([]);
@@ -47,7 +48,7 @@ const Jobs = ({ jobsData }) => {
                       className="rounded d-flex align-items-center pe-0 ms-1"
                     >
                       <Card.Img
-                        src="https://www.elettronews.com/files/2018/02/NZEB.jpg"
+                        src={immagine}
                         alt="job image"
                         className="jobs-img"
                       />

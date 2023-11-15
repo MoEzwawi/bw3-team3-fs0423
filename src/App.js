@@ -65,8 +65,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route
-          path="/profile"
+          path="/profiles"
           element={<ProfilePage profilo={profilo} Page={Page} />}
         />
         <Route path="/:id" element={<FakeProfile />} />
