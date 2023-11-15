@@ -22,7 +22,6 @@ const TopBar = () => {
       <Row className="justify-content-center align-items-center mx-auto">
         <Col className="px-0">
           <Navbar
-            fluid
             expand="lg"
             className="bg-body-tertiary sticky-top px-2  w-100 shadow-sm py-0"
           >
