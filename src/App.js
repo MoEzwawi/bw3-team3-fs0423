@@ -9,6 +9,8 @@ import Jobs from "./components/Jobs";
 
 import { useEffect, useState } from "react";
 
+import Comment from "./components/Comment";
+
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
   const baseEndpoint =
@@ -61,7 +63,7 @@ function App() {
   return (
     <BrowserRouter>
       <TopBar onSearch={handleSearch} />
-
+      <Comment />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
