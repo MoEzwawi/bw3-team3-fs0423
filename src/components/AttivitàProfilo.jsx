@@ -15,9 +15,6 @@ const AttivitàProfilo = ({ profilo, Page }) => {
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
 
-  const [selected, setSelected] = useState(null);
-  console.log(selected);
-
   const location = useLocation();
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white mb-3 px-0">
@@ -40,7 +37,7 @@ const AttivitàProfilo = ({ profilo, Page }) => {
 
           <div className=" cursorPointerForAll">
             {location.pathname === "/me" ? (
-              <Pencil size={20} onClick={selected ? handleShow2 : null} />
+              <Pencil size={20} onClick={handleShow2} />
             ) : null}
           </div>
         </div>
@@ -48,19 +45,14 @@ const AttivitàProfilo = ({ profilo, Page }) => {
       <div className="container-fluid">
         <div className="d-flex flex-column ps-4">
           <div className="d-flex mb-3">
-            <ShowProfilePost profilo={profilo} setSelected={setSelected} />
+            <ShowProfilePost profilo={profilo} />
           </div>
         </div>
       </div>
       <div className="py-2 show-all-btn cursorPointerForAll text-center border-top">
         Mostra tutte le attività <ArrowRight size={18} />
       </div>
-      <EditPostProfileModal
-        show={show2}
-        onHide={handleClose2}
-        Page={Page}
-        postId={selected}
-      />
+      <EditPostProfileModal show={show2} onHide={handleClose2} Page={Page} />
       <AddNewPostProfile show={show} onHide={handleClose} />
     </Col>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
 
-const ShowProfilePost = ({ profilo, setSelected }) => {
+const ShowProfilePost = ({ profilo }) => {
   const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const [isRecent, setIsRecent] = useState(true);
@@ -40,7 +40,7 @@ const ShowProfilePost = ({ profilo, setSelected }) => {
   }, []);
 
   return (
-    <Container className="mt-4">
+    <Container className="">
       <Row>
         <Col xs={12} md={10} lg={7} className="p-0">
           <Row className="justify-content-center w-100">
@@ -105,7 +105,6 @@ const ShowProfilePost = ({ profilo, setSelected }) => {
                       text={post.text}
                       date2={post.updatedAt}
                       id={post._id}
-                      onClick={setSelected(post._id)}
                     />
                   </Row>
                 );
@@ -129,7 +128,6 @@ const ShowProfilePost = ({ profilo, setSelected }) => {
                       text={post.text}
                       date2={post.updatedAt}
                       id={post._id}
-                      onClick={setSelected(post._id)}
                     />
                   </Row>
                 );
