@@ -8,6 +8,12 @@ import AddNewPostModal from './AddNewPostModal';
 
 
 const Home = () => {
+    const apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc'
+    const editProfile = async () => {
+        const res = await fetch('https://striveschool-api.herokuapp.com/api/profile/', {
+
+        })
+    }
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => setShowModal(false);
     const handlePublish = () => {
@@ -24,7 +30,7 @@ const Home = () => {
                 method: 'GET',
 
                 headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzMmUxMWRkOTllZjAwMTlhMDkyZWYiLCJpYXQiOjE2OTk5NTAwOTcsImV4cCI6MTcwMTE1OTY5N30.0Lrp33zzPyoU9V1bSkuoimzq5n89mmTJkFLONrDUqQI",
+                    "Authorization": "Bearer " + apiToken,
                     'Content-Type': 'application/json',
                 },
 

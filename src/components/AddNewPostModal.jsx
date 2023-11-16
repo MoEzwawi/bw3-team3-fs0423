@@ -6,6 +6,7 @@ import { CardImage, Calendar3, ThreeDots, Clock } from "react-bootstrap-icons";
 
 const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
     const [payload, setPayload] = useState({})
+    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc'
     const publishPost = async (content) => {
         try {
             let formData = new FormData()
@@ -13,7 +14,7 @@ const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
             const res = await fetch('https://striveschool-api.herokuapp.com/api/posts', {
                 method: 'POST',
                 headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUyMzg2YWM1NWU3ZTAwMThmODNjOTciLCJpYXQiOjE2OTk4ODcyMTEsImV4cCI6MTcwMTA5NjgxMX0.F7YOFaKr5r_ooi9MtCQW3eMR0hwlquEveG5fT4LsotU",
+                    "Authorization": "Bearer " + apiKey,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
