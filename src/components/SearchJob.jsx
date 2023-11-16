@@ -4,8 +4,8 @@ const SearchJob = ({ jobsData }) => {
   return (
     <div className="jobs-container my-3 rounded">
       {jobsData && jobsData.length > 0 && (
-        <div className="px-3 py-2">
-          <h3>Consigliato per te</h3>
+        <div className="px-3 py-2 lh-1">
+          <h5>Consigliato per te</h5>
           <span>
             Sulla base del tuo profilo e della tua cronologia delle ricerche
           </span>
@@ -22,7 +22,7 @@ const SearchJob = ({ jobsData }) => {
                 <Card.Img src={immagine} alt="job image" className="jobs-img" />
               </Col>
               <Col md={6} className="p-0">
-                <Card.Body>
+                <Card.Body className="lh-1">
                   <Card.Link href="#" className="fw-bold">
                     {job.title}
                   </Card.Link>
