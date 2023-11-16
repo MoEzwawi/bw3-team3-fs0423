@@ -15,7 +15,7 @@ const FavouritePage = () => {
               <ListGroupItem key={i} className="d-flex justify-content-between">
                 {fav}
                 <i
-                  class="bi bi-trash3-fill"
+                  className="bi bi-trash3-fill"
                   onClick={() => {
                     dispatch({
                       type: "REMOVE_FROM_FAVOURITES",
