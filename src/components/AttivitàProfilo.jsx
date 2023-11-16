@@ -1,5 +1,5 @@
 import { Button, Col } from "react-bootstrap";
-import { Pencil } from "react-bootstrap-icons";
+import { ArrowRight, Pencil } from "react-bootstrap-icons";
 import { useLocation } from "react-router-dom";
 
 const AttivitàProfilo = () => {
@@ -29,7 +29,7 @@ const AttivitàProfilo = () => {
         </div>
       </div>
       <div className="py-2 show-all-btn cursorPointerForAll text-center border-top">
-        Mostra tutte le attività
+        Mostra tutte le attività <ArrowRight size={18} />
       </div>
     </Col>
   );

@@ -82,7 +82,11 @@ const ExperienceCard = ({ experience, getExperiences }) => {
           ></ButtonDelete> */}
           {location.pathname === "/expEdit" ? (
             <>
-              <Pencil size={20} onClick={handleShowEdit} />{" "}
+              <Pencil
+                size={20}
+                onClick={handleShowEdit}
+                className="cursorPointerForAll"
+              />{" "}
               <ModalEdit
                 show={showEdit}
                 onHide={handleCloseEdit}

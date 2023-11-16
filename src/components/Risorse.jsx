@@ -1,5 +1,10 @@
 import { Button, Col } from "react-bootstrap";
-import { BroadcastPin, EyeFill, PeopleFill } from "react-bootstrap-icons";
+import {
+  ArrowRight,
+  BroadcastPin,
+  EyeFill,
+  PeopleFill,
+} from "react-bootstrap-icons";
 
 const Risorse = () => {
   return (
@@ -45,7 +50,7 @@ const Risorse = () => {
         </div>
       </div>
       <div className="py-2 show-all-btn cursorPointerForAll text-center border-top">
-        Mostra tutte le risorse (5)
+        Mostra tutte le risorse (5) <ArrowRight size={18} />
       </div>
     </Col>
   );
