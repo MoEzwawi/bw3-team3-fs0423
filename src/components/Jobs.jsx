@@ -4,9 +4,12 @@ import SearchJob from "./SearchJob";
 import AsideJobPage from "./AsideJobPage";
 import immagine from "../AvidCareerist.com-10.png";
 import FooterJobPage from "./FooterJobPage";
+import { useDispatch } from "react-redux";
 
 const Jobs = ({ jobsData }) => {
   const [jobs, setJobs] = useState([]);
+  const [favourites, setFavourites] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch("https://strive-benchmark.herokuapp.com/api/jobs")
@@ -25,6 +28,24 @@ const Jobs = ({ jobsData }) => {
         console.log("errore", err);
       });
   }, []);
+
+  const toggleFavourite = (job) => {
+    const isFavourite = !!favourites[job._id];
+
+    setFavourites({
+      ...favourites,
+      [job._id]: !isFavourite,
+    });
+
+    const actionType = isFavourite
+      ? "REMOVE_FROM_FAVOURITES"
+      : "ADD_TO_FAVOURITES";
+
+    dispatch({
+      type: actionType,
+      payload: job.company_name,
+    });
+  };
 
   return (
     <Container>
@@ -71,14 +92,21 @@ const Jobs = ({ jobsData }) => {
                         className="ms-auto d-flex align-items-center fs-5"
                       >
                         <i className="bi bi-eye-slash-fill me-2"></i>
-                        <i className="bi bi-bookmark"></i>
+                        <i
+                          className={`bi ${
+                            favourites[job._id]
+                              ? "bi-bookmark-fill"
+                              : "bi-bookmark"
+                          }`}
+                          onClick={() => toggleFavourite(job)}
+                        ></i>
                       </Col>
                     </Row>
                   </Card>
                 ))}
 
                 <Accordion defaultActiveKey="0">
-                  <Accordion.Item eventKey="0">
+                  <Accordion.Item eventKey="1">
                     <Accordion.Header>Mostra tutto</Accordion.Header>
                     <Accordion.Body>
                       {jobs.slice(4, 10).map((job) => (
@@ -108,7 +136,14 @@ const Jobs = ({ jobsData }) => {
                               className="ms-auto d-flex align-items-center fs-5"
                             >
                               <i className="bi bi-eye-slash-fill me-2"></i>
-                              <i className="bi bi-bookmark"></i>
+                              <i
+                                className={`bi ${
+                                  favourites[job._id]
+                                    ? "bi-bookmark-fill"
+                                    : "bi-bookmark"
+                                }`}
+                                onClick={() => toggleFavourite(job)}
+                              ></i>
                             </Col>
                           </Row>
                         </Card>

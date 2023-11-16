@@ -1,13 +1,16 @@
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const AsideJobPage = () => {
   return (
     <>
       <div className="border-dark-subtle border rounded py-2 px-4 mb-2 bg-white mt-3">
-        <div className="d-flex py-3 ">
-          <i className="bi bi-bookmark-fill fs-5 pe-2"></i>
-          <h6 className="align-self-center">Le mie offerte di lavoro</h6>
-        </div>
+        <Link to="/favourites" className="text-decoration-none text-dark">
+          <div className="d-flex py-3 ">
+            <i className="bi bi-bookmark-fill fs-5 pe-2"></i>
+            <h6 className="align-self-center">Le mie offerte di lavoro</h6>
+          </div>
+        </Link>
         <div className="d-flex pb-3 ">
           <i className="bi bi-bell-fill fs-5 pe-2"></i>
           <h6 className="align-self-end">Avvisi</h6>

@@ -8,6 +8,7 @@ import Jobs from "./components/Jobs";
 
 import { useEffect, useState } from "react";
 import FakeProfile from "./components/FakeProfile";
+import FavouritePage from "./components/FavouritePage";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
@@ -65,7 +66,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
-
+        <Route path="/favourites" element={<FavouritePage />} />
         <Route
           path="/me"
           element={<ProfilePage profilo={profilo} Page={Page} />}
