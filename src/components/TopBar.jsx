@@ -10,11 +10,12 @@ import {
   Navbar,
   Row,
 } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const TopBar = ({ onSearch }) => {
   const [showInput, setShowInput] = useState(false);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
     setQuery(e.target.value);
@@ -32,6 +33,10 @@ const TopBar = ({ onSearch }) => {
   const handleClick = (e) => {
     handleIconClick();
     handleSearchSubmit(e);
+  };
+
+  const goToProfile = () => {
+    navigate("/me");
   };
 
   return (
@@ -82,33 +87,38 @@ const TopBar = ({ onSearch }) => {
                     </span>
                   </div>
                 </NavLink>
-                <div className="d-flex flex-column text-center mx-4">
-                  <i className="bi bi-people-fill fs-4"></i>
-                  <span className="smalltext text-center d-none d-md-inline">
-                    Network
-                  </span>
-                </div>
+                <NavLink to={"/"} className="nav-link">
+                  <div className="d-flex flex-column text-center mx-4">
+                    <i className="bi bi-people-fill fs-4"></i>
+                    <span className="smalltext text-center d-none d-md-inline">
+                      Rete
+                    </span>
+                  </div>
+                </NavLink>
                 <NavLink to={"/jobs"} className="nav-link">
                   <div className="d-flex flex-column text-center mx-4">
                     <i className="bi bi-briefcase-fill fs-4"></i>
                     <span className="smalltext text-center d-none d-md-inline">
-                      Jobs
+                      Lavoro
                     </span>
                   </div>
                 </NavLink>
-                <div className="d-flex flex-column text-center mx-4">
-                  <i className="bi bi-chat-left-dots-fill fs-4"></i>
-                  <span className="smalltext text-center d-none d-md-inline">
-                    Messaging
-                  </span>
-                </div>
-                <div className="d-flex flex-column text-center mx-4">
-                  <i className="bi bi-bell-fill fs-4"></i>
-                  <span className="smalltext text-center d-none d-md-inline">
-                    Notification
-                  </span>
-                </div>
-
+                <NavLink to={"/"} className="nav-link">
+                  <div className="d-flex flex-column text-center mx-4">
+                    <i className="bi bi-chat-left-dots-fill fs-4"></i>
+                    <span className="smalltext text-center d-none d-md-inline">
+                      Messaggi
+                    </span>
+                  </div>
+                </NavLink>
+                <NavLink to={"/"} className="nav-link">
+                  <div className="d-flex flex-column text-center mx-4">
+                    <i className="bi bi-bell-fill fs-4"></i>
+                    <span className="smalltext text-center d-none d-md-inline">
+                      Notifiche
+                    </span>
+                  </div>
+                </NavLink>
                 <div className="d-flex flex-column align-items-center mx-2">
                   <NavLink to={"/me"} className="nav-link">
                     <img
@@ -122,29 +132,31 @@ const TopBar = ({ onSearch }) => {
                     title="Me"
                     style={{ fontSize: "12px", lineHeight: "1" }}
                     id="basic-nav-dropdown"
-                    className="d-none d-md-inline mb-1"
+                    className="d-none d-md-inline mb-1 "
                   >
-                    <h5 className="px-2">Account</h5>
-                    <NavDropdown.Item href="#action/3.4">
-                      work{" "}
-                    </NavDropdown.Item>
-                    <NavLink to={"/me"} className="nav-link">
-                      <Button variant="primary" className="mx-1 custom-button">
-                        View profile
-                      </Button>{" "}
-                    </NavLink>
+                    <h5 className="px-2">'Nome Utente'</h5>
+                    <NavDropdown.Item>Lavoro </NavDropdown.Item>
+                    <Button
+                      variant="primary"
+                      className="mx-1 custom-button "
+                      onClick={goToProfile}
+                    >
+                      Visualizza profilo
+                    </Button>{" "}
                     <hr></hr>
                     <h5 className="px-3">Account</h5>
-                    <p className="px-3">Try Premium free</p>
-                    <p className="px-3">Setting and Privacy</p>
-                    <p className="px-3">Help</p>
-                    <p className="px-3">Language</p>
+                    <p className="px-3">Prova Premium gratis</p>
+                    <p className="px-3">Impostazioni e Privacy</p>
+                    <p className="px-3">Aiuto</p>
+                    <p className="px-3">Lingua</p>
                     <hr></hr>
                     <h5 className="px-3">Gestisci</h5>
-                    <p className="px-3">Post an activity</p>
-                    <p className="px-3">Account </p>
+                    <p className="px-3">Post e attività</p>
+                    <p className="px-3 text-truncate">
+                      Account per la pubblicazione di attività{" "}
+                    </p>
                     <hr></hr>
-                    <p className="px-3">Quit</p>
+                    <p className="px-3">Esci</p>
                   </NavDropdown>
                 </div>
                 <div className="align-self-center border-start ps-2 d-flex flex-column align-items-center d-md-inline text-center">

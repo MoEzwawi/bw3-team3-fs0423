@@ -106,7 +106,7 @@ body {
 .bi {
   color: rgb(87, 87, 87);
 }
-
+/* navbar */
 .custom-button {
   border: 1px solid #0A66C2;
   border-radius: 20px;
@@ -162,7 +162,11 @@ body {
 #basic-nav-dropdown {
   padding: 0 !important;
 }
-
+.dropdown-menu{
+  width: 200px;
+}
+/* fine navbar */
+/* footer */
 #Footer p {
   font-size: small;
   padding-inline: 5px;
@@ -185,7 +189,7 @@ body {
     width: 100%;
   }
 }
-
+/* fine footer */
 #news-list {
   list-style-type: disc;
 }
@@ -220,6 +224,7 @@ body {
   box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
 }
 
+/* jobs */
 .jobs-container {
 
   border: 1px solid lightgrey;
@@ -229,6 +234,10 @@ body {
 .jobs-img {
   width: 80%;
 }
+.img-jobs-container{
+  width: 80px;
+}
+/* jobs */
 
 /* ------CSS EXPERIENCE-------- */
 .pExpCard {
