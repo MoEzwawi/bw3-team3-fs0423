@@ -16,7 +16,7 @@ import {
 import Comment from "./Comment";
 import AddComment from "./AddComment";
 
-const SinglePost = ({ image, username, date1, text, date2, id }) => {
+const SinglePost = ({ postImage, image, username, date1, text, date2, id }) => {
   const [liked, setLiked] = useState(false);
   const [click, setClick] = useState(false);
   const [didyoucomment, setDidYouComment] = useState(false);
@@ -81,6 +81,7 @@ const SinglePost = ({ image, username, date1, text, date2, id }) => {
       </p>
       <p style={{ fontSize: 0.7 + "em" }}>{calcolaDifferenza(date1)}</p>
       <p style={{ fontSize: 1 + "em" }}>{text}</p>
+      {postImage && <img src={postImage} alt="linkedin post" width={"100%"} />}
       <p style={{ fontSize: 0.7 + "em", margin: 0.2 + "em" }}>
         Ultimo aggiornamento: {formatData(date2)}
       </p>
