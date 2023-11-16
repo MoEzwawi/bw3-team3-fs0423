@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
-import { Col, Container, Dropdown, Row } from "react-bootstrap";
+import { Button, Col, Container, Dropdown, Row } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 const ShowProfilePost = ({ profilo }) => {
   const accessToken =
@@ -8,6 +9,9 @@ const ShowProfilePost = ({ profilo }) => {
   const [isRecent, setIsRecent] = useState(true);
   const [postData, setPostData] = useState([]);
   const [recentPostData, setRecentPostData] = useState([]);
+
+  const location = useLocation();
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -40,18 +44,31 @@ const ShowProfilePost = ({ profilo }) => {
   }, []);
 
   return (
-    <Container className="">
-      <Row>
-        <Col xs={12} md={10} lg={7} className="p-0">
-          <Row className="justify-content-center w-100">
-            <Col style={{ width: "90%" }} className="mt-2 mb-0 me-3">
-              <div
-                className="d-flex align-items-center justify-content-end"
-                id="select-feed"
-              >
-                <hr />
-                <div className="cursor">
-                  Seleziona la visualizzazione dei feed:
+    <Row>
+      <Col xs={12} md={10} lg={12} className="p-0">
+        <div className="cursor d-flex">
+          <div className="ms-2">
+            <Button className="btnProf" variant="light">
+              {location.pathname === "/me"
+                ? "Aggiungi sezione del profilo"
+                : "Messaggio"}
+            </Button>
+          </div>
+          <div className="ms-2">
+            <Button className="btnProf" variant="light">
+              {location.pathname === "/me"
+                ? "Aggiungi sezione del profilo"
+                : "Messaggio"}
+            </Button>
+          </div>
+          <div className="ms-2">
+            <Button className="btnProf" variant="light">
+              {location.pathname === "/me"
+                ? "Aggiungi sezione del profilo"
+                : "Messaggio"}
+            </Button>
+          </div>
+          {/* Seleziona la visualizzazione dei feed:
                   <Dropdown className="d-inline">
                     <Dropdown.Toggle
                       className="ps-0"
@@ -83,12 +100,10 @@ const ShowProfilePost = ({ profilo }) => {
                         Meno recenti per primi
                       </Dropdown.Item>
                     </Dropdown.Menu>
-                  </Dropdown>
-                </div>
-              </div>
-            </Col>
-          </Row>
-          {!isRecent &&
+                  </Dropdown> */}
+        </div>
+
+        {/* {!isRecent &&
             profilo &&
             postData.map((post) => {
               if (post.user.username === profilo.username) {
@@ -133,10 +148,9 @@ const ShowProfilePost = ({ profilo }) => {
                 );
               }
               return null;
-            })}
-        </Col>
-      </Row>
-    </Container>
+            })} */}
+      </Col>
+    </Row>
   );
 };
 export default ShowProfilePost;

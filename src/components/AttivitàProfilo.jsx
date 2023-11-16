@@ -43,7 +43,7 @@ const AttivitàProfilo = ({ profilo, Page }) => {
         </div>
       </div>
       <div className="container-fluid">
-        <div className="d-flex flex-column ps-4">
+        <div className="d-flex flex-column ">
           <div className="d-flex mb-3">
             <ShowProfilePost profilo={profilo} />
           </div>
