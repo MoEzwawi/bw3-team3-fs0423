@@ -3,6 +3,7 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import SearchJob from "./SearchJob";
 import AsideJobPage from "./AsideJobPage";
 import immagine from "../AvidCareerist.com-10.png";
+import FooterJobPage from "./FooterJobPage";
 
 const Jobs = ({ jobsData }) => {
   const [jobs, setJobs] = useState([]);
@@ -31,9 +32,9 @@ const Jobs = ({ jobsData }) => {
         <Col md={2} className="mt-1">
           <AsideJobPage />
         </Col>
-        <Col md={8}>
+        <Col md={5} className="flex-grow-1">
           <SearchJob jobsData={jobsData} />
-          <div className="jobs-container rounded mb-5">
+          <div className="jobs-container rounded mb-5 ">
             <div className="px-3 py-2">
               <h3>Selezione in corso</h3>
               <span>
@@ -75,6 +76,9 @@ const Jobs = ({ jobsData }) => {
                 </Card>
               ))}
           </div>
+        </Col>
+        <Col md={3}>
+          <FooterJobPage id="footer-sidebar" />
         </Col>
       </Row>
     </Container>

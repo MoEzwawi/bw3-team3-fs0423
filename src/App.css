@@ -187,6 +187,11 @@ body {
     width: 100%;
   }
 }
+
+#footer-job{
+  font-size: 0.8rem;
+  margin-top: 3em;
+}
 /* fine footer */
 #news-list {
   list-style-type: disc;
