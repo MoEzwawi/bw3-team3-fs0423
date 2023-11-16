@@ -45,9 +45,9 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
     console.log("Ora inviamo la prenotazione!");
     fetch(
       "https://striveschool-api.herokuapp.com/api/profile/" +
-        exp.user +
-        "/experiences/" +
-        exp._id,
+      exp.user +
+      "/experiences/" +
+      exp._id,
       {
         method: "PUT",
         body: JSON.stringify(experience),

@@ -15,7 +15,7 @@ const ModalImgProfilo = ({ show, onHide, userID, Page }) => {
   const handleFormSubmit = async (e) => {
     console.log("dentro upload", image);
     try {
-      e.preventDefault();
+      // e.preventDefault();
       const formData = new FormData();
       formData.append("profile", image);
 

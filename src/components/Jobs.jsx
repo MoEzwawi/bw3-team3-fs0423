@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import SearchJob from "./SearchJob";
 import AsideJobPage from "./AsideJobPage";
-import immagine from '../AvidCareerist.com-10.png'
+import immagine from "../AvidCareerist.com-10.png";
 
 const Jobs = ({ jobsData }) => {
   const [jobs, setJobs] = useState([]);
@@ -33,10 +33,12 @@ const Jobs = ({ jobsData }) => {
         </Col>
         <Col md={8}>
           <SearchJob jobsData={jobsData} />
-          <div className="jobs-container rounded my-4">
-            <div className="px-3 py-3">
-              <h3>Recommended for you</h3>
-              <span>Italy</span>
+          <div className="jobs-container rounded mb-5">
+            <div className="px-3 py-2">
+              <h3>Selezione in corso</h3>
+              <span>
+                Italy - Offerte di lavoro che potrebbero esserti sfuggite
+              </span>
             </div>
 
             {jobs.length > 0 &&
@@ -45,7 +47,7 @@ const Jobs = ({ jobsData }) => {
                   <Row>
                     <Col
                       md={2}
-                      className="rounded d-flex align-items-center pe-0 ms-1"
+                      className="img-jobs-container rounded d-flex align-items-center pe-0 ms-1 justify-content-center"
                     >
                       <Card.Img
                         src={immagine}
@@ -53,7 +55,7 @@ const Jobs = ({ jobsData }) => {
                         className="jobs-img"
                       />
                     </Col>
-                    <Col md={6}>
+                    <Col md={6} className="p-0">
                       <Card.Body>
                         <Card.Link href="#" className="fw-bold">
                           {job.title}
@@ -66,7 +68,7 @@ const Jobs = ({ jobsData }) => {
                       md={2}
                       className="ms-auto d-flex align-items-center fs-5"
                     >
-                      <i className="bi bi-eye-slash-fill"></i>
+                      <i className="bi bi-eye-slash-fill me-2"></i>
                       <i className="bi bi-bookmark"></i>
                     </Col>
                   </Row>
