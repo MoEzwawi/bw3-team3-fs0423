@@ -21,7 +21,7 @@ const SearchJob = ({ jobsData }) => {
 
     dispatch({
       type: actionType,
-      payload: job.company_name, // o qualsiasi altro identificativo del lavoro
+      payload: job,
     });
   };
 
@@ -47,7 +47,7 @@ const SearchJob = ({ jobsData }) => {
               </Col>
               <Col md={6} className="p-0">
                 <Card.Body className="lh-1">
-                  <Card.Link href="#" className="fw-bold">
+                  <Card.Link href={job.url} className="fw-bold">
                     {job.title}
                   </Card.Link>
                   <Card.Title>{job.company_name}</Card.Title>
@@ -58,7 +58,9 @@ const SearchJob = ({ jobsData }) => {
                 <i className="bi bi-eye-slash-fill me-2"></i>
                 <i
                   className={`bi ${
-                    favourites[job._id] ? "bi-bookmark-fill" : "bi-bookmark"
+                    favourites[job._id]
+                      ? "bi-bookmark-fill cursor-pointer"
+                      : "bi-bookmark cursor-pointer"
                   }`}
                   onClick={() => toggleFavourite(job)}
                 ></i>

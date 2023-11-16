@@ -43,7 +43,7 @@ const Jobs = ({ jobsData }) => {
 
     dispatch({
       type: actionType,
-      payload: job.company_name,
+      payload: job,
     });
   };
 
@@ -80,7 +80,7 @@ const Jobs = ({ jobsData }) => {
                       </Col>
                       <Col md={6} className="p-0">
                         <Card.Body className="lh-1">
-                          <Card.Link href="#" className="fw-bold">
+                          <Card.Link href={job.url} className="fw-bold">
                             {job.title}
                           </Card.Link>
                           <Card.Title>{job.company_name}</Card.Title>
@@ -95,8 +95,8 @@ const Jobs = ({ jobsData }) => {
                         <i
                           className={`bi ${
                             favourites[job._id]
-                              ? "bi-bookmark-fill"
-                              : "bi-bookmark"
+                              ? "bi-bookmark-fill cursor-pointer"
+                              : "bi-bookmark cursor-pointer"
                           }`}
                           onClick={() => toggleFavourite(job)}
                         ></i>
@@ -124,7 +124,7 @@ const Jobs = ({ jobsData }) => {
                             </Col>
                             <Col md={6} className="p-0">
                               <Card.Body className="lh-1">
-                                <Card.Link href="#" className="fw-bold">
+                                <Card.Link href={job.url} className="fw-bold">
                                   {job.title}
                                 </Card.Link>
                                 <Card.Title>{job.company_name}</Card.Title>
