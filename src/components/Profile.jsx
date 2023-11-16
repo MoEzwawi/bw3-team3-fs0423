@@ -155,6 +155,7 @@ const Profile = ({ profilo, Page }) => {
               id="custom-dropdown-altro"
               title="Altro"
               variant="light"
+              className="nanana"
             >
               <Dropdown.Item>
                 <div className="d-flex align-items-center">

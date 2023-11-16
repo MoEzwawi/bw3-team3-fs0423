@@ -22,7 +22,7 @@ const ProfilePage = ({ profilo, Page }) => {
                   <>
                     <Profile profilo={profilo} Page={Page} />
                     <Risorse />
-                    <AttivitàProfilo />
+                    <AttivitàProfilo profilo={profilo} Page={Page} />
                     <Informazioni profilo={profilo} Page={Page} />
                     <Experience userID={profilo._id} />{" "}
                   </>

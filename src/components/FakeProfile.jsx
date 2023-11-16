@@ -45,8 +45,8 @@ const FakeProfile = () => {
             {profilo && (
               <>
                 <Profile profilo={profilo} />
-                <AttivitàProfilo />
                 <Informazioni profilo={profilo} />
+                <AttivitàProfilo profilo={profilo} />
                 <Experience userID={profilo._id} />
               </>
             )}
