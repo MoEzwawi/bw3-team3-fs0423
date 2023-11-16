@@ -128,7 +128,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
   }, [expId]);
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} dialogClassName="modal-lg">
       <Modal.Header closeButton>
         <Modal.Title>Aggiungi esperienza</Modal.Title>
       </Modal.Header>

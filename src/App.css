@@ -440,4 +440,30 @@ body {
   margin-left: 4px;
 }
 
+.eheh{border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border:1px solid black;
+  color: #727375;
+}
+  .eheh:hover{
+     border: 1px solid black;
+        color: #727375;
+  }
+    .postBtnProfile{
+border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border: 1px solid black;
+    }
+
+    .spanNamePost{
+      opacity: 0.6;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .spanDatePost{
+      opacity: 0.6;
+      font-size: 14px;
+    }
 /* -----------FINE CSS PROFILE-----------*/

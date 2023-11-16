@@ -74,6 +74,7 @@ function App() {
         />
         <Route path="/me/:id" element={<FakeProfile />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
+        <Route path="/attEdit" element={<ProfilePage profilo={profilo} />} />
       </Routes>
     </BrowserRouter>
   );

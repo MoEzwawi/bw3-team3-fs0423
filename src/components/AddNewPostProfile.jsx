@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Form, Modal, Row } from "react-bootstrap";
 import { Calendar3, CardImage, Clock, ThreeDots } from "react-bootstrap-icons";
 
-const AddNewPostProfile = ({ show, onHide }) => {
+const AddNewPostProfile = ({ show, onHide, profilo }) => {
+  console.log(profilo);
   const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
 
@@ -104,7 +105,7 @@ const AddNewPostProfile = ({ show, onHide }) => {
           <div className="d-flex align-items-center gap-3 ms-2">
             <div>
               <img
-                src={"http://placekitten.com/50"}
+                src={profilo.image}
                 width="50px"
                 height="50px"
                 className="rounded-circle"
@@ -112,7 +113,9 @@ const AddNewPostProfile = ({ show, onHide }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">{"Nome utente"}</Modal.Title>
+              <Modal.Title className="fs-5">
+                {profilo.name} {profilo.surname}
+              </Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>

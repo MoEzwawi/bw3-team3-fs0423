@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
-import { Button, Col, Container, Dropdown, Row } from "react-bootstrap";
+import { Button, Modal, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
-const ShowProfilePost = ({ profilo }) => {
+import {
+  differenceInDays,
+  differenceInHours,
+  differenceInMinutes,
+  differenceInSeconds,
+} from "date-fns";
+
+import ProvaEdit from "./ProvaEdit";
+
+const ShowProfilePost = ({ profilo, show, onHide }) => {
   const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const [isRecent, setIsRecent] = useState(true);
@@ -44,67 +53,82 @@ const ShowProfilePost = ({ profilo }) => {
   }, []);
 
   return (
-    <Row>
-      <Col xs={12} md={10} lg={12} className="p-0">
-        <div className="cursor d-flex">
-          <div className="ms-2">
-            <Button className="btnProf" variant="light">
-              {location.pathname === "/me"
-                ? "Aggiungi sezione del profilo"
-                : "Messaggio"}
-            </Button>
-          </div>
-          <div className="ms-2">
-            <Button className="btnProf" variant="light">
-              {location.pathname === "/me"
-                ? "Aggiungi sezione del profilo"
-                : "Messaggio"}
-            </Button>
-          </div>
-          <div className="ms-2">
-            <Button className="btnProf" variant="light">
-              {location.pathname === "/me"
-                ? "Aggiungi sezione del profilo"
-                : "Messaggio"}
-            </Button>
-          </div>
-          {/* Seleziona la visualizzazione dei feed:
-                  <Dropdown className="d-inline">
-                    <Dropdown.Toggle
-                      className="ps-0"
-                      style={{
-                        backgroundColor: "transparent",
-                        border: "none",
-                        color: "black",
-                      }}
-                    >
-                      {isRecent ? (
-                        <strong className="ms-1">Più recenti per primi</strong>
-                      ) : (
-                        <strong className="ms-1">Meno recenti per primi</strong>
-                      )}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={() => {
-                          setIsRecent(true);
-                        }}
-                      >
-                        Più recenti per primi
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          setIsRecent(false);
-                        }}
-                      >
-                        Meno recenti per primi
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown> */}
+    <>
+      <div className="cursor d-flex ms-3 mb-4">
+        <div className="ms-2">
+          <Button className="text-white postBtnProfile" variant="success">
+            Post
+          </Button>
         </div>
+        <div className="ms-2">
+          <Button className="eheh" variant="light">
+            Commenti
+          </Button>
+        </div>
+        <div className="ms-2">
+          <Button className="eheh" variant="light">
+            Immagini
+          </Button>
+        </div>
+      </div>
 
-        {/* {!isRecent &&
-            profilo &&
+      <div className="container-fluid ms-3 pe-5">
+        <div className="row">
+          {profilo &&
+            (recentPostData.filter((post) => post.username === profilo.username)
+              .length > 0 ? (
+              recentPostData
+                .filter((post) => post.username === profilo.username)
+                .slice(0, 4)
+                .map((post, index) => (
+                  <ProvaEdit key={index} post={post} fetchData={fetchData} />
+                ))
+            ) : (
+              <div className="col-12 mt-3">
+                {location.pathname === "/me" ? (
+                  <>
+                    <strong>Non hai ancora pubblicato nulla.</strong>
+                    <br />I post che condividi appariranno qui.
+                  </>
+                ) : (
+                  <>
+                    <strong>Non ci sono post da visualizzare.</strong>
+                    <br />I post che {profilo.username} condividerà appariranno
+                    qui.
+                  </>
+                )}
+              </div>
+            ))}
+        </div>
+      </div>
+      <Modal show={show} onHide={onHide} dialogClassName="modal-lg">
+        <Modal.Header closeButton>
+          <Modal.Title className="ps-2">
+            Tutte le attività di {profilo.username}
+          </Modal.Title>
+        </Modal.Header>
+        {/* <p className="mb-0 border-bottom text-success ps-4 py-2 fw-bold">
+          Della tua scuola o università
+        </p> */}
+        <div className="cursor d-flex ps-2 mb-0 border-bottom py-3 ">
+          <div className="ms-2">
+            <Button className="text-white postBtnProfile" variant="success">
+              Post
+            </Button>
+          </div>
+          <div className="ms-2">
+            <Button className="eheh" variant="light">
+              Commenti
+            </Button>
+          </div>
+          <div className="ms-2">
+            <Button className="eheh" variant="light">
+              Immagini
+            </Button>
+          </div>
+        </div>
+        <Modal.Body>
+          {profilo &&
             postData.map((post) => {
               if (post.user.username === profilo.username) {
                 return (
@@ -126,31 +150,18 @@ const ShowProfilePost = ({ profilo }) => {
               }
               return null;
             })}
-          {isRecent &&
-            profilo &&
-            recentPostData.map((post) => {
-              if (post.user.username === profilo.username) {
-                return (
-                  <Row
-                    className="justify-content-center grow-0 w-100"
-                    key={post._id}
-                  >
-                    <SinglePost
-                      postImage={post.image}
-                      image={post.user.image}
-                      username={post.username}
-                      date1={post.createdAt}
-                      text={post.text}
-                      date2={post.updatedAt}
-                      id={post._id}
-                    />
-                  </Row>
-                );
-              }
-              return null;
-            })} */}
-      </Col>
-    </Row>
+          <Modal.Footer className="mt-2">
+            <Button
+              variant="primary"
+              onClick={onHide}
+              className="rounded-pill "
+            >
+              Chiudi
+            </Button>
+          </Modal.Footer>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 };
 export default ShowProfilePost;
