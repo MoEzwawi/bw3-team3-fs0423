@@ -17,7 +17,7 @@ const Informazioni = ({ profilo, Page }) => {
             <h4 className="h3Exp">Informazioni</h4>
           </div>
 
-          <div className="">
+          <div className=" cursorPointerForAll">
             {location.pathname === "/me" ? (
               <Pencil size={20} onClick={handleShow} />
             ) : null}

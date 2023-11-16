@@ -66,7 +66,13 @@ const Experience = ({ userID }) => {
               <h4 className="h3Exp">Esperienza</h4>
             )}
           </div>
-          <div className={location.pathname === "/me" ? "me-4" : ""}>
+          <div
+            className={
+              location.pathname === "/me"
+                ? "me-4 cursorPointerForAll"
+                : "cursorPointerForAll"
+            }
+          >
             {location.pathname === "/me" || location.pathname === "/expEdit" ? (
               <Plus size={35} onClick={handleShow} />
             ) : null}

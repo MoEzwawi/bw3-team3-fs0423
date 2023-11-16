@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Informazioni from "./Informazioni";
+import AttivitàProfilo from "./AttivitàProfilo";
 
 const FakeProfile = () => {
   const accessToken =
@@ -44,6 +45,7 @@ const FakeProfile = () => {
             {profilo && (
               <>
                 <Profile profilo={profilo} />
+                <AttivitàProfilo />
                 <Informazioni profilo={profilo} />
                 <Experience userID={profilo._id} />
               </>
