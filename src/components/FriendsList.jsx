@@ -107,7 +107,10 @@ const FriendsList = () => {
                   );
                 })}
             <Col className="text-center border-top ">
-              <div className="py-2 show-all-btn" onClick={handleShow}>
+              <div
+                className="py-2 show-all-btn cursorPointerForAll"
+                onClick={handleShow}
+              >
                 Mostra Tutto
               </div>
               <ModalShowFriend

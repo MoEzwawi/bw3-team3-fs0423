@@ -5,6 +5,8 @@ import Profile from "./Profile";
 import Experience from "./Experience";
 import { useLocation } from "react-router-dom";
 import Informazioni from "./Informazioni";
+import Risorse from "./Risorse";
+import AttivitàProfilo from "./AttivitàProfilo";
 
 const ProfilePage = ({ profilo, Page }) => {
   const location = useLocation();
@@ -19,13 +21,21 @@ const ProfilePage = ({ profilo, Page }) => {
                 {profilo && (
                   <>
                     <Profile profilo={profilo} Page={Page} />
+                    <Risorse />
+                    <AttivitàProfilo />
                     <Informazioni profilo={profilo} Page={Page} />
                     <Experience userID={profilo._id} />{" "}
                   </>
                 )}
               </>
             ) : (
-              <>{profilo && <Experience userID={profilo._id} />}</>
+              <>
+                {profilo && (
+                  <>
+                    <Experience userID={profilo._id} />
+                  </>
+                )}
+              </>
             )}
           </Row>
         </Col>

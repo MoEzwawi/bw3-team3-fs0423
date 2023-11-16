@@ -14,8 +14,20 @@ import CustomAccordion from "./CustomAccordion";
 import AddNewPostModal from "./AddNewPostModal";
 
 const Home = () => {
+  const apiToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc";
+  const editProfile = async () => {
+    const res = await fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/",
+      {}
+    );
+  };
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
+  const handlePublish = () => {
+    setShowModal(false);
+    fetchData();
+  };
   const handleShow = () => setShowModal(true);
   const [isRecent, setIsRecent] = useState(true);
   const [postData, setPostData] = useState([]);
@@ -28,8 +40,7 @@ const Home = () => {
           method: "GET",
 
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzMmUxMWRkOTllZjAwMTlhMDkyZWYiLCJpYXQiOjE2OTk5NTAwOTcsImV4cCI6MTcwMTE1OTY5N30.0Lrp33zzPyoU9V1bSkuoimzq5n89mmTJkFLONrDUqQI",
+            Authorization: "Bearer " + apiToken,
             "Content-Type": "application/json",
           },
         }
@@ -54,6 +65,10 @@ const Home = () => {
   useEffect(() => {
     console.log("postData", postData);
     console.log("recentPostData", recentPostData);
+    console.log(
+      "post con immagini",
+      recentPostData.filter((el) => el.image)
+    );
   }, [postData]);
 
   return (
@@ -136,13 +151,13 @@ const Home = () => {
           </div>
         </Col>
         <Col xs={12} md={10} lg={7} className="p-0">
-          <Row className="justify-content-center w-100 d-md-none">
-            <Col className="cont">
+          <Row className="justify-content-center w-100 d-md-none p-0">
+            <Col className="cont mb-2">
               <img
                 src=" https://fotografiaartistica.it/wp-content/uploads/2019/06/nasa-immagini-gratuite-dello-spazio.jpg"
                 alt="spazio sfondo"
                 id="copertina-home"
-                height={"100px"}
+                height={"80px"}
                 className="rounded-top-2"
               />
               <img
@@ -150,6 +165,12 @@ const Home = () => {
                 src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
                 alt="profile-pic"
               />
+              <div className="bg-white text-center border border-1 rounded-bottom-2">
+                <h5 className="mt-5">Mohamed Ezwawi</h5>
+                <p className="text-secondary" style={{ fontSize: "0.9em" }}>
+                  Professore presso BOH
+                </p>
+              </div>
             </Col>
           </Row>
           <Row className="justify-content-center w-100">
@@ -168,10 +189,7 @@ const Home = () => {
                   />
                 </div>
                 <Form className="flex-grow-1">
-                  <Form.Group
-                    className="mb-3"
-                    controlId="exampleForm.ControlInput1"
-                  >
+                  <Form.Group className="mb-3">
                     <Form.Control
                       id="control-input"
                       type="email"
@@ -182,7 +200,11 @@ const Home = () => {
                   </Form.Group>
                 </Form>
               </div>
-              <AddNewPostModal show={showModal} handleClose={handleClose} />
+              <AddNewPostModal
+                show={showModal}
+                handleClose={handleClose}
+                handlePublish={handlePublish}
+              />
               <div className="d-flex justify-content-evenly">
                 <div className="d-flex align-items-center gap-2 cursor">
                   <CardImage className="text-primary" />
@@ -253,6 +275,7 @@ const Home = () => {
                 key={post._id}
               >
                 <SinglePost
+                  postImage={post.image}
                   image={post.user.image}
                   username={post.username}
                   date1={post.createdAt}
@@ -269,6 +292,7 @@ const Home = () => {
                 key={post._id}
               >
                 <SinglePost
+                  postImage={post.image}
                   image={post.user.image}
                   username={post.username}
                   date1={post.createdAt}

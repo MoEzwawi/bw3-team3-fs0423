@@ -15,7 +15,7 @@ const ModalImgProfilo = ({ show, onHide, userID, Page }) => {
   const handleFormSubmit = async (e) => {
     console.log("dentro upload", image);
     try {
-      e.preventDefault();
+      // e.preventDefault();
       const formData = new FormData();
       formData.append("profile", image);
 
@@ -67,7 +67,12 @@ const ModalImgProfilo = ({ show, onHide, userID, Page }) => {
             />
           </Form.Group>
           <Modal.Footer>
-            <Button variant="primary" type="submit" onClick={onHide}>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={onHide}
+              className="rounded-pill"
+            >
               Salva
             </Button>
           </Modal.Footer>

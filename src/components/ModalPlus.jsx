@@ -8,7 +8,7 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
     role: "",
     company: "",
     startDate: "",
-    endDate: null,
+    endDate: "",
     description: " ",
     area: "",
   });
@@ -217,7 +217,12 @@ const ModalPlus = ({ show, onHide, userID, getExperiences }) => {
             />
           </Form.Group>
           <Modal.Footer>
-            <Button variant="primary" type="submit" onClick={onHide}>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={onHide}
+              className="rounded-pill"
+            >
               Salva
             </Button>
           </Modal.Footer>
