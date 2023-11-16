@@ -8,7 +8,7 @@ const FavouritePage = () => {
 
   return (
     <Container>
-      <Row className="justify-content-center mx-auto">
+      <Row className="justify-content-center">
         <Col className="my-3" md={8}>
           <ListGroup>
             {favouriteList.map((fav, i) => (
