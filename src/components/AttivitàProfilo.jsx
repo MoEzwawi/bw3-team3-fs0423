@@ -18,7 +18,7 @@ const AttivitàProfilo = ({ profilo, Page }) => {
   const [show3, setShow3] = useState(false);
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-
+  console.log("attività profilo,", profilo);
   const location = useLocation();
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white mb-3 px-0">
@@ -72,7 +72,15 @@ const AttivitàProfilo = ({ profilo, Page }) => {
       >
         Mostra tutte le attività <ArrowRight size={18} />
       </div>
-      <EditPostProfileModal show={show2} onHide={handleClose2} Page={Page} />
+      {profilo && (
+        <EditPostProfileModal
+          show={show2}
+          onHide={handleClose2}
+          Page={Page}
+          profilo={profilo}
+        />
+      )}
+
       <AddNewPostProfile show={show} onHide={handleClose} profilo={profilo} />
     </Col>
   );

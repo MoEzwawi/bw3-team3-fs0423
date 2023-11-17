@@ -76,7 +76,12 @@ const ShowProfilePost = ({ profilo, show, onHide }) => {
                 .filter((post) => post.username === profilo.username)
                 .slice(0, 4)
                 .map((post, index) => (
-                  <ProvaEdit key={index} post={post} fetchData={fetchData} />
+                  <ProvaEdit
+                    key={index}
+                    post={post}
+                    fetchData={fetchData}
+                    profilo={profilo}
+                  />
                 ))
             ) : (
               <div className="col-12 mt-3">

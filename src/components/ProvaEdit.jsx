@@ -9,7 +9,7 @@ import EditPostProfileModal from "./EditPostProfileModal";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const ProvaEdit = ({ post, fetchData }) => {
+const ProvaEdit = ({ post, fetchData, profilo }) => {
   const [showEdit, setShowEdit] = useState(false);
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
@@ -74,6 +74,7 @@ const ProvaEdit = ({ post, fetchData }) => {
                 postD={post._id}
                 postT={post.text}
                 fetchData={fetchData}
+                profilo={profilo}
               />
             </>
           ) : null}
