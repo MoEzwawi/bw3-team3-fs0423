@@ -14,16 +14,8 @@
     background-color: #f2f4ee;
 } */
 
-.favourite-img {
-  width: 20px;
-}
-
 .cursor-pointer {
   cursor: pointer;
-}
-
-.bgggc {
-  background-color: rgb(228, 228, 228);
 }
 
 .grigio {
@@ -133,27 +125,26 @@ body {
 }
 
 
-.input-container .form-control {
-  width: 300px;
-  max-width: 400px;
+.input-container {
+  padding-right: 5em;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .input-container .form-control {
-    display: none;
-    width: auto;
-    /* Rimuovi la larghezza fissa su piccoli schermi */
     position: absolute;
     left: 0;
     top: 0;
     z-index: 5;
-    transition: all 0.5s ease-out;
+    width: 400px;
+    max-width: 400px;
+    transition: all 1s ease-out;
+    display: none;
   }
 
   .input-container .form-control.expanded {
+
     display: block;
-    width: 400px;
-    /* Espandi a tutta la larghezza */
   }
 }
 
@@ -202,7 +193,7 @@ body {
 
 #footer-job {
   font-size: 0.8rem;
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 /* fine footer */
@@ -451,89 +442,4 @@ body {
 
 .bbc:hover {
   text-decoration: underline;
-}
-
-.eheh {
-  border-radius: 1.25rem;
-  padding: 0.1rem 0.75rem;
-  font-weight: 600;
-  border: 1px solid black;
-  color: #727375;
-}
-
-.eheh:hover {
-  border: 1px solid black;
-  color: #727375;
-}
-
-.postBtnProfile {
-  border-radius: 1.25rem;
-  padding: 0.1rem 0.75rem;
-  font-weight: 600;
-  border: 1px solid black;
-}
-
-.spanNamePost {
-  opacity: 0.6;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.spanDatePost {
-  opacity: 0.6;
-  font-size: 14px;
-}
-
-.pmodalprof {
-  font-size: 12px;
-}
-
-.eheh2 {
-  border-radius: 1.25rem;
-  padding: 0.15rem 1.3rem;
-  font-weight: 600;
-  border: 1px solid black;
-  color: #727375;
-}
-
-.eheh2:hover {
-  border: 1px solid black;
-  color: #727375;
-}
-
-.postBtnProfile2 {
-  border-radius: 1.25rem;
-  padding: 0.15rem 1.3rem;
-  font-weight: 600;
-  border: 1px solid black;
-  color: #4c4c4c;
-}
-
-@media (min-width: 1200px) {
-  .eheh2 {
-
-    padding: 0.15rem 2rem;
-  }
-
-  .postBtnProfile2 {
-    padding: 0.15rem 2rem;
-  }
-}
-
-/* -----------FINE CSS PROFILE-----------*/
-
-/* CSS PAG LOGIN */
-
-.login-card {
-  width: 20%;
-}
-
-.card-container {
-  height: 100vh;
-  background-image: url('https://i.imgur.com/aeidEH1.jpg');
-  background-repeat: round;
-}
-
-.login-img {
-  width: 200px;
 }

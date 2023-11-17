@@ -37,7 +37,7 @@ const Comment = ({ postId, didyoucomment, setDidYouComment }) => {
       })
       .then((result) => {
         console.log("risultato", result);
-        setCommenti(result.filter((c) => c.elementId === postId).reverse());
+        setCommenti(result.filter((c) => c.elementId === postId));
       })
       .catch((err) => {
         throw new Error(err);
@@ -50,11 +50,8 @@ const Comment = ({ postId, didyoucomment, setDidYouComment }) => {
         console.log("i commenti", c);
         return (
           <ListGroup key={c._id}>
-            <ListGroup.Item className="mb-2 bgggc">
-              <div>
-                <div className="d-flex fw-bold"><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="user" width={'20px'} className="rounded-circle me-2" /> {c.author}</div>
-                <div className="ms-4">{c.comment}</div>
-              </div></ListGroup.Item>
+            <ListGroup.Item>{c.comment}</ListGroup.Item>
+            <ListGroup.Item>{c.author}</ListGroup.Item>
           </ListGroup>
         );
       })}
