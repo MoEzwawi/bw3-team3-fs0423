@@ -1,8 +1,7 @@
 import { Card, Col } from "react-bootstrap";
 import { PersonAdd } from "react-bootstrap-icons";
 // import { useDispatch } from "react-redux";
-import { FOLLOW } from "../redux/actions";
-
+import { Link } from "react-router-dom";
 const NetworkCard = ({ profile, addFollow }) => {
   // const dispatch = useDispatch();
   return (
@@ -20,9 +19,11 @@ const NetworkCard = ({ profile, addFollow }) => {
               }
             />
             <Card.Body className="d-flex flex-column justify-content-between text-center ">
-              <Card.Title>
-                {profile.name} {profile.surname}
-              </Card.Title>
+              <Link to={'/me/' + profile._id} className="bbc">
+                <Card.Title>
+                  {profile.name} {profile.surname}
+                </Card.Title>
+              </Link>
               <Card.Text>
                 {profile.title ? profile.title : "Software Developer"}
               </Card.Text>

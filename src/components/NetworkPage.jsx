@@ -11,15 +11,13 @@ import {
   PersonFill,
 } from "react-bootstrap-icons";
 import NetworkCard from "./NetworkCard";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const NetworkPage = () => {
   const [profilesData, setProfilesData] = useState(null);
   const [visibleProfiles, setVisibleProfiles] = useState(10);
   const [spinnerState, setSpinnerState] = useState(true);
   const [accepted, setAccepted] = useState(false);
-  const friends = useSelector((state) => state.following.length);
-  const [following, setFollowing] = useState(friends);
 
   // const addFollow = () => {
   //   setFollowing(following + 1);
@@ -74,8 +72,8 @@ const NetworkPage = () => {
                   bg="info"
                   className="rounded-circle d-flex justify-content-center align-items-center  "
                 >
-                  {following ? following : 0}
-                </Badge> */}
+                  {/* {following ? following : 0} */}
+                </Badge> */cioa
                 {/* {!spinnerState && profilesData.map(pr => (
                   <NetworkCard />
                 ))} */}
@@ -181,7 +179,7 @@ const NetworkPage = () => {
                     className="btn btn-outline-primary cursor"
                     onClick={() => {
                       setAccepted(true);
-                      addFollow();
+                      // addFollow();
                     }}
                   >
                     Accetta
@@ -212,7 +210,7 @@ const NetworkPage = () => {
                     <NetworkCard
                       key={profile._id}
                       profile={profile}
-                      addFollow={addFollow}
+                      addFollow={'forza juve'}
                     />
                   ))}
             </Row>

@@ -80,7 +80,7 @@ const SinglePost = ({ postImage, image, firstName, lastName, date1, text, date2,
             />
           )}
         </Link>
-        <Link to={'me/' + userid} style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to={'me/' + userid} className="bbc">
           <span className="cursor-pointer">{firstName} {lastName}</span>
         </Link>
         <span style={{ color: 'rgb(81, 80, 80)', fontWeight: '400' }}> &#40;{username}&#41;</span>
