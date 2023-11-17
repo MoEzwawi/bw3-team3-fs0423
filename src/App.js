@@ -10,6 +10,7 @@ import Jobs from "./components/Jobs";
 import { useEffect, useState } from "react";
 
 import FavouritePage from "./components/FavouritePage";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
@@ -62,6 +63,7 @@ function App() {
   };
   return (
     <BrowserRouter>
+      {/* <LoginPage /> */}
       <TopBar onSearch={handleSearch} />
 
       <Routes>

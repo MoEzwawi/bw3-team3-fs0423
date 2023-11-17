@@ -499,3 +499,17 @@ border-radius: 1.25rem;
           }
           }
 /* -----------FINE CSS PROFILE-----------*/
+
+/* CSS PAG LOGIN */
+
+.login-card{
+  width: 20%;
+}
+.card-container{
+  height: 100vh;
+  background-image: url('https://i.imgur.com/aeidEH1.jpg');
+  background-repeat: round;
+}
+.login-img{
+  width: 200px;
+}
