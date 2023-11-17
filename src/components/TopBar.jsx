@@ -11,11 +11,14 @@ import {
   Row,
 } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAccessToken } from "../redux/actions";
 
 const TopBar = ({ onSearch }) => {
   const [showInput, setShowInput] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handlePageClick = () => {
@@ -172,6 +175,16 @@ const TopBar = ({ onSearch }) => {
                     <p className="px-3">Lingua</p>
                     <hr></hr>
                     <h5 className="px-3">Gestisci</h5>
+                    <p
+                      className="px-3"
+                      onClick={dispatch(
+                        setAccessToken(
+                          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUxZWRkZGM1NWU3ZTAwMThmODNjMGQiLCJpYXQiOjE2OTk4NjgxMjUsImV4cCI6MTcwMTA3NzcyNX0.Q-NbYUlmyj3HO-VFRlr9_xvz3dXqPbcdy_cLKqjLgWA"
+                        )
+                      )}
+                    >
+                      Carmen
+                    </p>
                     <p className="px-3">Post e attività</p>
                     <p className="px-3 text-truncate">
                       Account per la pubblicazione di attività{" "}
