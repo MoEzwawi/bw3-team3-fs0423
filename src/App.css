@@ -22,6 +22,10 @@
   cursor: pointer;
 }
 
+.bgggc {
+  background-color: rgb(228, 228, 228);
+}
+
 .grigio {
   color: grey;
   font-size: 0.9em;
@@ -108,6 +112,7 @@ body {
 .bi {
   color: rgb(87, 87, 87);
 }
+
 /* navbar */
 .custom-button {
   border: 1px solid #0A66C2;
@@ -164,9 +169,11 @@ body {
 #basic-nav-dropdown {
   padding: 0 !important;
 }
-.dropdown-menu{
+
+.dropdown-menu {
   width: 200px;
 }
+
 /* fine navbar */
 /* footer */
 #Footer p {
@@ -192,10 +199,11 @@ body {
   }
 }
 
-#footer-job{
+#footer-job {
   font-size: 0.8rem;
   margin-top: 2em;
 }
+
 /* fine footer */
 #news-list {
   list-style-type: disc;
@@ -241,9 +249,11 @@ body {
 .jobs-img {
   width: 80%;
 }
-.img-jobs-container{
+
+.img-jobs-container {
   width: 80px;
 }
+
 /* jobs */
 
 /* ------CSS EXPERIENCE-------- */
@@ -317,24 +327,28 @@ body {
 .perCheckButt {
   color: black;
 }
+
 /* ----------FINE CSS FRIENDLIST-------- */
 
 /* -------------CSS PROFILE--------------*/
 .ma {
   margin-left: 2em;
-  
+
 }
+
 .h3Exp {
   font-weight: 600;
   margin-bottom: 0;
 }
+
 .pExpCard2 {
   color: #0A66C2;
   font-size: 15px;
   margin-left: 3px;
   font-weight: 600;
 }
-.linkInfo{
+
+.linkInfo {
   font-size: 12px;
   color: #0A66C2;
   font-weight: 600;
@@ -347,30 +361,34 @@ body {
 #custom-dropdown-profile.dropdown-toggle::after {
   display: none !important;
 }
-#custom-dropdown-profile{
+
+#custom-dropdown-profile {
   border-radius: 1.25rem;
-    padding: 0.1rem 0.75rem;
-    font-weight: 600;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
 }
 
 .nanana .dropdown-menu {
   width: 250px;
 }
-.spanOpacity{
-opacity: 0.6;
+
+.spanOpacity {
+  opacity: 0.6;
   font-size: 13px;
   line-height: 1.2;
   margin-bottom: 0;
 }
-.strongSize{
+
+.strongSize {
   font-size: 13px;
 }
-.btnProf{
+
+.btnProf {
   border-radius: 1.25rem;
-    padding: 0.1rem 0.75rem;
-    font-weight: 600;
-    border-color: #0A66C2;
-    color: #0A66C2;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border-color: #0A66C2;
+  color: #0A66C2;
 }
 
 .btnProf:hover {
@@ -380,12 +398,15 @@ opacity: 0.6;
 
 
 }
+
 #custom-dropdown-altro::after {
   background-image: none !important;
 }
+
 #custom-dropdown-altro.dropdown-toggle::after {
   display: none !important;
 }
+
 #custom-dropdown-altro {
   border-radius: 1.25rem;
   padding: 0.1rem 0.75rem;
@@ -393,25 +414,90 @@ opacity: 0.6;
   opacity: 0.6;
   border: 1px solid black;
 }
-.pAltro{
-  font-size:14px;
+
+.pAltro {
+  font-size: 14px;
 }
-.pTitoloInfo{
+
+.pTitoloInfo {
   font-weight: 600;
   font-size: 15px;
 }
-.pDataInfo{
-  opacity:0.6;
+
+.pDataInfo {
+  opacity: 0.6;
   font-size: 13px;
 }
 
-.cursorPointerForAll{
-  cursor:pointer;
+.cursorPointerForAll {
+  cursor: pointer;
 }
-.btnSi{
+
+.btnSi {
   font-size: 10px;
   font-weight: bold;
   padding: 1px 4px 0px 4px;
   margin-left: 4px;
 }
+
+.eheh{border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border:1px solid black;
+  color: #727375;
+}
+  .eheh:hover{
+     border: 1px solid black;
+        color: #727375;
+  }
+    .postBtnProfile{
+border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border: 1px solid black;
+    }
+
+    .spanNamePost{
+      opacity: 0.6;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .spanDatePost{
+      opacity: 0.6;
+      font-size: 14px;
+    }
+
+    .pmodalprof{
+      font-size: 12px;
+    }
+
+        .eheh2 {
+          border-radius: 1.25rem;
+          padding: 0.15rem 1.3rem;
+          font-weight: 600;
+          border: 1px solid black;
+          color: #727375;
+        }
+    
+        .eheh2:hover {
+          border: 1px solid black;
+          color: #727375;
+        }
+    .postBtnProfile2 {
+      border-radius: 1.25rem;
+        padding: 0.15rem 1.3rem;
+        font-weight: 600;
+        border: 1px solid black;
+        color: #4c4c4c;
+      }
+
+        @media (min-width: 1200px) {
+        .eheh2 {
+          
+            padding: 0.15rem 2rem;
+          }
+          .postBtnProfile2 {
+            padding: 0.15rem 2rem;
+          }
+          }
 /* -----------FINE CSS PROFILE-----------*/

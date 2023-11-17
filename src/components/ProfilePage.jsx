@@ -28,11 +28,19 @@ const ProfilePage = ({ profilo, Page }) => {
                   </>
                 )}
               </>
-            ) : (
+            ) : location.pathname === "/expEdit" ? (
               <>
                 {profilo && (
                   <>
                     <Experience userID={profilo._id} />
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                {profilo && (
+                  <>
+                    <AttivitàProfilo profilo={profilo} Page={Page} />
                   </>
                 )}
               </>
