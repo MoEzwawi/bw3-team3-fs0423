@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
 import FakeProfile from "./components/FakeProfile";
 import Jobs from "./components/Jobs";
+import NetworkPage from "./components/NetworkPage";
 
 import { useEffect, useState } from "react";
 
@@ -74,6 +75,7 @@ function App() {
         />
         <Route path="/me/:id" element={<FakeProfile />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
+        <Route path="/network" element={<NetworkPage />} />
       </Routes>
     </BrowserRouter>
   );
