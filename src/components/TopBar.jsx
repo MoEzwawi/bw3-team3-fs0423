@@ -10,7 +10,7 @@ import {
   Navbar,
   Row,
 } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessToken } from "../redux/actions";
 
@@ -213,36 +213,46 @@ const TopBar = ({ onSearch, profilo }) => {
                     <p className="px-3">Lingua</p>
                     <hr></hr>
                     <h5 className="px-3">Gestisci</h5>
-                    <p
-                      className="px-3 cursorPointerForAll"
-                      onClick={handleCarmenClick}
-                    >
-                      Carmen
-                    </p>
-                    <p
-                      className="px-3 cursorPointerForAll"
-                      onClick={handleDomenicoClick}
-                    >
-                      Domenico
-                    </p>
-                    <p
-                      className="px-3 cursorPointerForAll"
-                      onClick={handleGiovanniClick}
-                    >
-                      Giovanni
-                    </p>
-                    <p
-                      className="px-3 cursorPointerForAll"
-                      onClick={handleLauraClick}
-                    >
-                      Laura
-                    </p>
-                    <p
-                      className="px-3 cursorPointerForAll"
-                      onClick={handleMohamedClick}
-                    >
-                      Mohamed
-                    </p>
+                    <Link to="/" className="bbc">
+                      <p
+                        className="px-3 cursorPointerForAll"
+                        onClick={handleCarmenClick}
+                      >
+                        Carmen
+                      </p>
+                    </Link>
+                    <Link to="/" className="bbc">
+                      <p
+                        className="px-3 cursorPointerForAll"
+                        onClick={handleDomenicoClick}
+                      >
+                        Domenico
+                      </p>
+                    </Link>
+                    <Link to="/" className="bbc">
+                      <p
+                        className="px-3 cursorPointerForAll"
+                        onClick={handleGiovanniClick}
+                      >
+                        Giovanni
+                      </p>
+                    </Link>
+                    <Link to="/" className="bbc">
+                      <p
+                        className="px-3 cursorPointerForAll"
+                        onClick={handleLauraClick}
+                      >
+                        Laura
+                      </p>
+                    </Link>
+                    <Link to="/" className="bbc">
+                      <p
+                        className="px-3 cursorPointerForAll"
+                        onClick={handleMohamedClick}
+                      >
+                        Mohamed
+                      </p>
+                    </Link>
                     <p className="px-3">Post e attività</p>
                     <p className="px-3 text-truncate">
                       Account per la pubblicazione di attività{" "}

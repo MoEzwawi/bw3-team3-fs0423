@@ -81,7 +81,12 @@ const AttivitàProfilo = ({ profilo, Page }) => {
         />
       )}
 
-      <AddNewPostProfile show={show} onHide={handleClose} profilo={profilo} />
+      <AddNewPostProfile
+        show={show}
+        onHide={handleClose}
+        profilo={profilo}
+        Page={Page}
+      />
     </Col>
   );
 };

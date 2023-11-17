@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const ModalEditProfile = ({ show, onHide, profilo, Page }) => {
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  // const accessToken =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  const accessToken = useSelector((state) => state.user.accessToken);
   const [profile, setProfile] = useState({
     name: profilo.name,
     surname: profilo.surname,
@@ -19,6 +21,10 @@ const ModalEditProfile = ({ show, onHide, profilo, Page }) => {
       [property]: value,
     });
   };
+
+  // useEffect(() => {
+  //   Page();
+  // }, [profilo, accessToken]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
