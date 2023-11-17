@@ -369,6 +369,9 @@ body {
 .nanana .dropdown-menu {
   width: 250px;
 }
+.nana .dropdown-menu {
+  width: 280px;
+}
 
 .spanOpacity {
   opacity: 0.6;

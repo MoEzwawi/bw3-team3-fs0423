@@ -13,7 +13,7 @@ import {
 import CustomAccordion from "./CustomAccordion";
 import AddNewPostModal from "./AddNewPostModal";
 
-const Home = () => {
+const Home = ({ profilo }) => {
   const apiToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc";
   const editProfile = async () => {
@@ -88,14 +88,17 @@ const Home = () => {
               />
               <img
                 className="pro-home-md"
-                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+                src={profilo.image}
                 alt="profile-pic"
               />
             </div>
 
             <div className="ma text-center ms-0">
-              <h6>Mohamed Ezwawi</h6>
-              <p className="grigio-md-home">Professore presso BOH</p>
+              <h6 className="mb-1">
+                {profilo.name} {profilo.surname}
+              </h6>
+              <p className="grigio-md-home mb-0">@{profilo.username}</p>
+              <p className="grigio-md-home">{profilo.title}</p>
               <hr className="mx-2" />
               <div className="mt-4">
                 <div className="d-flex justify-content-between p-3">
