@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Col,
@@ -20,25 +20,7 @@ const TopBar = ({ onSearch, profilo }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const handlePageClick = () => {
-      // Chiudi la barra di ricerca se la larghezza dello schermo è inferiore a 768px
-      if (window.innerWidth < 769) {
-        setShowInput(false);
-      }
-    };
-
-    // Aggiungi il listener
-    document.addEventListener("click", handlePageClick);
-
-    // Rimuovi il listener quando il componente viene smontato
-    return () => {
-      document.removeEventListener("click", handlePageClick);
-    };
-  }, []);
-
   const handleSearchChange = (e) => {
-    e.stopPropagation(); // Impedisci la propagazione dell'evento
     setQuery(e.target.value);
   };
 
@@ -47,13 +29,12 @@ const TopBar = ({ onSearch, profilo }) => {
     onSearch(query);
   };
 
-  const handleIconClick = (e) => {
-    e.stopPropagation(); // Impedisci la propagazione dell'evento
+  const handleIconClick = () => {
     setShowInput(!showInput);
   };
 
   const handleClick = (e) => {
-    handleIconClick(e);
+    handleIconClick();
     handleSearchSubmit(e);
   };
 
@@ -124,12 +105,10 @@ const TopBar = ({ onSearch, profilo }) => {
                   <Form.Control
                     type="text"
                     placeholder="Search"
-                    className={`mobile-search-input ${
-                      showInput ? "expanded" : ""
-                    }`}
+                    className={`mobile-search-input ${showInput ? "expanded" : ""
+                      }`}
                     value={query}
                     onChange={handleSearchChange}
-                    id="searchBar"
                   />
                 </InputGroup>
               </Form>
@@ -145,7 +124,7 @@ const TopBar = ({ onSearch, profilo }) => {
                     </span>
                   </div>
                 </NavLink>
-                <NavLink to={"/"} className="nav-link">
+                <NavLink to={"/network"} className="nav-link">
                   <div className="d-flex flex-column text-center mx-4">
                     <i className="bi bi-people-fill fs-4"></i>
                     <span className="smalltext text-center d-none d-md-inline">
@@ -161,7 +140,7 @@ const TopBar = ({ onSearch, profilo }) => {
                     </span>
                   </div>
                 </NavLink>
-                <NavLink to={"/"} className="nav-link">
+                <NavLink to={"/messages"} className="nav-link">
                   <div className="d-flex flex-column text-center mx-4">
                     <i className="bi bi-chat-left-dots-fill fs-4"></i>
                     <span className="smalltext text-center d-none d-md-inline">

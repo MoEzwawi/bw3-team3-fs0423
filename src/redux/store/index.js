@@ -16,11 +16,8 @@ const bigReducer = combineReducers({
   jobs: jobsReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, bigReducer);
-
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: bigReducer,
 });
 
-export const persistor = persistStore(store);
 export default store;

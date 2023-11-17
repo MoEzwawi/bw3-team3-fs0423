@@ -106,7 +106,7 @@ const AddNewPostProfile = ({ show, onHide, profilo, Page }) => {
           <div className="d-flex align-items-center gap-3 ms-2">
             <div>
               <img
-                src={profilo.image}
+                src={"http://placekitten.com/50"}
                 width="50px"
                 height="50px"
                 className="rounded-circle"
@@ -114,9 +114,7 @@ const AddNewPostProfile = ({ show, onHide, profilo, Page }) => {
               />
             </div>
             <div>
-              <Modal.Title className="fs-5">
-                {profilo.name} {profilo.surname}
-              </Modal.Title>
+              <Modal.Title className="fs-5">{"Nome utente"}</Modal.Title>
               <p className="mb-0">Pubblica: Chiunque</p>
             </div>
           </div>

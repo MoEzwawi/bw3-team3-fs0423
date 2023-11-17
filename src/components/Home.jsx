@@ -280,7 +280,10 @@ const Home = ({ profilo }) => {
                 <SinglePost
                   postImage={post.image}
                   image={post.user.image}
+                  firstName={post.user.name}
+                  lastName={post.user.surname}
                   username={post.username}
+                  userid={post.user._id}
                   date1={post.createdAt}
                   text={post.text}
                   date2={post.updatedAt}
@@ -297,8 +300,11 @@ const Home = ({ profilo }) => {
                 <SinglePost
                   postImage={post.image}
                   image={post.user.image}
-                  username={post.username}
                   date1={post.createdAt}
+                  firstName={post.user.name}
+                  lastName={post.user.surname}
+                  username={post.username}
+                  userid={post.user._id}
                   text={post.text}
                   date2={post.updatedAt}
                   id={post._id}

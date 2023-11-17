@@ -48,9 +48,9 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
     console.log("Ora inviamo la prenotazione!");
     fetch(
       "https://striveschool-api.herokuapp.com/api/profile/" +
-        exp.user +
-        "/experiences/" +
-        exp._id,
+      exp.user +
+      "/experiences/" +
+      exp._id,
       {
         method: "PUT",
         body: JSON.stringify(experience),
@@ -140,7 +140,7 @@ const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
   }, [expId, exp]);
 
   return (
-    <Modal show={show} onHide={onHide} dialogClassName="modal-lg">
+    <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
         <Modal.Title>Modifica esperienza</Modal.Title>
       </Modal.Header>

@@ -1,21 +1,28 @@
-import { ALL_PROFILES, MY_PROFILE } from "../actions";
+import { ADD_FRIEND, REMOVE_FRIEND } from "../actions";
 
 const initialState = {
-  profiles: [],
-  my_profile: {},
+  friends: {
+    content: [],
+  },
 };
 
 export default function profileReducer(state = initialState, action) {
-  switch (action) {
-    case ALL_PROFILES:
+  switch (action.type) {
+    case ADD_FRIEND:
       return {
         ...state,
-        profiles: action.payload,
+        friends: {
+          content: [...state.friends.content, action.payload]
+        }
       };
-    case MY_PROFILE: {
+    case REMOVE_FRIEND: {
       return {
         ...state,
-        my_profile: action.payload,
+        friends: {
+          content: state.friends.content.filter(
+            (id) => id !== action.payload
+          ),
+        }
       };
     }
     default:
