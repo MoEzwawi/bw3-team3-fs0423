@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
 const ModalImgProfilo = ({ show, onHide, userID, Page }) => {
-  // const accessToken =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
-  const accessToken = useSelector((state) => state.user.accessToken);
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+
   const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -40,7 +39,7 @@ const ModalImgProfilo = ({ show, onHide, userID, Page }) => {
 
       const imageData = await response.json();
       console.log("Immagine caricata con successo:", imageData);
-      // Page();
+      Page();
       setImage(null);
     } catch (error) {
       console.error("Errore durante l'upload dell'immagine:", error);
@@ -50,7 +49,7 @@ const ModalImgProfilo = ({ show, onHide, userID, Page }) => {
     if (image) {
       handleFormSubmit();
     }
-  }, [image, accessToken]);
+  }, [image]);
 
   return (
     <Modal show={show} onHide={onHide}>

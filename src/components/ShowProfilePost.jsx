@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
-import { Button, Modal, Row } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
-import ProvaEdit from "./ProvaEdit";
-import { useSelector } from "react-redux";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 
-const ShowProfilePost = ({ profilo, show, onHide }) => {
-  // const accessToken =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
-  const accessToken = useSelector((state) => state.user.accessToken);
-
+const ShowProfilePost = ({ profilo, setSelected }) => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const [isRecent, setIsRecent] = useState(true);
   const [postData, setPostData] = useState([]);
   const [recentPostData, setRecentPostData] = useState([]);

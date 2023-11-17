@@ -4,12 +4,10 @@ import ModalPlus from "./ModalPlus";
 import ExperienceCard from "./ExperienceCard";
 import { Link, useLocation } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
 const Experience = ({ userID }) => {
-  const accessToken = useSelector((state) => state.user.accessToken);
-  // const accessToken =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
   const location = useLocation();
   const [show, setShow] = useState(false);
 

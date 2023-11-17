@@ -55,21 +55,13 @@ const AttivitàProfilo = ({ profilo, Page }) => {
       <div className="py-2 show-all-btn cursorPointerForAll text-center border-top">
         Mostra tutte le attività <ArrowRight size={18} />
       </div>
-      {profilo && (
-        <EditPostProfileModal
-          show={show2}
-          onHide={handleClose2}
-          Page={Page}
-          profilo={profilo}
-        />
-      )}
-
-      <AddNewPostProfile
-        show={show}
-        onHide={handleClose}
-        profilo={profilo}
+      <EditPostProfileModal
+        show={show2}
+        onHide={handleClose2}
         Page={Page}
+        postId={selected}
       />
+      <AddNewPostProfile show={show} onHide={handleClose} />
     </Col>
   );
 };

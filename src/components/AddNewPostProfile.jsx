@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button, Form, Modal, Row } from "react-bootstrap";
 import { Calendar3, CardImage, Clock, ThreeDots } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
 
-const AddNewPostProfile = ({ show, onHide, profilo, Page }) => {
-  console.log(profilo);
-  // const accessToken =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
-  const accessToken = useSelector((state) => state.user.accessToken);
+const AddNewPostProfile = ({ show, onHide }) => {
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+
   const [post, setPost] = useState({
     text: "",
   });
@@ -86,7 +84,7 @@ const AddNewPostProfile = ({ show, onHide, profilo, Page }) => {
 
       const imageData = await response.json();
       console.log("Immagine caricata con successo:", imageData);
-      Page();
+      // getExperiences();
       setImage(null);
     } catch (error) {
       console.error("Errore durante l'upload dell'immagine:", error);

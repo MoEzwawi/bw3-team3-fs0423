@@ -1,18 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
 import TopBar from "./components/TopBar";
 import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
 import FakeProfile from "./components/FakeProfile";
 import Jobs from "./components/Jobs";
 import NetworkPage from "./components/NetworkPage";
-import Messaggistica from "./components/Messaggistica";
+
 import { useEffect, useState } from "react";
 
 import FavouritePage from "./components/FavouritePage";
-import { setAccessToken } from "./redux/actions";
+import Messaggistica from "./components/Messaggistica";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
@@ -34,22 +33,10 @@ function App() {
   };
 
   const [profilo, setProfilo] = useState({});
-  const accessToken = useSelector((state) => state.user.accessToken);
-  const dispatch = useDispatch();
-  const accesStart =
+  const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
 
-  console.log(
-    "dopo il set",
-    useSelector((state) => state.user.accessToken)
-  );
   useEffect(() => {
-    dispatch(setAccessToken(accessToken));
-    Page();
-  }, [accessToken]);
-
-  useEffect(() => {
-    dispatch(setAccessToken(accesStart));
     Page();
   }, []);
 
@@ -68,6 +55,7 @@ function App() {
         }
       })
       .then((pa) => {
+        console.log("ecco il risultato", pa);
         setProfilo(pa);
       })
       .catch((err) => {
@@ -76,10 +64,10 @@ function App() {
   };
   return (
     <BrowserRouter>
-      <TopBar onSearch={handleSearch} profilo={profilo} />
+      <TopBar onSearch={handleSearch} />
 
       <Routes>
-        <Route path="/" element={<Home profilo={profilo} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
         <Route path="/favourites" element={<FavouritePage />} />
         <Route
