@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
 import TopBar from "./components/TopBar";
 import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
@@ -10,6 +11,7 @@ import Jobs from "./components/Jobs";
 import { useEffect, useState } from "react";
 
 import FavouritePage from "./components/FavouritePage";
+import { setAccessToken } from "./redux/actions";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
@@ -31,8 +33,17 @@ function App() {
   };
 
   const [profilo, setProfilo] = useState({});
-  const accessToken =
+  const accessToken = useSelector((state) => state.user.accessToken);
+  const dispatch = useDispatch();
+  const accesStart =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+
+  dispatch(setAccessToken(accesStart));
+
+  console.log(
+    "dopo il set",
+    useSelector((state) => state.user.accessToken)
+  );
 
   useEffect(() => {
     Page();
@@ -53,7 +64,6 @@ function App() {
         }
       })
       .then((pa) => {
-        console.log("ecco il risultato", pa);
         setProfilo(pa);
       })
       .catch((err) => {
