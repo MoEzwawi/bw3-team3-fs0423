@@ -2,14 +2,6 @@ import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
 import { Button, Modal, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-
-import {
-  differenceInDays,
-  differenceInHours,
-  differenceInMinutes,
-  differenceInSeconds,
-} from "date-fns";
-
 import ProvaEdit from "./ProvaEdit";
 
 const ShowProfilePost = ({ profilo, show, onHide }) => {
@@ -56,17 +48,20 @@ const ShowProfilePost = ({ profilo, show, onHide }) => {
     <>
       <div className="cursor d-flex ms-3 mb-4">
         <div className="ms-2">
-          <Button className="text-white postBtnProfile" variant="success">
+          <Button
+            className="text-white postBtnProfile cursorPointerForAll"
+            variant="success"
+          >
             Post
           </Button>
         </div>
         <div className="ms-2">
-          <Button className="eheh" variant="light">
+          <Button className="eheh cursorPointerForAll" variant="light">
             Commenti
           </Button>
         </div>
         <div className="ms-2">
-          <Button className="eheh" variant="light">
+          <Button className="eheh cursorPointerForAll" variant="light">
             Immagini
           </Button>
         </div>

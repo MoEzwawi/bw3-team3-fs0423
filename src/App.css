@@ -470,4 +470,34 @@ border-radius: 1.25rem;
     .pmodalprof{
       font-size: 12px;
     }
+
+        .eheh2 {
+          border-radius: 1.25rem;
+          padding: 0.15rem 1.3rem;
+          font-weight: 600;
+          border: 1px solid black;
+          color: #727375;
+        }
+    
+        .eheh2:hover {
+          border: 1px solid black;
+          color: #727375;
+        }
+    .postBtnProfile2 {
+      border-radius: 1.25rem;
+        padding: 0.15rem 1.3rem;
+        font-weight: 600;
+        border: 1px solid black;
+        color: #4c4c4c;
+      }
+
+        @media (min-width: 1200px) {
+        .eheh2 {
+          
+            padding: 0.15rem 2rem;
+          }
+          .postBtnProfile2 {
+            padding: 0.15rem 2rem;
+          }
+          }
 /* -----------FINE CSS PROFILE-----------*/
