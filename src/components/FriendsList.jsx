@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { PencilFill } from "react-bootstrap-icons";
 import SingleFriend from "./SingleFriend";
 import { useLocation } from "react-router-dom";
@@ -57,9 +57,21 @@ const FriendsList = () => {
               <PencilFill className="cursor-pointer" />
             </Col>
           </Row>
-          <Row className="px-2">
-            <Col className="grigio">Italiano</Col>
-          </Row>
+          <div className="d-flex px-2 justify-content-center mt-1">
+            <div className="ms-2">
+              <Button className="eheh2 cursorPointerForAll" variant="light">
+                Inglese
+              </Button>
+            </div>
+            <div className="ms-2">
+              <Button
+                className="text-white postBtnProfile2 cursorPointerForAll"
+                variant="success"
+              >
+                Italiano
+              </Button>
+            </div>
+          </div>
           <hr className="mx-2" />
           <Row className="justify-content-between px-2">
             <Col>

@@ -11,12 +11,15 @@ import {
   FlagFill,
   PersonAdd,
   PersonCheck,
+  Pencil,
 } from "react-bootstrap-icons";
 import ModalAltroInfo from "./ModalAltroInfo";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_FRIEND } from "../redux/actions";
 import { REMOVE_FRIEND } from "../redux/actions";
+import ModalEditProfile from "./ModalEditProfile";
+
 const Profile = ({ profilo, Page }) => {
   const dispatch = useDispatch()
   const location = useLocation();
@@ -39,6 +42,11 @@ const Profile = ({ profilo, Page }) => {
     }
     console.log('io sono porfilo', profilo)
   }, [profilo])
+
+  const [show4, setShow4] = useState(false);
+  const handleClose4 = () => setShow4(false);
+  const handleShow4 = () => setShow4(true);
+
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white p-0 mb-3">
       <div className="cont">
@@ -62,10 +70,26 @@ const Profile = ({ profilo, Page }) => {
         />
       </div>
 
-      <div className="ma pb-4">
-        <h3 className="h3Exp">
-          {profilo.name} {profilo.surname}
-        </h3>
+      <div className="ma pb-4 pe-1">
+        <div className="d-flex me-4">
+          <h3 className="h3Exp me-auto">
+            {profilo.name} {profilo.surname}
+          </h3>
+          {location.pathname === "/me" ? (
+            <Pencil
+              size={20}
+              onClick={handleShow4}
+              className="cursorPointerForAll"
+            />
+          ) : null}
+
+          <ModalEditProfile
+            show={show4}
+            onHide={handleClose4}
+            profilo={profilo}
+            Page={Page}
+          />
+        </div>
         <div>
           <p className="mb-0">{profilo.title}</p>
         </div>
