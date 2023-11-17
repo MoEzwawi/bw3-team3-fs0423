@@ -4,11 +4,11 @@ import SearchJob from "./SearchJob";
 import AsideJobPage from "./AsideJobPage";
 import immagine from "../AvidCareerist.com-10.png";
 import FooterJobPage from "./FooterJobPage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Jobs = ({ jobsData }) => {
   const [jobs, setJobs] = useState([]);
-  const [favourites, setFavourites] = useState({});
+  const favourites = useSelector((state) => state.jobs.favourites.content);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,21 +30,14 @@ const Jobs = ({ jobsData }) => {
   }, []);
 
   const toggleFavourite = (job) => {
-    const isFavourite = !!favourites[job._id];
+    const isFavourite = favourites.some((fav) => fav._id === job._id);
 
-    setFavourites({
-      ...favourites,
-      [job._id]: !isFavourite,
-    });
-
-    const actionType = isFavourite
-      ? "REMOVE_FROM_FAVOURITES"
-      : "ADD_TO_FAVOURITES";
-
-    dispatch({
-      type: actionType,
-      payload: job,
-    });
+    if (isFavourite) {
+      const index = favourites.findIndex((fav) => fav._id === job._id);
+      dispatch({ type: "REMOVE_FROM_FAVOURITES", payload: index });
+    } else {
+      dispatch({ type: "ADD_TO_FAVOURITES", payload: job });
+    }
   };
 
   return (
@@ -98,10 +91,10 @@ const Jobs = ({ jobsData }) => {
                         <i className="bi bi-eye-slash-fill me-2"></i>
                         <i
                           className={`bi ${
-                            favourites[job._id]
-                              ? "bi-bookmark-fill cursor-pointer"
-                              : "bi-bookmark cursor-pointer"
-                          }`}
+                            favourites.some((fav) => fav._id === job._id)
+                              ? "bi-bookmark-fill"
+                              : "bi-bookmark"
+                          } cursor-pointer`}
                           onClick={() => toggleFavourite(job)}
                         ></i>
                       </Col>
@@ -146,10 +139,10 @@ const Jobs = ({ jobsData }) => {
                               <i className="bi bi-eye-slash-fill me-2"></i>
                               <i
                                 className={`bi ${
-                                  favourites[job._id]
+                                  favourites.some((fav) => fav._id === job._id)
                                     ? "bi-bookmark-fill"
                                     : "bi-bookmark"
-                                }`}
+                                } cursor-pointer`}
                                 onClick={() => toggleFavourite(job)}
                               ></i>
                             </Col>
