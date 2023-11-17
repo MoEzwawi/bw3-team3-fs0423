@@ -93,11 +93,10 @@ const Jobs = ({ jobsData }) => {
                       >
                         <i className="bi bi-eye-slash-fill me-2"></i>
                         <i
-                          className={`bi ${
-                            favourites[job._id]
+                          className={`bi ${favourites[job._id]
                               ? "bi-bookmark-fill"
                               : "bi-bookmark"
-                          }`}
+                            }`}
                           onClick={() => toggleFavourite(job)}
                         ></i>
                       </Col>
@@ -137,11 +136,10 @@ const Jobs = ({ jobsData }) => {
                             >
                               <i className="bi bi-eye-slash-fill me-2"></i>
                               <i
-                                className={`bi ${
-                                  favourites[job._id]
+                                className={`bi ${favourites[job._id]
                                     ? "bi-bookmark-fill"
                                     : "bi-bookmark"
-                                }`}
+                                  }`}
                                 onClick={() => toggleFavourite(job)}
                               ></i>
                             </Col>

@@ -10,9 +10,8 @@ import {
   PeopleFill,
   PersonFill,
 } from "react-bootstrap-icons";
-// import { API_KEY } from "../redux/actions/index.js";
 import NetworkCard from "./NetworkCard";
-// import { useSelector } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
 const NetworkPage = () => {
   const [profilesData, setProfilesData] = useState(null);
@@ -25,35 +24,37 @@ const NetworkPage = () => {
   // const addFollow = () => {
   //   setFollowing(following + 1);
   // };
+  const accessToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
 
-  const getAllprofilesInfo = () => {
-    setSpinnerState(true);
-    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
-      headers: {
-        Authorization: 'API_KEY',
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          setSpinnerState(false);
-          return res.json();
-        } else {
-          setSpinnerState(false);
-          throw new Error("error in fetching user profiles");
+  const fetchNewPeople = async () => {
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile",
+        {
+          headers: {
+            Authorization: "Bearer " + accessToken,
+          },
         }
-      })
-      .then((data) => {
+      );
+      if (res.ok) {
+        const data = await res.json();
         setProfilesData(data);
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        setSpinnerState(false)
+      } else {
+        throw new Error("error retrieving data");
+      }
+    } catch (error) {
+      console.log("problem:", error);
+    }
   };
+  useEffect(() => {
+    fetchNewPeople();
+  }, []);
+  useEffect(() => {
+    console.log(profilesData)
+  }, [profilesData])
 
-  // useEffect(() => {
-    // getAllprofilesInfo();
-  // }, []);
   return (
     <Container>
       <Row className="mt-3">
@@ -75,6 +76,9 @@ const NetworkPage = () => {
                 >
                   {following ? following : 0}
                 </Badge> */}
+                {/* {!spinnerState && profilesData.map(pr => (
+                  <NetworkCard />
+                ))} */}
               </div>
             </div>
             <div className="d-flex align-items-center gap-2">
@@ -167,8 +171,8 @@ const NetworkPage = () => {
                     richiesta di collegamento
                   </p>
                   <p>
-                    Founder & Software Developer @ Nucleode SRL - Educator @
-                    EPICODE <br />- IT Consultant
+                    Software Developer @ Microsoft - Consultant @
+                    Bill Gates Foundation <br />- IT Consultant
                   </p>
                 </div>
                 <div className="d-flex gap-3 align-items-center ">
@@ -189,7 +193,7 @@ const NetworkPage = () => {
           <div className="py-3 px-1 background-columns mt-3 border rounded px-3 py-4 mb-3">
             <div className="d-flex justify-content-between align-items-center">
               <p>
-                Persone che potresti conoscere in base alla tua attività recente
+                Persone che hai aggiunto recente
               </p>
               <p className="text-secondary text-end">Vedi tutto </p>
             </div>

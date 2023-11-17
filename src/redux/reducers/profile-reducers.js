@@ -1,3 +1,5 @@
+// ciao, io non servo più a nulla :/
+
 import { ALL_PROFILES, MY_PROFILE } from "../actions";
 
 const initialState = {

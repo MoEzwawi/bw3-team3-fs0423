@@ -1,10 +1,10 @@
 import { Card, Col } from "react-bootstrap";
 import { PersonAdd } from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
-import { FOLLOW } from "../redux/store";
+// import { useDispatch } from "react-redux";
+import { FOLLOW } from "../redux/actions";
 
 const NetworkCard = ({ profile, addFollow }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   return (
     <>
       {profile._id !== "6551cb68c55e7e0018f83bd2" && (
@@ -30,10 +30,10 @@ const NetworkCard = ({ profile, addFollow }) => {
                 <PersonAdd />
                 <p
                   className="mb-0"
-                  onClick={() => {
-                    dispatch({ type: FOLLOW, payload: profile });
-                    addFollow();
-                  }}
+                // onClick={() => {
+                //   dispatch({ type: FOLLOW, payload: profile });
+                //   addFollow();
+                // }}
                 >
                   Collegati
                 </p>

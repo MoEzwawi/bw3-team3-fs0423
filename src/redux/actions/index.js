@@ -1,7 +1,14 @@
+export const ADD_FRIEND = 'ADD_FRIEND'
+export const REMOVE_FRIEND = 'REMOVE_FRIEND'
+
+//questa parte per ora non viene usata
+
 export const ALL_PROFILES = "ALL_PROFILES";
 export const MY_PROFILE = "MY_PROFILE";
 export const USER_PROFILE = "USER_PROFILE";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const FOLLOW = "FOLLOW";
+
 
 const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzMmUxMWRkOTllZjAwMTlhMDkyZWYiLCJpYXQiOjE2OTk5NTAwOTcsImV4cCI6MTcwMTE1OTY5N30.0Lrp33zzPyoU9V1bSkuoimzq5n89mmTJkFLONrDUqQI
 `;

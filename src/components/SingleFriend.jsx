@@ -2,6 +2,7 @@ import { PersonAdd, PersonCheck } from "react-bootstrap-icons";
 import { Col } from "react-bootstrap";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { UseSelector } from "react-redux/es/hooks/useSelector";
 
 const SingleFriend = ({ image, name, surname, title, id, onHide }) => {
   const [isAdded, setIsAdded] = useState(false);
