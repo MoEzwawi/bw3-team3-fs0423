@@ -9,7 +9,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import FooterJobPage from "./FooterJobPage";
 import image from "../AvidCareerist.com-10.png";
-import { Link } from "react-router-dom";
 
 const FavouritePage = () => {
   const favouriteList = useSelector((state) => state.jobs.favourites.content);
@@ -33,7 +32,11 @@ const FavouritePage = () => {
                   </div>
                   <div className="flex-grow-1 ms-3">
                     <Card.Body className="lh-1">
-                      <Card.Link href={fav.url} className="fw-bold">
+                      <Card.Link
+                        href={fav.url}
+                        className="fw-bold"
+                        target="_blank"
+                      >
                         {fav.title}
                       </Card.Link>
                       <Card.Title>{fav.company_name}</Card.Title>

@@ -47,7 +47,7 @@ const SearchJob = ({ jobsData }) => {
               </Col>
               <Col md={6} className="p-0">
                 <Card.Body className="lh-1">
-                  <Card.Link href={job.url} className="fw-bold">
+                  <Card.Link href={job.url} className="fw-bold" target="_blank">
                     {job.title}
                   </Card.Link>
                   <Card.Title>{job.company_name}</Card.Title>
