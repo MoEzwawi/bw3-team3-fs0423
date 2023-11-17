@@ -4,11 +4,11 @@ import SearchJob from "./SearchJob";
 import AsideJobPage from "./AsideJobPage";
 import immagine from "../AvidCareerist.com-10.png";
 import FooterJobPage from "./FooterJobPage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Jobs = ({ jobsData }) => {
   const [jobs, setJobs] = useState([]);
-  const favourites = useSelector((state) => state.jobs.favourites.content);
+  const [favourites, setFavourites] = useState({});
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,14 +30,21 @@ const Jobs = ({ jobsData }) => {
   }, []);
 
   const toggleFavourite = (job) => {
-    const isFavourite = favourites.some((fav) => fav._id === job._id);
+    const isFavourite = !!favourites[job._id];
 
-    if (isFavourite) {
-      const index = favourites.findIndex((fav) => fav._id === job._id);
-      dispatch({ type: "REMOVE_FROM_FAVOURITES", payload: index });
-    } else {
-      dispatch({ type: "ADD_TO_FAVOURITES", payload: job });
-    }
+    setFavourites({
+      ...favourites,
+      [job._id]: !isFavourite,
+    });
+
+    const actionType = isFavourite
+      ? "REMOVE_FROM_FAVOURITES"
+      : "ADD_TO_FAVOURITES";
+
+    dispatch({
+      type: actionType,
+      payload: job.company_name,
+    });
   };
 
   return (
@@ -73,11 +80,7 @@ const Jobs = ({ jobsData }) => {
                       </Col>
                       <Col md={6} className="p-0">
                         <Card.Body className="lh-1">
-                          <Card.Link
-                            href={job.url}
-                            className="fw-bold"
-                            target="_blank"
-                          >
+                          <Card.Link href="#" className="fw-bold">
                             {job.title}
                           </Card.Link>
                           <Card.Title>{job.company_name}</Card.Title>
@@ -90,10 +93,10 @@ const Jobs = ({ jobsData }) => {
                       >
                         <i className="bi bi-eye-slash-fill me-2"></i>
                         <i
-                          className={`bi ${favourites.some((fav) => fav._id === job._id)
-                            ? "bi-bookmark-fill"
-                            : "bi-bookmark"
-                            } cursor-pointer`}
+                          className={`bi ${favourites[job._id]
+                              ? "bi-bookmark-fill"
+                              : "bi-bookmark"
+                            }`}
                           onClick={() => toggleFavourite(job)}
                         ></i>
                       </Col>
@@ -120,11 +123,7 @@ const Jobs = ({ jobsData }) => {
                             </Col>
                             <Col md={6} className="p-0">
                               <Card.Body className="lh-1">
-                                <Card.Link
-                                  href={job.url}
-                                  className="fw-bold"
-                                  target="_blank"
-                                >
+                                <Card.Link href="#" className="fw-bold">
                                   {job.title}
                                 </Card.Link>
                                 <Card.Title>{job.company_name}</Card.Title>
@@ -137,10 +136,10 @@ const Jobs = ({ jobsData }) => {
                             >
                               <i className="bi bi-eye-slash-fill me-2"></i>
                               <i
-                                className={`bi ${favourites.some((fav) => fav._id === job._id)
-                                  ? "bi-bookmark-fill"
-                                  : "bi-bookmark"
-                                  } cursor-pointer`}
+                                className={`bi ${favourites[job._id]
+                                    ? "bi-bookmark-fill"
+                                    : "bi-bookmark"
+                                  }`}
                                 onClick={() => toggleFavourite(job)}
                               ></i>
                             </Col>

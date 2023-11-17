@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 
 import FavouritePage from "./components/FavouritePage";
 import Messaggistica from "./components/Messaggistica";
-import LoginPage from "./components/LoginPage";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
@@ -65,7 +64,6 @@ function App() {
   };
   return (
     <BrowserRouter>
-      {/* <LoginPage /> */}
       <TopBar onSearch={handleSearch} />
 
       <Routes>
@@ -80,7 +78,6 @@ function App() {
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/network" element={<NetworkPage />} />
         <Route path="/messages" element={<Messaggistica />} />
-        <Route path="/attEdit" element={<ProfilePage profilo={profilo} />} />
       </Routes>
     </BrowserRouter>
   );
