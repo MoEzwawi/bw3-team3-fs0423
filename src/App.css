@@ -131,8 +131,12 @@ body {
   background-color: rgb(178, 228, 245);
   color: #0A66C2;
 }
-
-
+/* addfrom aaaaa */
+.input-container {
+  padding-right: 5em;
+  position: relative;
+}
+/* aaaaaa */
 .input-container .form-control{
   width: 300px;
   max-width: 400px;
@@ -502,3 +506,12 @@ border-radius: 1.25rem;
           }
           }
 /* -----------FINE CSS PROFILE-----------*/
+
+.bbc {
+  text-decoration: none;
+  color: black;
+}
+
+.bbc:hover {
+  text-decoration: underline;
+}

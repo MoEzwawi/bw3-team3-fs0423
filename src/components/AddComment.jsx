@@ -59,7 +59,7 @@ const AddComment = ({ postId, setDidYouComment, didyoucomment }) => {
             id="control-input"
             type="text"
             placeholder="Aggiungi un commento..."
-            value={didyoucomment ? "" : commentText.comment}
+            // value={didyoucomment ? "" : commentText.comment}
             className="rounded-pill py-3 px-3 cursor"
             onChange={(e) => {
               setCommentText({ ...commentText, comment: e.target.value });

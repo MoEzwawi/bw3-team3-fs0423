@@ -15,8 +15,20 @@ import {
 } from "date-fns";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
+import { Link } from "react-router-dom";
 
-const SinglePost = ({ postImage, image, username, date1, text, date2, id }) => {
+const SinglePost = ({
+  postImage,
+  image,
+  firstName,
+  lastName,
+  date1,
+  text,
+  date2,
+  id,
+  userid,
+  username,
+}) => {
   const [liked, setLiked] = useState(false);
   const [click, setClick] = useState(false);
   const [didyoucomment, setDidYouComment] = useState(false);
@@ -62,22 +74,32 @@ const SinglePost = ({ postImage, image, username, date1, text, date2, id }) => {
       style={{ width: "90%" }}
     >
       <p style={{ fontSize: 1 + "em", fontWeight: "bold", margin: 0.2 + "em" }}>
-        {image ? (
-          <img
-            src={image}
-            className="rounded-circle me-2"
-            alt="avatar"
-            width={40 + "px"}
-          />
-        ) : (
-          <img
-            src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-            className="rounded-circle me-2"
-            alt="avatar"
-            width={40 + "px"}
-          />
-        )}
-        {username}
+        <Link to={`/me/${userid}`}>
+          {image ? (
+            <img
+              src={image}
+              className="rounded-circle me-2 cursor-pointer"
+              alt="avatar"
+              width={40 + "px"}
+            />
+          ) : (
+            <img
+              src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+              className="rounded-circle me-2 cursor-pointer"
+              alt="avatar"
+              width={40 + "px"}
+            />
+          )}
+        </Link>
+        <Link to={"me/" + userid} className="bbc">
+          <span className="cursor-pointer">
+            {firstName} {lastName}
+          </span>
+        </Link>
+        <span style={{ color: "rgb(81, 80, 80)", fontWeight: "400" }}>
+          {" "}
+          &#40;{username}&#41;
+        </span>
       </p>
       <p style={{ fontSize: 0.7 + "em" }}>{calcolaDifferenza(date1)}</p>
       <p style={{ fontSize: 1 + "em" }}>{text}</p>

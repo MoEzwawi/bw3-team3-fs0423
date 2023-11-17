@@ -285,6 +285,9 @@ const Home = ({ profilo }) => {
                   text={post.text}
                   date2={post.updatedAt}
                   id={post._id}
+                  firstName={post.user.name}
+                  lastName={post.user.surname}
+                  userid={post.user._id}
                 />
               </Row>
             ))}
@@ -302,6 +305,9 @@ const Home = ({ profilo }) => {
                   text={post.text}
                   date2={post.updatedAt}
                   id={post._id}
+                  firstName={post.user.name}
+                  lastName={post.user.surname}
+                  userid={post.user._id}
                 />
               </Row>
             ))}

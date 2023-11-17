@@ -7,10 +7,11 @@ import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
 import FakeProfile from "./components/FakeProfile";
 import Jobs from "./components/Jobs";
-
+import NetworkPage from "./components/NetworkPage";
 import { useEffect, useState } from "react";
 
 import FavouritePage from "./components/FavouritePage";
+import Messaggistica from "./components/Messaggistica";
 import { setAccessToken } from "./redux/actions";
 
 function App() {
@@ -88,6 +89,8 @@ function App() {
         <Route path="/me/:id" element={<FakeProfile />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/attEdit" element={<ProfilePage profilo={profilo} />} />
+        <Route path="/network" element={<NetworkPage />} />
+        <Route path="/messages" element={<Messaggistica />} />
       </Routes>
     </BrowserRouter>
   );
