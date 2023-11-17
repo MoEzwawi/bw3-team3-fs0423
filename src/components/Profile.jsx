@@ -1,6 +1,6 @@
 import { Button, Col, Dropdown, DropdownButton } from "react-bootstrap";
 import img from "../IMG_1127 3.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalImgProfilo from "./ModalImgProfilo";
 import ModalInfoContact from "./ModalInfoContact";
 import {
@@ -14,8 +14,11 @@ import {
 } from "react-bootstrap-icons";
 import ModalAltroInfo from "./ModalAltroInfo";
 import { useLocation } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_FRIEND } from "../redux/actions";
+import { REMOVE_FRIEND } from "../redux/actions";
 const Profile = ({ profilo, Page }) => {
+  const dispatch = useDispatch()
   const location = useLocation();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -28,7 +31,14 @@ const Profile = ({ profilo, Page }) => {
   const [show3, setShow3] = useState(false);
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
+  const myState = useSelector(state => state.profile.friends.content)
   const [isAdded, setIsAdded] = useState(false);
+  useEffect(() => {
+    if (myState.includes(profilo._id)) {
+      setIsAdded(!isAdded)
+    }
+    console.log('io sono porfilo', profilo)
+  }, [profilo])
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white p-0 mb-3">
       <div className="cont">
@@ -113,6 +123,10 @@ const Profile = ({ profilo, Page }) => {
                   <div
                     id="fr-add-btn"
                     onClick={() => {
+                      dispatch({
+                        type: ADD_FRIEND,
+                        payload: profilo._id,
+                      });
                       setIsAdded(!isAdded);
                     }}
                     className="btn border border-1 border-dark rounded-pill py-0 px-2 bg-primary text-white"
@@ -128,6 +142,10 @@ const Profile = ({ profilo, Page }) => {
                   <div
                     id="fr-add-btn1"
                     onClick={() => {
+                      dispatch({
+                        type: REMOVE_FRIEND,
+                        payload: profilo._id,
+                      });
                       setIsAdded(!isAdded);
                     }}
                     className="btn border border-1 border-secondary rounded-pill bg-success"

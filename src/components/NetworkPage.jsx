@@ -11,17 +11,19 @@ import {
   PersonFill,
 } from "react-bootstrap-icons";
 import NetworkCard from "./NetworkCard";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const NetworkPage = () => {
   const [profilesData, setProfilesData] = useState(null);
   const [visibleProfiles, setVisibleProfiles] = useState(10);
   const [spinnerState, setSpinnerState] = useState(true);
   const [accepted, setAccepted] = useState(false);
+  const myState = useSelector(state => state.profile.friends.content)
 
   // const addFollow = () => {
   //   setFollowing(following + 1);
   // };
+
   const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
 
@@ -37,7 +39,7 @@ const NetworkPage = () => {
       );
       if (res.ok) {
         const data = await res.json();
-        setProfilesData(data);
+        setProfilesData(data.filter(p => myState.includes(p._id)));
         setSpinnerState(false)
       } else {
         throw new Error("error retrieving data");
@@ -51,6 +53,7 @@ const NetworkPage = () => {
   }, []);
   useEffect(() => {
     console.log(profilesData)
+    console.log('mystae', myState)
   }, [profilesData])
 
   return (
@@ -66,17 +69,6 @@ const NetworkPage = () => {
               <div className="d-flex align-items-center gap-2">
                 <PeopleFill className="fs-5" />
                 <p className="mb-0">Collegamenti</p>
-              </div>
-              <div>
-                <Badge
-                  bg="info"
-                  className="rounded-circle d-flex justify-content-center align-items-center  "
-                >
-                  {/* {following ? following : 0} */}
-                </Badge> */cioa
-                {/* {!spinnerState && profilesData.map(pr => (
-                  <NetworkCard />
-                ))} */}
               </div>
             </div>
             <div className="d-flex align-items-center gap-2">

@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default function profileReducer(state = initialState, action) {
-  switch (action) {
+  switch (action.type) {
     case ADD_FRIEND:
       return {
         ...state,
@@ -20,7 +20,7 @@ export default function profileReducer(state = initialState, action) {
         ...state,
         friends: {
           content: state.friends.content.filter(
-            (fr, i) => i !== action.payload
+            (id) => id !== action.payload
           ),
         }
       };

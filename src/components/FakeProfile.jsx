@@ -5,6 +5,7 @@ import FriendsList from "./FriendsList";
 import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Informazioni from "./Informazioni";
 import AttivitàProfilo from "./AttivitàProfilo";
 

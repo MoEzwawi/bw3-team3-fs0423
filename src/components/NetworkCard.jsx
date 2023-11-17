@@ -1,9 +1,12 @@
 import { Card, Col } from "react-bootstrap";
-import { PersonAdd } from "react-bootstrap-icons";
-// import { useDispatch } from "react-redux";
+import { PersonCheckFill, PersonFillAdd } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { REMOVE_FRIEND, ADD_FRIEND } from "../redux/actions";
 const NetworkCard = ({ profile, addFollow }) => {
-  // const dispatch = useDispatch();
+  const [isAdded, setIsAdded] = useState(true);
+  const dispatch = useDispatch();
   return (
     <>
       {profile._id !== "6551cb68c55e7e0018f83bd2" && (
@@ -27,18 +30,42 @@ const NetworkCard = ({ profile, addFollow }) => {
               <Card.Text>
                 {profile.title ? profile.title : "Software Developer"}
               </Card.Text>
-              <div className="d-flex align-items-center btn btn-outline-primary w-100 justify-content-center gap-1 ">
-                <PersonAdd />
-                <p
-                  className="mb-0"
-                // onClick={() => {
-                //   dispatch({ type: FOLLOW, payload: profile });
-                //   addFollow();
-                // }}
+              {isAdded && <div
+                id="fr-add-btn1"
+                className="btn border border-1 border-secondary rounded-pill bg-success"
+                onClick={() => {
+                  dispatch({
+                    type: REMOVE_FRIEND,
+                    payload: profile._id,
+                  })
+                  setIsAdded(!isAdded)
+                }}
+              >
+                <PersonCheckFill
+                  style={{ fontSize: "1.2em" }}
+                  className="mb-1 perCheckButt"
+                />{" "}
+                Collegato
+              </div>}
+              {!isAdded && (
+                <div
+                  id="fr-add-btn"
+                  className="btn border border-1 border-secondary rounded-pill py-0 px-2"
+                  onClick={() => {
+                    dispatch({
+                      type: ADD_FRIEND,
+                      payload: profile._id,
+                    })
+                    setIsAdded(!isAdded)
+                  }}
                 >
+                  <PersonFillAdd
+                    style={{ fontSize: "1.2em" }}
+                    className="mb-1 perAddButt "
+                  />{" "}
                   Collegati
-                </p>
-              </div>
+                </div>
+              )}
             </Card.Body>
           </Card>
         </Col>
