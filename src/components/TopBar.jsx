@@ -68,10 +68,12 @@ const TopBar = ({ onSearch }) => {
                   <Form.Control
                     type="text"
                     placeholder="Search"
-                    className={`mobile-search-input ${showInput ? "expanded" : ""
-                      }`}
+                    className={`mobile-search-input ${
+                      showInput ? "expanded" : ""
+                    }`}
                     value={query}
                     onChange={handleSearchChange}
+                    id="searchBar"
                   />
                 </InputGroup>
               </Form>

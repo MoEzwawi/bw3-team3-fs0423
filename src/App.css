@@ -133,26 +133,24 @@ body {
 }
 
 
-.input-container {
-  padding-right: 5em;
-  position: relative;
+.input-container .form-control{
+  width: 300px;
+  max-width: 400px;
 }
-
 @media (max-width: 768px) {
   .input-container .form-control {
+    display: none;
+    width: auto; /* Rimuovi la larghezza fissa su piccoli schermi */
     position: absolute;
     left: 0;
     top: 0;
     z-index: 5;
-    width: 400px;
-    max-width: 400px;
-    transition: all 1s ease-out;
-    display: none;
+    transition: all 0.5s ease-out;
   }
 
   .input-container .form-control.expanded {
-
     display: block;
+    width: 400px; /* Espandi a tutta la larghezza */
   }
 }
 
