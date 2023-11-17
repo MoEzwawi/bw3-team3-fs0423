@@ -70,6 +70,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
         <Route path="/favourites" element={<FavouritePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/me"
           element={<ProfilePage profilo={profilo} Page={Page} />}
