@@ -11,6 +11,7 @@ import NetworkPage from "./components/NetworkPage";
 import { useEffect, useState } from "react";
 
 import FavouritePage from "./components/FavouritePage";
+import Messaggistica from "./components/Messaggistica";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
@@ -76,6 +77,7 @@ function App() {
         <Route path="/me/:id" element={<FakeProfile />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/network" element={<NetworkPage />} />
+        <Route path="/messages" element={<Messaggistica />} />
       </Routes>
     </BrowserRouter>
   );

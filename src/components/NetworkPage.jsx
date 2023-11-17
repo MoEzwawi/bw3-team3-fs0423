@@ -18,8 +18,8 @@ const NetworkPage = () => {
   const [visibleProfiles, setVisibleProfiles] = useState(10);
   const [spinnerState, setSpinnerState] = useState(true);
   const [accepted, setAccepted] = useState(false);
-  // const friends = useSelector((state) => state.following.length);
-  // const [following, setFollowing] = useState(friends);
+  const friends = useSelector((state) => state.following.length);
+  const [following, setFollowing] = useState(friends);
 
   // const addFollow = () => {
   //   setFollowing(following + 1);
@@ -70,7 +70,7 @@ const NetworkPage = () => {
                 <p className="mb-0">Collegamenti</p>
               </div>
               <div>
-                {/* <Badge
+                <Badge
                   bg="info"
                   className="rounded-circle d-flex justify-content-center align-items-center  "
                 >
@@ -181,7 +181,7 @@ const NetworkPage = () => {
                     className="btn btn-outline-primary cursor"
                     onClick={() => {
                       setAccepted(true);
-                      // addFollow();
+                      addFollow();
                     }}
                   >
                     Accetta
@@ -205,7 +205,7 @@ const NetworkPage = () => {
                   </Spinner>
                 </div>
               )}
-              {/* {profilesData &&
+              {profilesData &&
                 profilesData
                   .slice(0, visibleProfiles)
                   .map((profile) => (
@@ -214,7 +214,7 @@ const NetworkPage = () => {
                       profile={profile}
                       addFollow={addFollow}
                     />
-                  ))} */}
+                  ))}
             </Row>
 
             <div className="text-center mt-3">

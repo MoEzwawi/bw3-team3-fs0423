@@ -103,7 +103,7 @@ const TopBar = ({ onSearch }) => {
                     </span>
                   </div>
                 </NavLink>
-                <NavLink to={"/"} className="nav-link">
+                <NavLink to={"/messages"} className="nav-link">
                   <div className="d-flex flex-column text-center mx-4">
                     <i className="bi bi-chat-left-dots-fill fs-4"></i>
                     <span className="smalltext text-center d-none d-md-inline">
