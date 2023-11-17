@@ -10,21 +10,21 @@ import {
   PeopleFill,
   PersonFill,
 } from "react-bootstrap-icons";
-// import { API_KEY } from "../redux/actions/index.js";
+import { API_KEY } from "../redux/actions/index.js";
 import NetworkCard from "./NetworkCard";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const NetworkPage = () => {
   const [profilesData, setProfilesData] = useState(null);
   const [visibleProfiles, setVisibleProfiles] = useState(10);
   const [spinnerState, setSpinnerState] = useState(true);
   const [accepted, setAccepted] = useState(false);
-  // const friends = useSelector((state) => state.following.length);
-  // const [following, setFollowing] = useState(friends);
+  const friends = useSelector((state) => state.following.length);
+  const [following, setFollowing] = useState(friends);
 
-  // const addFollow = () => {
-  //   setFollowing(following + 1);
-  // };
+  const addFollow = () => {
+    setFollowing(following + 1);
+  };
 
   const getAllprofilesInfo = () => {
     setSpinnerState(true);
@@ -51,9 +51,9 @@ const NetworkPage = () => {
       });
   };
 
-  // useEffect(() => {
-    // getAllprofilesInfo();
-  // }, []);
+  useEffect(() => {
+    getAllprofilesInfo();
+  }, []);
   return (
     <Container>
       <Row className="mt-3">
@@ -69,12 +69,12 @@ const NetworkPage = () => {
                 <p className="mb-0">Collegamenti</p>
               </div>
               <div>
-                {/* <Badge
+                <Badge
                   bg="info"
                   className="rounded-circle d-flex justify-content-center align-items-center  "
                 >
                   {following ? following : 0}
-                </Badge> */}
+                </Badge>
               </div>
             </div>
             <div className="d-flex align-items-center gap-2">
@@ -177,7 +177,7 @@ const NetworkPage = () => {
                     className="btn btn-outline-primary cursor"
                     onClick={() => {
                       setAccepted(true);
-                      // addFollow();
+                      addFollow();
                     }}
                   >
                     Accetta
@@ -201,7 +201,7 @@ const NetworkPage = () => {
                   </Spinner>
                 </div>
               )}
-              {/* {profilesData &&
+              {profilesData &&
                 profilesData
                   .slice(0, visibleProfiles)
                   .map((profile) => (
@@ -210,7 +210,7 @@ const NetworkPage = () => {
                       profile={profile}
                       addFollow={addFollow}
                     />
-                  ))} */}
+                  ))}
             </Row>
 
             <div className="text-center mt-3">
