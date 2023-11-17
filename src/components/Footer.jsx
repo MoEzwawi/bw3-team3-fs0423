@@ -57,7 +57,7 @@ const Footer = () => {
             </div>
           </div>
         </Col>
-        <Col xs={12} sm={4} className="footerDrop">
+        <Col xs={12} sm={4} className="footerDrop d-none d-md-block">
           <div className="d-flex flex-column">
             <p className="mb-0">Seleziona Lingua</p>
             <LanguagesDrop />
