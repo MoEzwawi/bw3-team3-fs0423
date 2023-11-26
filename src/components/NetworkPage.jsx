@@ -15,9 +15,10 @@ import { useSelector } from "react-redux";
 
 const NetworkPage = ({ profilo }) => {
   const [profilesData, setProfilesData] = useState(null);
-  const [visibleProfiles, setVisibleProfiles] = useState(10);
+  const [visibleProfiles, setVisibleProfiles] = useState(9);
   const [spinnerState, setSpinnerState] = useState(true);
   const [accepted, setAccepted] = useState(false);
+  const [isShown, setIsShown] = useState(false)
   const myState = useSelector(
     (state) => state.profile.friends && state.profile.friends.content
   );
@@ -227,14 +228,26 @@ const NetworkPage = ({ profilo }) => {
             </Row>
 
             <div className="text-center mt-3">
-              <Button
-                className="btn btn-secondary rounded-pill"
-                onClick={() => {
-                  setVisibleProfiles(visibleProfiles + 3);
-                }}
-              >
-                Mostra altri
-              </Button>
+              {!isShown &&
+                <Button
+                  className="btn btn-secondary rounded-pill"
+                  onClick={() => {
+                    setVisibleProfiles(visibleProfiles + profilesData.length);
+                    setIsShown(!isShown)
+                  }}
+                >
+                  Mostra altri
+                </Button>}
+              {isShown &&
+                <Button
+                  className="btn btn-secondary rounded-pill"
+                  onClick={() => {
+                    setVisibleProfiles(9);
+                    setIsShown(!isShown)
+                  }}
+                >
+                  Nascondi
+                </Button>}
             </div>
           </div>
         </Col>
