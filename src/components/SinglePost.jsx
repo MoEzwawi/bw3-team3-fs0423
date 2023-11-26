@@ -28,11 +28,18 @@ const SinglePost = ({
   id,
   userid,
   username,
+  profilo
 }) => {
   const [liked, setLiked] = useState(false);
   const [click, setClick] = useState(false);
   const [didyoucomment, setDidYouComment] = useState(false);
-
+  const isItMe = () => {
+    if (profilo._id === userid) {
+      return "/me"
+    } else {
+      return "/me/" + userid
+    }
+  }
   function formatData(dataString) {
     const data = new Date(dataString);
     const options = {
@@ -74,7 +81,7 @@ const SinglePost = ({
       style={{ width: "90%" }}
     >
       <p style={{ fontSize: 1 + "em", fontWeight: "bold", margin: 0.2 + "em" }}>
-        <Link to={`/me/${userid}`}>
+        <Link to={isItMe()}>
           {image ? (
             <img
               src={image}
@@ -91,7 +98,7 @@ const SinglePost = ({
             />
           )}
         </Link>
-        <Link to={"/me/" + userid} className="bbc">
+        <Link to={isItMe()} className="bbc">
           <span className="cursor-pointer">
             {firstName} {lastName}
           </span>

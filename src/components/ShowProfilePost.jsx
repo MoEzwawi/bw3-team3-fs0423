@@ -153,6 +153,7 @@ const ShowProfilePost = ({ profilo, show, onHide, setSelected }) => {
                       date2={post.updatedAt}
                       id={post._id}
                       onClick={() => handleSelect(post._id)}
+                      profilo={profilo}
                     />
                   </Row>
                 );

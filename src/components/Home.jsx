@@ -294,6 +294,7 @@ const Home = ({ profilo }) => {
                   firstName={post.user.name}
                   lastName={post.user.surname}
                   userid={post.user._id}
+                  profilo={profilo}
                 />
               </Row>
             ))}
@@ -314,6 +315,7 @@ const Home = ({ profilo }) => {
                   firstName={post.user.name}
                   lastName={post.user.surname}
                   userid={post.user._id}
+                  profilo={profilo}
                 />
               </Row>
             ))}
