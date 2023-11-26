@@ -9,6 +9,7 @@ import FakeProfile from "./components/FakeProfile";
 import Jobs from "./components/Jobs";
 import NetworkPage from "./components/NetworkPage";
 import { useEffect, useState } from "react";
+import LoginPage from "./components/LoginPage";
 
 import FavouritePage from "./components/FavouritePage";
 import Messaggistica from "./components/Messaggistica";
@@ -16,6 +17,7 @@ import { setAccessToken } from "./redux/actions";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
+
   const baseEndpoint =
     "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
@@ -77,9 +79,9 @@ function App() {
   return (
     <BrowserRouter>
       <TopBar onSearch={handleSearch} profilo={profilo} />
-
       <Routes>
-        <Route path="/" element={<Home profilo={profilo} />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<Home profilo={profilo} />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
         <Route path="/favourites" element={<FavouritePage />} />
         <Route

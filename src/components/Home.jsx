@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap-icons";
 import CustomAccordion from "./CustomAccordion";
 import AddNewPostModal from "./AddNewPostModal";
+import { Link } from "react-router-dom";
 
 const Home = ({ profilo }) => {
   const apiToken =
@@ -86,17 +87,21 @@ const Home = ({ profilo }) => {
                 height={"66px"}
                 className="rounded-top-2"
               />
-              <img
-                className="pro-home-md"
-                src={profilo.image}
-                alt="profile-pic"
-              />
+              <Link to="/me" className=" cursor-pointer">
+                <img
+                  className="pro-home-md"
+                  src={profilo.image}
+                  alt="profile-pic"
+                />
+              </Link>
             </div>
 
             <div className="ma text-center ms-0">
-              <h6 className="mb-1">
-                {profilo.name} {profilo.surname}
-              </h6>
+              <Link to="/me" className="bbc cursor-pointer">
+                <h6 className="mb-1">
+                  {profilo.name} {profilo.surname}
+                </h6>
+              </Link>
               <p className="grigio-md-home mb-0">@{profilo.username}</p>
               <p className="grigio-md-home">{profilo.title}</p>
               <hr className="mx-2" />

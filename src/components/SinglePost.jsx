@@ -91,7 +91,7 @@ const SinglePost = ({
             />
           )}
         </Link>
-        <Link to={"me/" + userid} className="bbc">
+        <Link to={"/me/" + userid} className="bbc">
           <span className="cursor-pointer">
             {firstName} {lastName}
           </span>
