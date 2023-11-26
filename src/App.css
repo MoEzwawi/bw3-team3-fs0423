@@ -1,0 +1,546 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+
+/* #root {
+    background-color: #f2f4ee;
+} */
+
+.favourite-img {
+  width: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.bgggc {
+  background-color: rgb(228, 228, 228);
+}
+
+.grigio {
+  color: grey;
+  font-size: 0.9em;
+  overflow: hidden;
+}
+
+.grigio-md-home {
+  color: grey;
+  font-size: 0.8em;
+  overflow: hidden;
+}
+
+
+#fr-add-btn:hover {
+  border: 1px solid black !important;
+  background-color: rgba(235, 235, 235);
+  transition: 0s;
+}
+
+#pcpc {
+  font-weight: 700;
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+
+body {
+  background-color: rgb(244, 242, 238);
+}
+
+.ro {
+  display: flex;
+  justify-content: center;
+}
+
+.bord {
+  border: 1px solid gray;
+  width: 500px;
+  padding: 0px;
+}
+
+.cont {
+  position: relative;
+  display: flex;
+  margin-bottom: 50px;
+  flex-direction: column;
+}
+
+#small-profile-home {
+  width: 280px;
+}
+
+.pro {
+  position: absolute;
+  display: flex;
+  width: 153px;
+  bottom: -40px;
+  margin-left: 1em;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.pro-home {
+  position: absolute;
+  display: flex;
+  width: 70px;
+  bottom: 40%;
+  left: 44%;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+.pro-home-md {
+  position: absolute;
+  display: flex;
+  width: 70px;
+  bottom: -40px;
+  left: 33%;
+  border: 2px solid white;
+  border-radius: 190px;
+}
+
+
+
+.bi {
+  color: rgb(87, 87, 87);
+}
+
+/* navbar */
+.custom-button {
+  border: 1px solid #0A66C2;
+  border-radius: 20px;
+  padding: 0 20px;
+  margin-top: 0.7em;
+  font-size: 16px;
+  font-weight: 600;
+
+  background-color: transparent;
+  color: #0A66C2;
+}
+
+.custom-button:hover,
+.custom-button:focus {
+  background-color: rgb(178, 228, 245);
+  color: #0A66C2;
+}
+
+/* addfrom aaaaa */
+.input-container {
+  padding-right: 5em;
+  position: relative;
+}
+
+/* aaaaaa */
+.input-container .form-control {
+  width: 300px;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .input-container .form-control {
+    display: none;
+    width: auto;
+    /* Rimuovi la larghezza fissa su piccoli schermi */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    transition: all 0.5s ease-out;
+  }
+
+  .input-container .form-control.expanded {
+    display: block;
+    width: 400px;
+    /* Espandi a tutta la larghezza */
+  }
+}
+
+.smalltext {
+  font-size: 12px;
+}
+
+.topbar-img-profile {
+  width: 35px;
+  object-fit: cover;
+  text-align: center;
+}
+
+#basic-nav-dropdown {
+  padding: 0 !important;
+}
+
+.dropdown-menu {
+  width: 200px;
+}
+
+/* fine navbar */
+/* footer */
+#Footer p {
+  font-size: small;
+  padding-inline: 5px;
+}
+
+#Footer h5 {
+  font-size: medium;
+}
+
+.footerDrop {
+  width: 130px;
+}
+
+@media (max-width: 768px) {
+  #Footer {
+    padding-inline: 0;
+  }
+
+  #footer-select {
+    width: 100%;
+  }
+}
+
+#footer-job {
+  font-size: 0.8rem;
+  margin-top: 2em;
+}
+
+/* fine footer */
+#news-list {
+  list-style-type: disc;
+}
+
+#footer-sidebar {
+  font-size: 0.8rem;
+}
+
+.acc ::after {
+  /* background-color: grey !important; */
+  margin-left: 0px !important;
+
+  display: none;
+}
+
+.size {
+  font-size: 10px !important;
+}
+
+.contenuti {
+  padding: 0;
+
+  width: 80px;
+}
+
+.contenuti:hover {
+  background-color: rgb(184, 186, 184);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white !important;
+  box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}
+
+/* jobs */
+.jobs-container {
+
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+
+.jobs-img {
+  width: 80%;
+}
+
+.img-jobs-container {
+  width: 80px;
+}
+
+/* jobs */
+
+/* ------CSS EXPERIENCE-------- */
+.pExpCard {
+  opacity: 0.6;
+  font-size: 15px;
+}
+
+.compExpCard {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.h5ExpCard {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+
+
+/* ------FINE CSS EXPERIENCE-------- */
+
+/* ----------CSS FRIENDLIST------------- */
+.pNameFriend {
+  font-size: 0.9em;
+}
+
+.pTitleFriend {
+  font-size: 0.8em;
+}
+
+.perAddButt {
+  color: rgb(102, 102, 102);
+
+}
+
+#fr-add-btn {
+  color: rgb(102, 102, 102);
+  font-weight: 700;
+  font-size: 0.9em;
+  margin-bottom: 1.1em;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.show-all-btn {
+  color: rgb(102, 102, 102);
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.show-all-btn:hover {
+
+  background-color: rgba(235, 235, 235);
+  transition: 0.3s;
+}
+
+#fr-add-btn1 {
+  color: black;
+  font-weight: 700;
+  font-size: 0.9em;
+  margin-bottom: 1.1em;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.perCheckButt {
+  color: black;
+}
+
+/* ----------FINE CSS FRIENDLIST-------- */
+
+/* -------------CSS PROFILE--------------*/
+.ma {
+  margin-left: 2em;
+
+}
+
+.h3Exp {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.pExpCard2 {
+  color: #0A66C2;
+  font-size: 15px;
+  margin-left: 3px;
+  font-weight: 600;
+}
+
+.linkInfo {
+  font-size: 12px;
+  color: #0A66C2;
+  font-weight: 600;
+}
+
+#custom-dropdown-profile::after {
+  background-image: none !important;
+}
+
+#custom-dropdown-profile.dropdown-toggle::after {
+  display: none !important;
+}
+
+#custom-dropdown-profile {
+  border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+}
+
+.nanana .dropdown-menu {
+  width: 250px;
+}
+
+.nana .dropdown-menu {
+  width: 280px;
+}
+
+.spanOpacity {
+  opacity: 0.6;
+  font-size: 13px;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.strongSize {
+  font-size: 13px;
+}
+
+.btnProf {
+  border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border-color: #0A66C2;
+  color: #0A66C2;
+}
+
+.btnProf:hover {
+  background-color: #cae1ff;
+  border-color: #007bff;
+  color: #0A66C2;
+
+
+}
+
+#custom-dropdown-altro::after {
+  background-image: none !important;
+}
+
+#custom-dropdown-altro.dropdown-toggle::after {
+  display: none !important;
+}
+
+#custom-dropdown-altro {
+  border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  opacity: 0.6;
+  border: 1px solid black;
+}
+
+.pAltro {
+  font-size: 14px;
+}
+
+.pTitoloInfo {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.pDataInfo {
+  opacity: 0.6;
+  font-size: 13px;
+}
+
+.cursorPointerForAll {
+  cursor: pointer;
+}
+
+.btnSi {
+  font-size: 10px;
+  font-weight: bold;
+  padding: 1px 4px 0px 4px;
+  margin-left: 4px;
+}
+
+.eheh {
+  border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border: 1px solid black;
+  color: #727375;
+}
+
+.eheh:hover {
+  border: 1px solid black;
+  color: #727375;
+}
+
+.postBtnProfile {
+  border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
+.spanNamePost {
+  opacity: 0.6;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.spanDatePost {
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.pmodalprof {
+  font-size: 12px;
+}
+
+.eheh2 {
+  border-radius: 1.25rem;
+  padding: 0.15rem 1.3rem;
+  font-weight: 600;
+  border: 1px solid black;
+  color: #727375;
+}
+
+.eheh2:hover {
+  border: 1px solid black;
+  color: #727375;
+}
+
+.postBtnProfile2 {
+  border-radius: 1.25rem;
+  padding: 0.15rem 1.3rem;
+  font-weight: 600;
+  border: 1px solid black;
+  color: #4c4c4c;
+}
+
+@media (min-width: 1200px) {
+  .eheh2 {
+
+    padding: 0.15rem 2rem;
+  }
+
+  .postBtnProfile2 {
+    padding: 0.15rem 2rem;
+  }
+}
+
+/* -----------FINE CSS PROFILE-----------*/
+
+.bbc {
+  text-decoration: none;
+  color: black;
+}
+
+.bbc:hover {
+  text-decoration: underline;
+}
+
+/* CSS PAG LOGIN */
+
+.login-card {
+  width: 20%;
+}
+
+.card-container {
+  height: 100vh;
+  background-image: url('https://i.imgur.com/aeidEH1.jpg');
+  background-repeat: round;
+}
+
+.login-img {
+  width: 200px;
+}
