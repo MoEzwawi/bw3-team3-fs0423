@@ -1,7 +1,10 @@
 import { Modal, Row } from "react-bootstrap";
 import SingleFriend from "./SingleFriend";
+import { useLocation, useParams } from "react-router-dom";
 
-const ModalShowFriend = ({ show, onHide, newFriends }) => {
+const ModalShowFriend = ({ show, onHide, newFriends, profilo }) => {
+  const location = useLocation()
+  const params = useParams()
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -14,21 +17,41 @@ const ModalShowFriend = ({ show, onHide, newFriends }) => {
       </p>
       <Modal.Body>
         <>
-          {newFriends.length > 0 &&
-            newFriends.map((fr) => {
-              return (
-                <Row key={fr._id} className="justify-content-start my-2 mx-3">
-                  <SingleFriend
-                    image={fr.image}
-                    name={fr.name}
-                    surname={fr.surname}
-                    title={fr.title}
-                    id={fr._id}
-                    onHide={onHide}
-                  />
-                </Row>
-              );
-            })}
+          {location.pathname === '/me' ?
+            (newFriends.length > 0 && profilo &&
+              newFriends
+                .filter(f => f._id !== profilo._id)
+                .map((fr) => {
+                  return (
+                    <Row key={fr._id} className="justify-content-start my-2 mx-3">
+                      <SingleFriend
+                        image={fr.image}
+                        name={fr.name}
+                        surname={fr.surname}
+                        title={fr.title}
+                        id={fr._id}
+                        onHide={onHide}
+                      />
+                    </Row>
+                  );
+                })) : (newFriends.length > 0 && profilo &&
+                  newFriends
+                    .filter(f => f._id !== profilo._id)
+                    .filter(f => f._id !== params.id)
+                    .map((fr) => {
+                      return (
+                        <Row key={fr._id} className="justify-content-start my-2 mx-3">
+                          <SingleFriend
+                            image={fr.image}
+                            name={fr.name}
+                            surname={fr.surname}
+                            title={fr.title}
+                            id={fr._id}
+                            onHide={onHide}
+                          />
+                        </Row>
+                      );
+                    }))}
         </>
       </Modal.Body>
     </Modal>

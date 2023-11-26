@@ -156,6 +156,7 @@ const FriendsList = ({ profilo }) => {
                 show={show}
                 onHide={handleClose}
                 newFriends={newFriends}
+                profilo={profilo}
               />
             </Col>
           </div>
