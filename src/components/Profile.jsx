@@ -39,7 +39,7 @@ const Profile = ({ profilo, Page }) => {
   const [show4, setShow4] = useState(false);
   const handleClose4 = () => setShow4(false);
   const handleShow4 = () => setShow4(true);
-  const myState = useSelector((state) => state.profile.friends.content);
+  const myState = useSelector((state) => state.profile?.friends?.content || []);
   useEffect(() => {
     if (myState.includes(profilo._id)) {
       setIsAdded(!isAdded);

@@ -10,7 +10,7 @@ const SingleFriend = ({ image, name, surname, title, id, onHide }) => {
   const [isAdded, setIsAdded] = useState(false);
   // const myState = useSelector((state) => state.profile.friends.content);
   const myState = useSelector(
-    (state) => state.profile.friends && state.profile.friends.content
+    (state) => (state.profile.friends && state.profile.friends.content) || []
   );
   const dispatch = useDispatch();
 
