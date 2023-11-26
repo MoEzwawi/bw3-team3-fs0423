@@ -88,7 +88,7 @@ function App() {
           path="/me"
           element={<ProfilePage profilo={profilo} Page={Page} />}
         />
-        <Route path="/me/:id" element={<FakeProfile />} />
+        <Route path="/me/:id" element={<FakeProfile mioProfilo={profilo} />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/attEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/network" element={<NetworkPage profilo={profilo} />} />

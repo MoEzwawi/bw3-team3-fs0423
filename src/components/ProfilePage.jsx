@@ -47,7 +47,7 @@ const ProfilePage = ({ profilo, Page }) => {
             )}
           </Row>
         </Col>
-        <FriendsList />
+        <FriendsList profilo={profilo} />
       </Row>
       <Footer />
     </Container>
