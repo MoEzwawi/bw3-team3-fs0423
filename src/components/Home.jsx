@@ -212,6 +212,7 @@ const Home = ({ profilo }) => {
                 show={showModal}
                 handleClose={handleClose}
                 handlePublish={handlePublish}
+                profilo={profilo}
               />
               <div className="d-flex justify-content-evenly">
                 <div className="d-flex align-items-center gap-2 cursor">

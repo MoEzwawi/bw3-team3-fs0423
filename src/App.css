@@ -14,7 +14,7 @@
     background-color: #f2f4ee;
 } */
 
-.favourite-img{
+.favourite-img {
   width: 20px;
 }
 
@@ -131,20 +131,24 @@ body {
   background-color: rgb(178, 228, 245);
   color: #0A66C2;
 }
+
 /* addfrom aaaaa */
 .input-container {
   padding-right: 5em;
   position: relative;
 }
+
 /* aaaaaa */
-.input-container .form-control{
+.input-container .form-control {
   width: 300px;
   max-width: 400px;
 }
+
 @media (max-width: 768px) {
   .input-container .form-control {
     display: none;
-    width: auto; /* Rimuovi la larghezza fissa su piccoli schermi */
+    width: auto;
+    /* Rimuovi la larghezza fissa su piccoli schermi */
     position: absolute;
     left: 0;
     top: 0;
@@ -154,7 +158,8 @@ body {
 
   .input-container .form-control.expanded {
     display: block;
-    width: 400px; /* Espandi a tutta la larghezza */
+    width: 400px;
+    /* Espandi a tutta la larghezza */
   }
 }
 
@@ -373,6 +378,7 @@ body {
 .nanana .dropdown-menu {
   width: 250px;
 }
+
 .nana .dropdown-menu {
   width: 280px;
 }
@@ -445,66 +451,73 @@ body {
   margin-left: 4px;
 }
 
-.eheh{border-radius: 1.25rem;
-  padding: 0.1rem 0.75rem;
-  font-weight: 600;
-  border:1px solid black;
-  color: #727375;
-}
-  .eheh:hover{
-     border: 1px solid black;
-        color: #727375;
-  }
-    .postBtnProfile{
-border-radius: 1.25rem;
+.eheh {
+  border-radius: 1.25rem;
   padding: 0.1rem 0.75rem;
   font-weight: 600;
   border: 1px solid black;
-    }
+  color: #727375;
+}
 
-    .spanNamePost{
-      opacity: 0.6;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .spanDatePost{
-      opacity: 0.6;
-      font-size: 14px;
-    }
+.eheh:hover {
+  border: 1px solid black;
+  color: #727375;
+}
 
-    .pmodalprof{
-      font-size: 12px;
-    }
+.postBtnProfile {
+  border-radius: 1.25rem;
+  padding: 0.1rem 0.75rem;
+  font-weight: 600;
+  border: 1px solid black;
+}
 
-        .eheh2 {
-          border-radius: 1.25rem;
-          padding: 0.15rem 1.3rem;
-          font-weight: 600;
-          border: 1px solid black;
-          color: #727375;
-        }
-    
-        .eheh2:hover {
-          border: 1px solid black;
-          color: #727375;
-        }
-    .postBtnProfile2 {
-      border-radius: 1.25rem;
-        padding: 0.15rem 1.3rem;
-        font-weight: 600;
-        border: 1px solid black;
-        color: #4c4c4c;
-      }
+.spanNamePost {
+  opacity: 0.6;
+  font-weight: bold;
+  font-size: 14px;
+}
 
-        @media (min-width: 1200px) {
-        .eheh2 {
-          
-            padding: 0.15rem 2rem;
-          }
-          .postBtnProfile2 {
-            padding: 0.15rem 2rem;
-          }
-          }
+.spanDatePost {
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.pmodalprof {
+  font-size: 12px;
+}
+
+.eheh2 {
+  border-radius: 1.25rem;
+  padding: 0.15rem 1.3rem;
+  font-weight: 600;
+  border: 1px solid black;
+  color: #727375;
+}
+
+.eheh2:hover {
+  border: 1px solid black;
+  color: #727375;
+}
+
+.postBtnProfile2 {
+  border-radius: 1.25rem;
+  padding: 0.15rem 1.3rem;
+  font-weight: 600;
+  border: 1px solid black;
+  color: #4c4c4c;
+}
+
+@media (min-width: 1200px) {
+  .eheh2 {
+
+    padding: 0.15rem 2rem;
+  }
+
+  .postBtnProfile2 {
+    padding: 0.15rem 2rem;
+  }
+}
+
 /* -----------FINE CSS PROFILE-----------*/
 
 .bbc {

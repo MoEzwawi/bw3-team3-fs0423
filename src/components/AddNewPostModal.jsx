@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Modal, Row } from "react-bootstrap";
 import { CardImage, Calendar3, ThreeDots, Clock } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 
 
-const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
+const AddNewPostModal = ({ show, handleClose, handlePublish, profilo }) => {
     const [payload, setPayload] = useState({})
-    const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc'
+    // const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc'
+    const accessToken = useSelector((state) => state.user.accessToken);
+
     const publishPost = async (content) => {
         try {
             let formData = new FormData()
@@ -14,7 +17,7 @@ const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
             const res = await fetch('https://striveschool-api.herokuapp.com/api/posts', {
                 method: 'POST',
                 headers: {
-                    "Authorization": "Bearer " + apiKey,
+                    "Authorization": "Bearer " + accessToken,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
@@ -52,7 +55,7 @@ const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
                     <div className="d-flex align-items-center gap-3 ms-2">
                         <div>
                             <img
-                                src={"http://placekitten.com/50"}
+                                src={profilo.image}
                                 width="50px"
                                 height="50px"
                                 className="rounded-circle"
@@ -61,7 +64,7 @@ const AddNewPostModal = ({ show, handleClose, handlePublish }) => {
                         </div>
                         <div>
                             <Modal.Title className="fs-5">
-                                {"Nome utente"}
+                                {profilo.name} {profilo.surname}
                             </Modal.Title>
                             <p className="mb-0">Pubblica: Chiunque</p>
                         </div>
