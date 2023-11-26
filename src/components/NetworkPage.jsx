@@ -13,7 +13,7 @@ import {
 import NetworkCard from "./NetworkCard";
 import { useSelector } from "react-redux";
 
-const NetworkPage = () => {
+const NetworkPage = ({ profilo }) => {
   const [profilesData, setProfilesData] = useState(null);
   const [visibleProfiles, setVisibleProfiles] = useState(10);
   const [spinnerState, setSpinnerState] = useState(true);
@@ -220,7 +220,7 @@ const NetworkPage = () => {
               )}
               {profilesData &&
                 profilesData
-                  .slice(0, visibleProfiles)
+                  .slice(0, visibleProfiles).filter(f => f._id !== profilo._id)
                   .map((profile) => (
                     <NetworkCard key={profile._id} profile={profile} />
                   ))}

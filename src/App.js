@@ -91,7 +91,7 @@ function App() {
         <Route path="/me/:id" element={<FakeProfile />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/attEdit" element={<ProfilePage profilo={profilo} />} />
-        <Route path="/network" element={<NetworkPage />} />
+        <Route path="/network" element={<NetworkPage profilo={profilo} />} />
         <Route path="/messages" element={<Messaggistica />} />
       </Routes>
     </BrowserRouter>
