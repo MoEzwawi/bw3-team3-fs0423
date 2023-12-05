@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { format, parseISO } from "date-fns";
 import ButtonDelete from "./ButtonDelete";
+import { useSelector } from "react-redux";
 
 const ModalEdit = ({ show, onHide, exp, getExperiences }) => {
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  // const accessToken =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  const accessToken = useSelector((state) => state.user.accessToken);
+
   const [isJobOngoing, setIsJobOngoing] = useState(false);
   const [experience, setExperience] = useState({
     role: exp.role,

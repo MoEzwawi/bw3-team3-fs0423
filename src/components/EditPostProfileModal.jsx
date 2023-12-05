@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Form, Modal, Row } from "react-bootstrap";
 import { Calendar3, CardImage, Clock, ThreeDots } from "react-bootstrap-icons";
 import ButtonDeletePost from "./ButtonDeletePost";
+import { useSelector } from "react-redux";
 
 const EditPostProfileModal = ({
   show,
@@ -12,9 +13,9 @@ const EditPostProfileModal = ({
   profilo,
 }) => {
   console.log("ahsdonaklsfnla", profilo);
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
-
+  // const accessToken =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  const accessToken = useSelector((state) => state.user.accessToken);
   const [post, setPost] = useState({
     text: postT,
   });

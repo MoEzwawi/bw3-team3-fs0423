@@ -12,8 +12,9 @@ import {
 } from "react-bootstrap-icons";
 import CustomAccordion from "./CustomAccordion";
 import AddNewPostModal from "./AddNewPostModal";
+import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ profilo }) => {
   const apiToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU1MzQ1YjFlNDM0YzAwMTkzZTJiNzgiLCJpYXQiOjE3MDAwODI3ODAsImV4cCI6MTcwMTI5MjM4MH0.pSTz9AHxLWCkT2h5XdVEx1jsmEzLpEKjz3WaTl1wgtc";
   const editProfile = async () => {
@@ -86,16 +87,23 @@ const Home = () => {
                 height={"66px"}
                 className="rounded-top-2"
               />
-              <img
-                className="pro-home-md"
-                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-                alt="profile-pic"
-              />
+              <Link to="/me" className=" cursor-pointer">
+                <img
+                  className="pro-home-md"
+                  src={profilo.image}
+                  alt="profile-pic"
+                />
+              </Link>
             </div>
 
             <div className="ma text-center ms-0">
-              <h6>Mohamed Ezwawi</h6>
-              <p className="grigio-md-home">Professore presso BOH</p>
+              <Link to="/me" className="bbc cursor-pointer">
+                <h6 className="mb-1">
+                  {profilo.name} {profilo.surname}
+                </h6>
+              </Link>
+              <p className="grigio-md-home mb-0">@{profilo.username}</p>
+              <p className="grigio-md-home">{profilo.title}</p>
               <hr className="mx-2" />
               <div className="mt-4">
                 <div className="d-flex justify-content-between p-3">
@@ -204,6 +212,7 @@ const Home = () => {
                 show={showModal}
                 handleClose={handleClose}
                 handlePublish={handlePublish}
+                profilo={profilo}
               />
               <div className="d-flex justify-content-evenly">
                 <div className="d-flex align-items-center gap-2 cursor">
@@ -282,6 +291,10 @@ const Home = () => {
                   text={post.text}
                   date2={post.updatedAt}
                   id={post._id}
+                  firstName={post.user.name}
+                  lastName={post.user.surname}
+                  userid={post.user._id}
+                  profilo={profilo}
                 />
               </Row>
             ))}
@@ -299,6 +312,10 @@ const Home = () => {
                   text={post.text}
                   date2={post.updatedAt}
                   id={post._id}
+                  firstName={post.user.name}
+                  lastName={post.user.surname}
+                  userid={post.user._id}
+                  profilo={profilo}
                 />
               </Row>
             ))}

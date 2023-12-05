@@ -2,17 +2,23 @@ import { useState, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { PencilFill } from "react-bootstrap-icons";
 import SingleFriend from "./SingleFriend";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import ModalShowFriend from "./ModalShowFriend";
 
-const FriendsList = () => {
+const FriendsList = ({ profilo }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const accessToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+
   const location = useLocation();
+  let params = useParams();
+  useEffect(() => {
+    console.log('I AM LOC PATHNAME', location.pathname)
+  }, [location])
+
   const [newFriends, setNewFriends] = useState([]);
 
   const shuffleArray = (array) => {
@@ -45,6 +51,9 @@ const FriendsList = () => {
   useEffect(() => {
     console.log("array di amici", newFriends);
   }, [newFriends]);
+  useEffect(() => {
+    console.log("array di params", params.id);
+  }, [params]);
   return (
     <>
       <Col xs={0} md={4} lg={3} className="d-none d-md-block">
@@ -99,9 +108,9 @@ const FriendsList = () => {
             <Row className=" mx-2">
               <Col className="grigio">Della tua scuola o università</Col>
             </Row>
-            {newFriends.length > 0 &&
+            {location.pathname === "/me" ? (newFriends.length > 0 && profilo &&
               shuffleArray(newFriends)
-                .slice(0, 5)
+                .slice(0, 5).filter(f => f._id !== profilo._id)
                 .map((fr) => {
                   return (
                     <Row
@@ -117,7 +126,25 @@ const FriendsList = () => {
                       />
                     </Row>
                   );
-                })}
+                })) : (newFriends.length > 0 && profilo &&
+                  shuffleArray(newFriends)
+                    .slice(0, 5).filter(f => f._id !== profilo._id).filter(f => f._id !== params.id)
+                    .map((fr) => {
+                      return (
+                        <Row
+                          key={fr._id}
+                          className="justify-content-start my-2 mx-3"
+                        >
+                          <SingleFriend
+                            image={fr.image}
+                            name={fr.name}
+                            surname={fr.surname}
+                            title={fr.title}
+                            id={fr._id}
+                          />
+                        </Row>
+                      );
+                    }))}
             <Col className="text-center border-top ">
               <div
                 className="py-2 show-all-btn cursorPointerForAll"
@@ -129,6 +156,7 @@ const FriendsList = () => {
                 show={show}
                 onHide={handleClose}
                 newFriends={newFriends}
+                profilo={profilo}
               />
             </Col>
           </div>

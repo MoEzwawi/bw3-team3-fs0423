@@ -1,19 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
 import TopBar from "./components/TopBar";
 import Home from "./components/Home";
 import ProfilePage from "./components/ProfilePage";
 import FakeProfile from "./components/FakeProfile";
 import Jobs from "./components/Jobs";
-
+import NetworkPage from "./components/NetworkPage";
 import { useEffect, useState } from "react";
+import LoginPage from "./components/LoginPage";
 
 import FavouritePage from "./components/FavouritePage";
-import LoginPage from "./components/LoginPage";
+import Messaggistica from "./components/Messaggistica";
+import { setAccessToken } from "./redux/actions";
 
 function App() {
   const [jobsResult, setJobsResult] = useState([]);
+
   const baseEndpoint =
     "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
@@ -32,10 +36,22 @@ function App() {
   };
 
   const [profilo, setProfilo] = useState({});
-  const accessToken =
+  const accessToken = useSelector((state) => state.user.accessToken);
+  const dispatch = useDispatch();
+  const accesStart =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
 
+  console.log(
+    "dopo il set",
+    useSelector((state) => state.user.accessToken)
+  );
   useEffect(() => {
+    dispatch(setAccessToken(accessToken));
+    Page();
+  }, [accessToken]);
+
+  useEffect(() => {
+    dispatch(setAccessToken(accesStart));
     Page();
   }, []);
 
@@ -54,7 +70,6 @@ function App() {
         }
       })
       .then((pa) => {
-        console.log("ecco il risultato", pa);
         setProfilo(pa);
       })
       .catch((err) => {
@@ -63,11 +78,10 @@ function App() {
   };
   return (
     <BrowserRouter>
-      {/* <LoginPage /> */}
-      <TopBar onSearch={handleSearch} />
-
+      <TopBar onSearch={handleSearch} profilo={profilo} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<Home profilo={profilo} />} />
         <Route path="/jobs" element={<Jobs jobsData={jobsResult} />} />
         <Route path="/favourites" element={<FavouritePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -75,9 +89,11 @@ function App() {
           path="/me"
           element={<ProfilePage profilo={profilo} Page={Page} />}
         />
-        <Route path="/me/:id" element={<FakeProfile />} />
+        <Route path="/me/:id" element={<FakeProfile mioProfilo={profilo} />} />
         <Route path="/expEdit" element={<ProfilePage profilo={profilo} />} />
         <Route path="/attEdit" element={<ProfilePage profilo={profilo} />} />
+        <Route path="/network" element={<NetworkPage profilo={profilo} />} />
+        <Route path="/messages" element={<Messaggistica />} />
       </Routes>
     </BrowserRouter>
   );

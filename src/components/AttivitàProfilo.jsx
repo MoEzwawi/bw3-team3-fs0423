@@ -19,6 +19,8 @@ const AttivitàProfilo = ({ profilo, Page }) => {
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
   console.log("attività profilo,", profilo);
+  const [selected, setSelected] = useState(null);
+  console.log(selected);
   const location = useLocation();
   return (
     <Col className=" border border-1 border-secondary-subtle rounded rounded-2 bg-white mb-3 px-0">
@@ -51,7 +53,7 @@ const AttivitàProfilo = ({ profilo, Page }) => {
           <div className=" cursorPointerForAll">
             {location.pathname === "/me" ? (
               <Link to="/attEdit" className="text-decoration-none text-dark">
-                <Pencil size={20} onClick={handleShow2} />
+                <Pencil size={20} onClick={selected ? handleShow2 : null} />
               </Link>
             ) : null}
           </div>
@@ -63,6 +65,7 @@ const AttivitàProfilo = ({ profilo, Page }) => {
             profilo={profilo}
             show={show3}
             onHide={handleClose3}
+            setSelected={setSelected}
           />
         </div>
       </div>
@@ -78,10 +81,16 @@ const AttivitàProfilo = ({ profilo, Page }) => {
           onHide={handleClose2}
           Page={Page}
           profilo={profilo}
+          postId={selected}
         />
       )}
 
-      <AddNewPostProfile show={show} onHide={handleClose} profilo={profilo} />
+      <AddNewPostProfile
+        show={show}
+        onHide={handleClose}
+        profilo={profilo}
+        Page={Page}
+      />
     </Col>
   );
 };

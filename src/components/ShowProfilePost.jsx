@@ -3,13 +3,21 @@ import SinglePost from "./SinglePost";
 import { Button, Modal, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import ProvaEdit from "./ProvaEdit";
+import { useSelector } from "react-redux";
 
-const ShowProfilePost = ({ profilo, show, onHide }) => {
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+const ShowProfilePost = ({ profilo, show, onHide, setSelected }) => {
+  // const accessToken =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzZjEzNmRkOTllZjAwMTlhMDk0OTYiLCJpYXQiOjE3MDAwMDAwNTQsImV4cCI6MTcwMTIwOTY1NH0.cXono32VfX5YDaQH7Rw8QX6rYOYDGAZsWG0Bsb2qSB4";
+  const accessToken = useSelector((state) => state.user.accessToken);
+
   const [isRecent, setIsRecent] = useState(true);
   const [postData, setPostData] = useState([]);
   const [recentPostData, setRecentPostData] = useState([]);
+  const handleSelect = (postId) => {
+    if (typeof setSelected === "function") {
+      setSelected(postId);
+    }
+  };
 
   const location = useLocation();
 
@@ -144,6 +152,8 @@ const ShowProfilePost = ({ profilo, show, onHide }) => {
                       text={post.text}
                       date2={post.updatedAt}
                       id={post._id}
+                      onClick={() => handleSelect(post._id)}
+                      profilo={profilo}
                     />
                   </Row>
                 );
