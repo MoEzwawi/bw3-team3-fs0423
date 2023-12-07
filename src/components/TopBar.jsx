@@ -182,11 +182,13 @@ const TopBar = ({ onSearch, profilo }) => {
                     </NavLink>
                     <div className="d-flex flex-column align-items-center mx-2">
                       <NavLink to={"/me"} className="nav-link">
-                        <img
-                          src={profilo.image}
-                          alt="profile"
-                          className="rounded-circle topbar-img-profile"
-                        />
+                        {profilo && (
+                          <img
+                            src={profilo.image}
+                            alt="profile"
+                            className="rounded-circle topbar-img-profile"
+                          />
+                        )}
                       </NavLink>
                       <NavDropdown
                         align="end"
@@ -196,10 +198,12 @@ const TopBar = ({ onSearch, profilo }) => {
                         className="d-none d-md-inline mb-1 nana"
                       >
                         <div className="d-flex flex-column align-items-center">
-                          <h5 className="px-2">
-                            {profilo.name} {profilo.surname}
-                          </h5>
-                          <p className="mb-0">{profilo.title}</p>
+                          {profilo && (
+                            <h5 className="px-2">
+                              {profilo.name} {profilo.surname}
+                            </h5>
+                          )}
+                          {profilo && <p className="mb-0">{profilo.title}</p>}
                           <Button
                             variant="primary"
                             className="mx-1 custom-button "

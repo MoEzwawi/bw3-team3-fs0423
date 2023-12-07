@@ -88,22 +88,28 @@ const Home = ({ profilo }) => {
                 className="rounded-top-2"
               />
               <Link to="/me" className=" cursor-pointer">
-                <img
-                  className="pro-home-md"
-                  src={profilo.image}
-                  alt="profile-pic"
-                />
+                {profilo && (
+                  <img
+                    className="pro-home-md"
+                    src={profilo.image}
+                    alt="profile-pic"
+                  />
+                )}
               </Link>
             </div>
 
             <div className="ma text-center ms-0">
               <Link to="/me" className="bbc cursor-pointer">
-                <h6 className="mb-1">
-                  {profilo.name} {profilo.surname}
-                </h6>
+                {profilo && (
+                  <h6 className="mb-1">
+                    {profilo.name} {profilo.surname}
+                  </h6>
+                )}
               </Link>
-              <p className="grigio-md-home mb-0">@{profilo.username}</p>
-              <p className="grigio-md-home">{profilo.title}</p>
+              {profilo && (
+                <p className="grigio-md-home mb-0">@{profilo.username}</p>
+              )}
+              {profilo && <p className="grigio-md-home">{profilo.title}</p>}
               <hr className="mx-2" />
               <div className="mt-4">
                 <div className="d-flex justify-content-between p-3">
